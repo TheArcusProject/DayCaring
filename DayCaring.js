@@ -18,6 +18,10 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    Meteor.http.get( 'https://data.texas.gov/api/views/csm8-69qj/rows.json',
+      function(err, result) {
+        console.log('in the meteor get callback')
+        console.log(result.data);
+      });
   });
 }
