@@ -4,4 +4,3 @@ Template.search_results.helpers({
 
 
 });
-
