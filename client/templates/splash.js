@@ -12,7 +12,7 @@ Template.splash.events({
   "submit form": function(event, template){
 
     console.log(event.target.zipcode.value);
-    var inputValue = event.target.zipcode.value
+    zip = event.target.zipcode.value
     event.preventDefault();
 
 

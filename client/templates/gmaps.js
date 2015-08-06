@@ -12,7 +12,7 @@ if (Meteor.isClient) {
       if (GoogleMaps.loaded()) {
         // Map initialization options
         return {
-          center: new google.maps.LatLng(lat, lng),
+          center: new google.maps.LatLng(29.728834, -95.389358),
           zoom: 8
         };
       }
