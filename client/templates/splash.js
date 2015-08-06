@@ -1,20 +1,18 @@
-// Controller for splash.js
+//to include in html add {{> splash}}
 
+if (Meteor.isClient) {
 
-// if (Meteor.isClient){} use this?
+  Template.splash.helpers({
+    //make sure zipcode is valid.
+  });
 
-Template.splash.helpers({
-  //make sure zipcode is valid.
-});
+  Template.splash.events({
 
-Template.splash.events({
+    "submit form": function(event, template){
 
-  "submit form": function(event, template){
-
-    console.log(event.target.zipcode.value);
-    zip = event.target.zipcode.value
-    event.preventDefault();
-
-  }
-
-});
+      console.log(event.target.zipcode.value);
+      zip = event.target.zipcode.value
+      event.preventDefault();
+    }
+  });
+};

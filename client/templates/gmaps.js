@@ -1,4 +1,4 @@
-//to include in html just add {{> gmap}}
+//to include in html add {{> gmap}}
 
 if (Meteor.isClient) {
 
