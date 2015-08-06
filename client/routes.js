@@ -4,7 +4,6 @@
 FlowRouter.route('/', {
     name: 'main',
     action: function(params) {
-        console.log("Inside the main route action");
         BlazeLayout.render("main", {content: "splash"}); //content here will be the initial search.
     },
 });
