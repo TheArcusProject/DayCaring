@@ -12,6 +12,7 @@ if (Meteor.isClient) {
       // client side global variable to store user's zip code
       zip = event.target.zipcode.value
       event.preventDefault();
+      FlowRouter.go('/search_results');
     }
   });
 };
