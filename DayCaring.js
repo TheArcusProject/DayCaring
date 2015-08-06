@@ -19,19 +19,14 @@ if (Meteor.isClient) {
 
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
-  });
-
-  Schools = new Mongo.Collection('schools');
-  Compliance = new Mongo.Collection('compliance');
+  }); 
 
 }
 
 if (Meteor.isServer) {
-
-  Schools = new Mongo.Collection('schools');
-  Compliance = new Mongo.Collection('compliance');
   
   Meteor.startup(function () {
-    
+    schools.insert(schoolsData.data);
+    nonCompliance.insert(nonComplianceData.data);
   });
 }

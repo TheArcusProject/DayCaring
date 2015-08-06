@@ -1,4 +1,4 @@
-var nonComplianceData = {
+nonComplianceData = {
   "meta" : {
     "view" : {
       "id" : "amn5-f4g2",

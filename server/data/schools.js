@@ -1,4 +1,4 @@
-var schoolsData = {
+schoolsData = {
   "meta" : {
     "view" : {
       "id" : "csm8-69qj",
