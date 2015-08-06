@@ -9,8 +9,7 @@ if (Meteor.isClient) {
   Template.splash.events({
 
     "submit form": function(event, template){
-
-      console.log(event.target.zipcode.value);
+      // client side global variable to store user's zip code
       zip = event.target.zipcode.value
       event.preventDefault();
     }
