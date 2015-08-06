@@ -15,8 +15,6 @@ Template.splash.events({
     var inputValue = event.target.zipcode.value
     event.preventDefault();
 
-
-
   }
 
 });
