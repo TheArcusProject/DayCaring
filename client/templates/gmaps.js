@@ -7,7 +7,7 @@ if (Meteor.isClient) {
   });
 
   Template.gmap.helpers({
-    exampleMapOptions: function() {
+    GmapOptions: function() {
       // Make sure the maps API has loaded
       if (GoogleMaps.loaded()) {
         // Map initialization options
@@ -21,9 +21,10 @@ if (Meteor.isClient) {
 
   Template.gmap.onCreated(function() {
     // We can use the `ready` callback to interact with the map API once the map is ready.
-    GoogleMaps.ready('exampleMap', function(map) {
+    GoogleMaps.ready('gmap', function(map) {
       // Add a marker to the map once it's ready
       var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
         position: map.options.center,
         map: map.instance
       });
