@@ -1,0 +1,20 @@
+// Custom styles that override Foundation
+
+.section1 {
+  min-width: 100%;
+  height: 75%;
+  background-color: $smoke;
+}
+
+.map-container {
+ min-width: 100%;
+ // max-width: 100%;
+ height: 500px;
+}
+
+.container {
+ max-width: 600px;
+ margin: 0 auto;
+ min-height: 100%;
+ background: white;
+}
