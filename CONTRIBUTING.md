@@ -16,3 +16,7 @@ Workflow when starting to work on a new feature:
 12. add, commit and push again
 
 Delete the branch after you pull a request.
+
+What to do when your local is irredeemably borked:
+git fetch origin master
+git reset --hard origin/master
