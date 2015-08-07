@@ -3,7 +3,12 @@
 if(Meteor.isClient) {
 
 	Template.daycareinfo.helpers ({
-		//pull info for a daycare
+		school: function() {
+			return schools.find();
+		},
+		reviews: function() {
+			return reviews.find();
+		}
 	})
 
 	Template.daycareinfo.events ({
