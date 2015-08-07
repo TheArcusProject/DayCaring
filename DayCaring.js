@@ -3,4 +3,9 @@ if (Meteor.isServer) {
     schools.insert(schoolsData.data);
     nonCompliance.insert(nonComplianceData.data);
   });
+  Meteor.methods({
+  	getZips: function(){
+  		return zipCodes
+  	}
+  })
 }
