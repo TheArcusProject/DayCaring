@@ -127,7 +127,7 @@ $dc-pink: #F48FB1;
 // We use these to control various global styles
 // $body-bg: $white;
 // $body-font-color: $jet;
-// $body-font-family: $font-family-sans-serif;
+$body-font-family: "Lato", Georgia, Cambria;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -211,7 +211,7 @@ $dc-pink: #F48FB1;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
+$header-font-family: "Roboto Condensed", "Helvetica Neue";
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
 // $header-font-color: $jet;
