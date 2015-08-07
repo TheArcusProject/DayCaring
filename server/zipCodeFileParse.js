@@ -7,6 +7,7 @@ Assets.getText('zipCodes.txt',function(err, data){
       current = '';
     } else if (data[i] === '\n') {
       zipCodes.push([]);
+      current = '';
     } else {
       current += data[i];
     }
