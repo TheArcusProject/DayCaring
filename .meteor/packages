@@ -16,3 +16,5 @@ http
 kadira:flow-router
 kadira:blaze-layout
 dburles:google-maps
+sanjo:jasmine
+velocity:html-reporter
