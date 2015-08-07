@@ -16,7 +16,7 @@ if (Meteor.isClient) {
         console.log("this is lng:", lng)
         return {
           center: new google.maps.LatLng(lat, lng),
-          zoom: 15
+          zoom: 13
         };
         // Map initialization options
       }
