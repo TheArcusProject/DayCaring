@@ -2,15 +2,18 @@
 
 if (Meteor.isClient) {
 
+  console.log('user is ', user)
+  
   Template.splash.helpers({
-    //make sure zipcode is valid.
+    
   });
 
   Template.splash.events({
 
     "submit form": function(event, template){
       // client side global variable to store user's zip code
-      zip = event.target.zipcode.value
+      console.log('user is ', user)
+      Meteor.users.update({'_id':user._id},{'$set': {'profile.zip':event.target.zipcode.value}});
       event.preventDefault();
       FlowRouter.go('/searchresults');
     }

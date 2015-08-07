@@ -1,14 +1,12 @@
 //to include in html add {{> gmap}}
-var gzip = ""
+var gzip;
 var lat
 var lng
+
 if (Meteor.isClient) {
 
   Meteor.startup(function() {
     GoogleMaps.load();
-    Meteor.call('getZips', function(err, results){
-      zips = results
-    })
   });
 
   Template.gmap.helpers({
@@ -16,17 +14,20 @@ if (Meteor.isClient) {
       // Make sure the maps API has loaded
       if (GoogleMaps.loaded()) {
         // Map initialization options
-        console.log("this is gzip:", gzip)
 
         //change gzip to lat lng
-        for (var i = 0; i < zips.length; i++) {
+        // for (var i = 0; i < zips.length; i++) {
 
-          if (zips[i][0] === '"' + gzip + '"') {
-            lat = parseInt(zips[i][5])
-            lng = parseInt(zips[i][6])
-            break
-          }
-        }
+        //   if (zips[i][0] === '"' + gzip + '"') {
+        //     lat = parseInt(zips[i][5])
+        //     lng = parseInt(zips[i][6])
+        //     break
+        //   }
+        // }
+        var cursor = Meteor.zipCodes.find({'0':gzip},{'5':1,'6':1});
+        console.log(cursor.fetch());
+        lat = cursor.fetch()[0][5];
+        lng = cursor.fetch()[0][6];
         console.log("this is lat:", lat)
         console.log("this is lng:", lng)
 
@@ -46,8 +47,8 @@ if (Meteor.isClient) {
   });
 
   Template.gmap.onCreated(function() {
-    console.log('in gmap zip is ', zip);
-    gzip = zip
+    var cursor = Meteor.users.find({'_id':user._id},{'profile.zip': 1});
+    gzip = cursor.fetch()[0].profile.zip
       // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('gmap', function(map) {
       // Add a marker to the map once it's ready
@@ -60,3 +61,4 @@ if (Meteor.isClient) {
   });
 
 }
+
