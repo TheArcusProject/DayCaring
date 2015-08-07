@@ -9,17 +9,3 @@ describe("main", function(){
   });
 });
 
-// describe("Zipcode Search", function(){
-//   it("should capture a zipcode", function(){
-
-//     Meteor.users.insert({'_id':'yasdfOIDify23'});
-
-//     $("form").trigger("submit", function(){
-
-//     })
-//     expect()
-
-
-//   });
-// });
-
