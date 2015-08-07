@@ -1,9 +1,7 @@
 <template name="daycareinfo">
-  <div class="row">
-  	<div class="small-12 columns" align="center">
-    	<h1>Daycare Information</h1>
-		</div>
-    <div class="small 8 columns" align="center">
+	{{> subheader}}
+  <div id="container" align="center">
+    <h1>Daycare Information</h1>
 	    <ul style="list-style-type:none">
 	    	<li>Address</li>
 	    	<li>Phone Number</li>
@@ -22,7 +20,7 @@
 	  </form>
 	 </div>
 	</div>
-	
+
 <div class="section-container accordion" data-section="accordion">
   <section class="active">
     <p class="title" data-section-title><a href="#">Customer Reviews</a></p>
