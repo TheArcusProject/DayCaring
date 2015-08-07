@@ -1,0 +1,27 @@
+// Main Search Stylings
+
+#magnify {
+  margin: 0 auto;
+  display: inherit;
+  width: 165px;
+  height: 180px;
+}
+#search {
+  margin-top: 5%;
+  h1 {
+    text-align: center;
+  }
+  h4 {
+    text-align: center;
+  }
+  //client wasn't refreshing after adding the image
+  //make sure nothing broke related to this...
+  img {
+    margin: 0 auto;
+  }
+}
+
+#submit {
+  display: inherit;
+  margin: 0 auto;
+}
