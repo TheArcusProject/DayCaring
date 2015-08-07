@@ -2,7 +2,11 @@
 @import "foundation";
 
 //Import partials
-@import "custom";
+@import
+  "custom",
+  "main-search",
+  "footer";
+
 
 // Or selectively include components
 // @import
