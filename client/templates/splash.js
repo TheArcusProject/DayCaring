@@ -1,8 +1,6 @@
 //to include in html add {{> splash}}
 
 if (Meteor.isClient) {
-
-  console.log('user is ', user)
   
   Template.splash.helpers({
     
