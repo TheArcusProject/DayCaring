@@ -9,13 +9,17 @@ describe("main", function(){
   });
 });
 
-describe("searchbar", function(){
-  it("should reroute on submit of search", function(){
+// describe("Zipcode Search", function(){
+//   it("should capture a zipcode", function(){
 
-    $("form").trigger("submit")
-    expect()
+//     Meteor.users.insert({'_id':'yasdfOIDify23'});
+
+//     $("form").trigger("submit", function(){
+
+//     })
+//     expect()
 
 
-  });
-});
+//   });
+// });
 
