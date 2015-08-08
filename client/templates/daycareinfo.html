@@ -1,39 +1,53 @@
 <template name="daycareinfo">
-	{{> subheader}}
+  {{> subheader}}
+
+  <div class="row" data-equalizer>
+    <div id="localmap" class="small-12 medium-4 columns panel" data-equalizer-watch>
+    </div>
+    <div class="small-12 medium-8 columns" data-equalizer-watch>
+      <ul>
+        <li>Administration</li>
+        <li>Basic Care</li>
+        <li>Health &amp; Safety</li>
+        <li>Physical Facilities</li>
+      </ul>
+    </div>
+  </div>
+
   <div id="container" align="center">
     <h1>Daycare Information</h1>
-	    <ul style="list-style-type:none">
-	    	<li>Address</li>
-	    	<li>Phone Number</li>
-	    	<li>Hours of Operation</li>
-	    </ul>
-	    <a href="http://www.kidsrkids.com/" target="_blank">Visit a Daycare's Website</a>
-	    <br>
-	    <a href='#'>Find Compliance Information</a>
-	 <p></p>
-	  </div>
-	 <div class="small-6 small-centered columns">
-	  <form align="center">
-	   <label>Write a Review:</label>
-	   <input type="text" name="review">
-	   <input class="button round" value="Submit">
-	  </form>
-	 </div>
-	</div>
+      <ul style="list-style-type:none">
+        <li>Address</li>
+        <li>Phone Number</li>
+        <li>Hours of Operation</li>
+      </ul>
+      <a href="http://www.kidsrkids.com/" target="_blank">Visit a Daycare's Website</a>
+      <br>
+      <a href='#'>Find Compliance Information</a>
+   <p></p>
+    </div>
+   <div class="small-6 small-centered columns">
+    <form align="center">
+     <label>Write a Review:</label>
+     <input type="text" name="review">
+     <input class="button round" value="Submit">
+    </form>
+   </div>
+  </div>
 
-<div class="section-container accordion" data-section="accordion">
-  <section class="active">
-    <p class="title" data-section-title><a href="#">Customer Reviews</a></p>
-    <div class="content" data-section-content>
-      <p>This place is awesome!</p>
-      <p>My child loves this daycare!</p>
-    </div>
-  </section>
-  <section>
-    <p class="title" data-section-title><a href="#">Compliance Information</a></p>
-    <div class="content" data-section-content>
-      <p>The daycare is currently in full compliance</p>
-    </div>
-  </section>
-</div>
+  <div class="section-container accordion" data-section="accordion">
+    <section class="active">
+      <p class="title" data-section-title><a href="#">Customer Reviews</a></p>
+      <div class="content" data-section-content>
+        <p>This place is awesome!</p>
+        <p>My child loves this daycare!</p>
+      </div>
+    </section>
+    <section>
+      <p class="title" data-section-title><a href="#">Compliance Information</a></p>
+      <div class="content" data-section-content>
+        <p>The daycare is currently in full compliance</p>
+      </div>
+    </section>
+  </div>
 </template>
