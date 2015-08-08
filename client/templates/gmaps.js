@@ -39,11 +39,14 @@ if (Meteor.isClient) {
           map: map.instance
         })
         var infowindow = new google.maps.InfoWindow()
-        google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(marker, 'mouseover', function() {
           closeInfos()
-          infowindow.setContent("<h1>" + location[0] + "</h1>" + "<h3>" + location[1] + "</h3>" + "<h4>" + location[2] + "</h4>")
+          infowindow.setContent("<h4>" + location[0] + "</h4>" + "<h5>" + location[1] + "</h5>" + "<h6>" + location[2] + "</h6>")
           infowindow.open(map.instance, marker);
           infos[0] = infowindow;
+        })
+        google.maps.event.addListener(marker, 'mouseout', function(){
+          closeInfos()
         })
         
         
