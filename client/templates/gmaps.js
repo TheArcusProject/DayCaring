@@ -26,14 +26,21 @@ if (Meteor.isClient) {
   Template.gmap.onCreated(function() {
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('gmap', function(map) {
-      // Add a marker to the map once it's ready
 
+      // Add a marker to the map once it's ready
 
       var marker = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
         position: map.options.center,
         map: map.instance
       });
+      var infowindow = new google.maps.InfoWindow()
+      google.maps.event.addListener(marker, 'click', function() {
+
+        infowindow.setContent('hi')
+        infowindow.open(map.instance, marker);
+
+      })
     });
   });
 
