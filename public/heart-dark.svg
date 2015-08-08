@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>heart-dark</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="heart-dark" sketch:type="MSArtboardGroup">
+            <g id="Rectangle-1-+-Oval-3-Copy-4" sketch:type="MSLayerGroup">
+                <g id="Rectangle-1-+-Oval-3-Copy-2" sketch:type="MSShapeGroup">
+                    <path d="M28.4728675,16.0998917 L15.715834,31.6122128 L2.87227266,16.1229814 L2.87843133,16.1168228 L2.87843133,16.1168228 C-0.37348317,12.5682754 -0.27615843,7.048534 3.16675455,3.60562102 C6.60966752,0.162708042 12.1294089,0.0653833013 15.6779563,3.3172978 L15.684115,3.31113913 C15.7030739,3.29234382 15.7218887,3.27336535 15.7408045,3.25444956 C19.2786971,-0.283442993 25.0095854,-0.288611813 28.5411019,3.24290468 C32.0726184,6.77442117 32.0674496,12.5053095 28.529557,16.0432021 C28.5106413,16.0621179 28.4916628,16.0809327 28.4726223,16.0996465 Z" id="Rectangle-1" fill="#BE391D"></path>
+                    <path d="M23.9224961,8.56813245 C27.5373375,8.56813245 29.7418949,12.7646682 29.7418949,9.14982685 C29.7418949,5.53498545 26.8114869,2.6045775 23.1966455,2.6045775 C19.5818041,2.6045775 15.8021304,4.63228535 19.0972853,7.28139143 C22.3924402,9.93049751 20.3076547,8.56813245 23.9224961,8.56813245 Z" id="Oval-3-Copy-2" fill="#FF7C61"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
