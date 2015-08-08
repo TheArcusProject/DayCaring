@@ -25,6 +25,7 @@ if (Meteor.isClient) {
 
   Template.gmap.onCreated(function() {
     var infos = [];
+    // var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('gmap', function(map) {
       
@@ -36,7 +37,8 @@ if (Meteor.isClient) {
         var marker = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
           position: new google.maps.LatLng(location[3], location[4]),
-          map: map.instance
+          map: map.instance,
+          icon: "/heart-light-marker.png"
         })
         var infowindow = new google.maps.InfoWindow()
         google.maps.event.addListener(marker, 'mouseover', function() {
@@ -44,9 +46,11 @@ if (Meteor.isClient) {
           infowindow.setContent("<h4>" + location[0] + "</h4>" + "<h5>" + location[1] + "</h5>" + "<h6>" + location[2] + "</h6>")
           infowindow.open(map.instance, marker);
           infos[0] = infowindow;
+          marker.setIcon("/heart-dark-marker.png");
         })
         google.maps.event.addListener(marker, 'mouseout', function(){
           closeInfos()
+          marker.setIcon("/heart-light-marker.png");
         })
         
         
