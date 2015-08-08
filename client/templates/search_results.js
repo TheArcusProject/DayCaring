@@ -6,3 +6,8 @@ Template.search_results.helpers({
 
 
 });
+
+
+Template.search_results.onCreated(function() {
+  console.log(localSearchArr);
+});
