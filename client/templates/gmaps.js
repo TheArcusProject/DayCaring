@@ -22,32 +22,36 @@ if (Meteor.isClient) {
   Template.gmap.onCreated(function() {
     var infos = []; //hacky way to close infowindows
     // We can use the `ready` callback to interact with the map API once the map is ready.
+    var localSchools = new Mongo.Collection('localSchools');
     GoogleMaps.ready('gmap', function(map) {
       //some example data, replace with data from database
-      exArray = [
-        ["happy care", "701 brazos st", "this place makes me sad", 30.268889, -97.740445],
-        ["sad care", "321 brazos st", "this place makes me happy!", 30.271219, -97.740096]
-      ]
-      _.forEach(exArray, function(location) {
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          position: new google.maps.LatLng(location[3], location[4]),
-          map: map.instance,
-          icon: "/heart-light-marker.png"
-        })
-        var infowindow = new google.maps.InfoWindow()
-        google.maps.event.addListener(marker, 'mouseover', function() {
-          closeInfos()
-          infowindow.setContent("<h4>" + location[0] + "</h4>" + "<h5>" + location[1] + "</h5>" + "<h6>" + location[2] + "</h6>")
-          infowindow.open(map.instance, marker);
-          infos[0] = infowindow;
-          marker.setIcon("/heart-dark-marker.png");
-        })
-        google.maps.event.addListener(marker, 'mouseout', function(){
-          closeInfos()
-          marker.setIcon("/heart-light-marker.png");
-        })
-      }) //end of forEach loop
+      Meteor.subscribe("localSchools", map.options.center.lat(), map.options.center.lng(),function (){
+        console.log('localSchools subscription callback')
+        var localSchoolsArr = localSchools.find().fetch();
+        
+        _.forEach(localSchoolsArr, function(school) {
+          var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(school[37][1], school[37][2]),
+            map: map.instance,
+            icon: "/heart-light-marker.png"
+          })
+          var infowindow = new google.maps.InfoWindow()
+          google.maps.event.addListener(marker, 'mouseover', function() {
+            closeInfos()
+            infowindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>")
+            infowindow.open(map.instance, marker);
+            infos[0] = infowindow;
+            marker.setIcon("/heart-dark-marker.png");
+          })
+          google.maps.event.addListener(marker, 'mouseout', function(){
+            closeInfos()
+            marker.setIcon("/heart-light-marker.png");
+          })
+        }) //end of forEach loop
+      });
+      
+
 
       function closeInfos() {
         if (infos.length > 0) {
@@ -59,6 +63,7 @@ if (Meteor.isClient) {
           infos.length = 0;
         }
       }
+
     });
   });
 }
