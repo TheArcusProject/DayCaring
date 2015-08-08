@@ -2,4 +2,11 @@
 
 #subheader {
   border-bottom: 1px solid $white-smoke;
+  h2 {
+    display: inline;
+  }
+
+  .button {
+    float: right;
+  }
 }
