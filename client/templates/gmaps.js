@@ -32,14 +32,14 @@ if (Meteor.isClient) {
 
         //all day cares within 5 miles of center of given zip code
 
-        
+
         _.forEach(localSchoolsArr, function(school) {
           //make a heart shaped marker bounce onto the map
           var marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: new google.maps.LatLng(school[37][1], school[37][2]),
             map: map.instance,
-            icon: "/heart-light-marker.png"
+            icon: "/heart-light.svg"
           })
 
           // to hold basic information about the schools
@@ -53,17 +53,17 @@ if (Meteor.isClient) {
             infos[0] = infoWindow;
             //darken heart on mouseover
 
-            marker.setIcon("/heart-dark-marker.png");
+            marker.setIcon("/heart-dark.svg");
           })
-          
+
           google.maps.event.addListener(marker, 'mouseout', function(){
             closeInfos();
             //lighten heart on mouseoff
-            marker.setIcon("/heart-light-marker.png");
+            marker.setIcon("/heart-light.svg");
           })
         }) //end of forEach loop
       });
-      
+
 
 
       function closeInfos() {
