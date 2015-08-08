@@ -1,11 +1,12 @@
 <template name="reviewsubmit">
 
-	<div id="review" class="row">
-		<div class="small-9 columns">
-			<h4>Your Review</h4>
-			<form method="post" target="_parent">
-				<input type="text" placeholder="Your review helps others to find the perfect daycare" maxlength="5000">
-			</form>
+	<div class="row">
+		<div class="small-8 columns panel">
+			<h4>Your Review for {{daycare.name}}</h4>
+			<label>
+				<textarea rows="6" placeholder="Your review helps others to find the perfect daycare">
+				</textarea>
+			</label>
 		</div>
 	</div>
 
