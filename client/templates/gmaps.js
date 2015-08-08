@@ -22,12 +22,11 @@ if (Meteor.isClient) {
   Template.gmap.onCreated(function() {
     var infos = []; //hacky way to close infowindows
     // We can use the `ready` callback to interact with the map API once the map is ready.
-    var localSchools = new Mongo.Collection('localSchools');
     GoogleMaps.ready('gmap', function(map) {
       //some example data, replace with data from database
       Meteor.subscribe("localSchools", map.options.center.lat(), map.options.center.lng(),function (){
         console.log('localSchools subscription callback')
-        var localSchoolsArr = localSchools.find().fetch();
+        localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
         
         _.forEach(localSchoolsArr, function(school) {
           var marker = new google.maps.Marker({
@@ -39,7 +38,7 @@ if (Meteor.isClient) {
           var infowindow = new google.maps.InfoWindow()
           google.maps.event.addListener(marker, 'mouseover', function() {
             closeInfos()
-            infowindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>")
+            infowindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12] + school[13]+' TX' + "</h5>")
             infowindow.open(map.instance, marker);
             infos[0] = infowindow;
             marker.setIcon("/heart-dark-marker.png");
