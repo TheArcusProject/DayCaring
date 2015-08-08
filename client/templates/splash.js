@@ -13,9 +13,9 @@ if (Meteor.isClient) {
       Meteor.users.update({'_id':user._id},{'$set': {'profile.zip':event.target.zipcode.value}});
       event.preventDefault();
       Meteor.subscribe("zipCodes", event.target.zipcode.value, function(){
-        var zipInfo = zipCodes.find({0: '"' + event.target.zipcode.value + '"'}).fetch()[0]
-        lat = zipInfo[5]
-        lng = zipInfo[6]
+        var zipInfo = zipCodes.find({0: '"' + event.target.zipcode.value + '"'}).fetch()[0];
+        lat = zipInfo[5];
+        lng = zipInfo[6];
         FlowRouter.go('/searchresults');
       })
     }
