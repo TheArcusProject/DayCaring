@@ -1,11 +1,7 @@
 //to include in html add {{> gmap}}
-
-
 if (Meteor.isClient) {
-
   Meteor.startup(function() {
     GoogleMaps.load();
-
   });
 
   Template.gmap.helpers({
@@ -24,11 +20,10 @@ if (Meteor.isClient) {
   });
 
   Template.gmap.onCreated(function() {
-    var infos = [];
-    // var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    var infos = []; //hacky way to close infowindows
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('gmap', function(map) {
-      
+      //some example data, replace with data from database
       exArray = [
         ["happy care", "701 brazos st", "this place makes me sad", 30.268889, -97.740445],
         ["sad care", "321 brazos st", "this place makes me happy!", 30.271219, -97.740096]
@@ -52,9 +47,7 @@ if (Meteor.isClient) {
           closeInfos()
           marker.setIcon("/heart-light-marker.png");
         })
-        
-        
-      })
+      }) //end of forEach loop
 
       function closeInfos() {
         if (infos.length > 0) {
@@ -66,8 +59,6 @@ if (Meteor.isClient) {
           infos.length = 0;
         }
       }
-
     });
   });
-
 }
