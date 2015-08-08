@@ -9,6 +9,7 @@ if (Meteor.isClient) {
       // Make sure the maps API has loaded
       if (GoogleMaps.loaded()) {
         return {
+          //lat and lng are set as global client vars in splash.js
           center: new google.maps.LatLng(lat, lng),
           zoom: 13
         };
@@ -26,10 +27,14 @@ if (Meteor.isClient) {
 
       Meteor.subscribe("localSchools", map.options.center.lat(), map.options.center.lng(),function (){
 
+
         localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
+
+        //all day cares within 5 miles of center of given zip code
 
         
         _.forEach(localSchoolsArr, function(school) {
+          //make a heart shaped marker bounce onto the map
           var marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: new google.maps.LatLng(school[37][1], school[37][2]),
@@ -37,18 +42,23 @@ if (Meteor.isClient) {
             icon: "/heart-light-marker.png"
           })
 
-          var infowindow = new google.maps.InfoWindow()
-
+          // to hold basic information about the schools
+          var infoWindow = new google.maps.InfoWindow()
+          // show infoWindow on mouseover
           google.maps.event.addListener(marker, 'mouseover', function() {
-            closeInfos()
-            infowindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12] + school[13]+' TX' + "</h5>")
-            infowindow.open(map.instance, marker);
-            infos[0] = infowindow;
+
+            closeInfos();
+            infoWindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>")
+            infoWindow.open(map.instance, marker);
+            infos[0] = infoWindow;
+            //darken heart on mouseover
+
             marker.setIcon("/heart-dark-marker.png");
           })
           
           google.maps.event.addListener(marker, 'mouseout', function(){
-            closeInfos()
+            closeInfos();
+            //lighten heart on mouseoff
             marker.setIcon("/heart-light-marker.png");
           })
         }) //end of forEach loop

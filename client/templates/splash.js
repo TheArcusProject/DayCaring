@@ -9,13 +9,15 @@ if (Meteor.isClient) {
   Template.splash.events({
 
     "submit form": function(event, template){
-      // client side global variable to store user's zip code
+      //store user's zip code in their profile in the users collection
       Meteor.users.update({'_id':user._id},{'$set': {'profile.zip':event.target.zipcode.value}});
       event.preventDefault();
+      //fetch the lat and long from the zipcode database on server
       Meteor.subscribe("zipCodes", event.target.zipcode.value, function(){
         var zipInfo = zipCodes.find({0: '"' + event.target.zipcode.value + '"'}).fetch()[0];
         lat = zipInfo[5];
         lng = zipInfo[6];
+        //and once we have the lat and long set, we can go to the search results
         FlowRouter.go('/searchresults');
       })
     }
