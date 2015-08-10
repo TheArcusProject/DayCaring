@@ -48,7 +48,7 @@ if (Meteor.isClient) {
           google.maps.event.addListener(marker, 'mouseover', function() {
 
             closeInfos();
-            infoWindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>")
+            infoWindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
             infoWindow.open(map.instance, marker);
             infos[0] = infoWindow;
             //darken heart on mouseover
@@ -56,11 +56,11 @@ if (Meteor.isClient) {
             marker.setIcon("/heart-dark.svg");
           })
 
-          google.maps.event.addListener(marker, 'mouseout', function(){
-            closeInfos();
-            //lighten heart on mouseoff
-            marker.setIcon("/heart-light.svg");
-          })
+          // google.maps.event.addListener(marker, 'mouseout', function(){
+          //   closeInfos();
+          //   //lighten heart on mouseoff
+          //   marker.setIcon("/heart-light.svg");
+          // })
         }) //end of forEach loop
       });
 

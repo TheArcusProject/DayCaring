@@ -1,5 +1,3 @@
-
-
 Template.subheader.helpers({
 
   //this will snag the daycare name based on the id.
@@ -9,3 +7,11 @@ Template.subheader.helpers({
 
 
 });
+
+Template.subheader.events({
+  'click .represent': function(e) {
+    e.preventDefault();
+    FlowRouter.go('/authrepresent');
+  }
+
+})
