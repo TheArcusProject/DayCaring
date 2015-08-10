@@ -10,7 +10,7 @@ if (Meteor.isClient) {
       if (GoogleMaps.loaded()) {
         return {
           //lat and lng are set as global client vars in splash.js
-          center: new google.maps.LatLng(lat, lng),
+          center: new google.maps.LatLng(localStorage.getItem('lat'), localStorage.getItem('lng')),
           zoom: 13
         };
         // Map initialization options

@@ -9,5 +9,5 @@ Template.search_results.helpers({
 
 
 Template.search_results.onCreated(function() {
-  Meteor.subscribe("localSchools", lat, lng);
+  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
 });
