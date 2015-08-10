@@ -21,7 +21,7 @@ if (Meteor.isClient) {
     },
     website: function() {
       if (daycare) {
-        return daycare[31]
+        return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
       }
     }
 
