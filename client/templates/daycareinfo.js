@@ -8,7 +8,23 @@ if (Meteor.isClient) {
       if (daycare) {
         return daycare[12] + daycare[13]
       }
+    },
+    phoneNumber: function() {
+      if (daycare) {
+        return daycare[16]
+      }
+    },
+    operationHours: function() {
+      if (daycare) {
+        return daycare[19]
+      }
+    },
+    website: function() {
+      if (daycare) {
+        return daycare[31]
+      }
     }
+
 
 
   })
