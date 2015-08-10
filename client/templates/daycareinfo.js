@@ -41,10 +41,10 @@ if (Meteor.isClient) {
   })
 
   Template.daycareinfo.onCreated(function() {
-    var dayCareID = FlowRouter.getParam('daycareId');
+    var daycareID = localStorage.getItem('daycareID')
     var daycares = localSchools.find().fetch();
     for (var i = 0; i < daycares.length; i++) {
-      if (daycares[i][0] === parseInt(dayCareID)) {
+      if (daycares[i][0] === parseInt(daycareID)) {
         daycare = daycares[i]
         console.log(daycare)
       }
