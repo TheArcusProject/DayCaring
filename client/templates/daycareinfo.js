@@ -21,4 +21,10 @@ if(Meteor.isClient) {
 
 		}
 	})
+
+	Template.daycareinfo.onCreated( function(){
+		var dayCareID = FlowRouter.getParam('daycareId');
+		console.log(dayCareID)
+
+	})
 }
