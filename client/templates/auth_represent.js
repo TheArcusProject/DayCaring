@@ -1,3 +1,3 @@
-Template.authrepresent.helpers({
+Template.auth_represent.helpers({
 
 });

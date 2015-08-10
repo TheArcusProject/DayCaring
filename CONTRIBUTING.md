@@ -1,5 +1,7 @@
 # Contributing
 
+Important: to populate MongoDB the first time, uncomment the relevant sections of DayCaring.js in the server folder and zipCodeFileParse.js in the server folder.
+
 Workflow when starting to work on a new feature:
 
 1. git checkout -b (new branch name)
