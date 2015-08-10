@@ -25,44 +25,41 @@ if (Meteor.isClient) {
 
     GoogleMaps.ready('gmap', function(map) {
 
-      Meteor.subscribe("localSchools", map.options.center.lat(), map.options.center.lng(),function (){
+      localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
+
+      //all day cares within 5 miles of center of given zip code
 
 
-        localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
+      _.forEach(localSchoolsArr, function(school) {
+        //make a heart shaped marker bounce onto the map
+        var marker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
+          position: new google.maps.LatLng(school[37][1], school[37][2]),
+          map: map.instance,
+          icon: "/heart-light.svg"
+        })
 
-        //all day cares within 5 miles of center of given zip code
+        // to hold basic information about the schools
+        var infoWindow = new google.maps.InfoWindow()
+        // show infoWindow on mouseover
+        google.maps.event.addListener(marker, 'mouseover', function() {
 
+          closeInfos();
+          infoWindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
+          infoWindow.open(map.instance, marker);
+          infos[0] = infoWindow;
+          //darken heart on mouseover
 
-        _.forEach(localSchoolsArr, function(school) {
-          //make a heart shaped marker bounce onto the map
-          var marker = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            position: new google.maps.LatLng(school[37][1], school[37][2]),
-            map: map.instance,
-            icon: "/heart-light.svg"
-          })
+          marker.setIcon("/heart-dark.svg");
+        })
 
-          // to hold basic information about the schools
-          var infoWindow = new google.maps.InfoWindow()
-          // show infoWindow on mouseover
-          google.maps.event.addListener(marker, 'mouseover', function() {
-
-            closeInfos();
-            infoWindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
-            infoWindow.open(map.instance, marker);
-            infos[0] = infoWindow;
-            //darken heart on mouseover
-
-            marker.setIcon("/heart-dark.svg");
-          })
-
-          // google.maps.event.addListener(marker, 'mouseout', function(){
-          //   closeInfos();
-          //   //lighten heart on mouseoff
-          //   marker.setIcon("/heart-light.svg");
-          // })
-        }) //end of forEach loop
-      });
+        // google.maps.event.addListener(marker, 'mouseout', function(){
+        //   closeInfos();
+        //   //lighten heart on mouseoff
+        //   marker.setIcon("/heart-light.svg");
+        // })
+      }) //end of forEach loop
+   
 
 
 
