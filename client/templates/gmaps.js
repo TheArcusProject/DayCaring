@@ -54,11 +54,10 @@ if (Meteor.isClient) {
           marker.setIcon("/heart-dark.svg");
         })
 
-        // google.maps.event.addListener(marker, 'mouseout', function(){
-        //   closeInfos();
-        //   //lighten heart on mouseoff
-        //   marker.setIcon("/heart-light.svg");
-        // })
+        google.maps.event.addListener(marker, 'mouseout', function(){
+          //lighten heart on mouseoff
+          marker.setIcon("/heart-light.svg");
+        })
       }) //end of forEach loop
    
 
