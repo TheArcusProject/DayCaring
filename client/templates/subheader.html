@@ -1,8 +1,16 @@
 <template name="subheader">
+
   <div class="row">
     <div id="subheader" class="small-12 columns">
       <h2>Name test</h2>
-      <input class="button" value="Write a review">
+      <a href="#" class="button" data-reveal-id="reviewModal" type="submit">Write a Review</a>
     </div>
   </div>
+
+  <div id ="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	
+	{{> reviewModal}}
+
+  </div>
+
 </template>
