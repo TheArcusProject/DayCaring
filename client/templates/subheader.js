@@ -10,7 +10,6 @@ Template.subheader.helpers({
   //   return Meteor.db.schools.find({'_id':id});
   // }
 
-
 });
 
 Template.subheader.events({
@@ -18,7 +17,6 @@ Template.subheader.events({
     e.preventDefault();
     FlowRouter.go('/authrepresent');
   }
-
 })
 
 Template.subheader.onCreated(function(){
