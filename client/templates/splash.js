@@ -10,7 +10,9 @@ if (Meteor.isClient) {
 
     "submit form": function(event, template){
       //store user's zip code in their profile in the users collection
-      Meteor.users.update({'_id':user._id},{'$set': {'profile.zip':event.target.zipcode.value}});
+      if (user) {
+        Meteor.users.update({'_id':user._id},{'$set': {'profile.zip':event.target.zipcode.value}});
+      }
       event.preventDefault();
       //fetch the lat and long from the zipcode database on server
       Meteor.subscribe("zipCodes", event.target.zipcode.value, function(){
