@@ -4,7 +4,16 @@
       {{> gmap}}
     </div>
   </div>
-  <div class="row">
-    Search results will eventually be here.
+  <div class="row" data-equalizer>
+    {{#each schoolsArray}}
+      <div class="small-6 columns panel" data-equalizer-watch>
+        <h4>{{name}}</h4>
+        <p>{{address}}<br>
+           {{ages}}<br>
+           {{phone}}
+        </p>
+
+      </div>
+    {{/each}}
   </div>
 </template>
