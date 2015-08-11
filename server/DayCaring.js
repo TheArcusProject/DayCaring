@@ -18,7 +18,9 @@ if (Meteor.isServer) {
     //   console.log('nonComplianceData is loaded on server');
   });
 }
-
+var returnAuth = function(num){
+      return num
+    }
 Meteor.methods({
   sendEmail: function(doc) {
     // Important server-side check for security and data integrity
@@ -39,6 +41,7 @@ Meteor.methods({
   sendSMS: function(doc) {
     var twilio = Twilio('AC528f5b6507742d3b1930a5ef129880d5', '8cb9b6181585aacbaf0e60c54fdef8f3');
     var num = Math.floor(Math.random() * 90000) + 10000;
+    var auth = returnAuth(num)
     this.unblock();
     twilio.sendSms({
       to: doc.phoneNumber, // any number Twilio can deliver to
@@ -50,5 +53,8 @@ Meteor.methods({
         console.log(responseData.body); // outputs "here is your confirmaton"
       }
     })
+  },
+  authToken: function(){
+    return auth
   }
 })
