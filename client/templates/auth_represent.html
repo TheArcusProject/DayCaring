@@ -1,12 +1,22 @@
 <template name="auth_represent">
-   {{#autoForm schema=authrepSchema id="authrepForm" type="method" meteormethod="sendEmail"}}
+   {{#autoForm schema=emailRepSchema id="emailRepForm" type="method" meteormethod="sendEmail"}}
    <fieldset>
-       <legend>Validate Authorizaion</legend>
+       <legend>Validate Email</legend>
        {{> afQuickField name="email"}}
+       <div>
+         <button type="submit" class="btn btn-primary">Send Authorization Email</button>
+         <button type="reset" class="btn btn-default">Reset Email Field</button>
+       </div>
+     </fieldset>
+     {{/autoForm}}
+     <h2 class="text-center"> Or </h2>
+     {{#autoForm schema=phoneRepSchema id="emailRepForm" type="method"}}
+     <fieldset>
+       <legend>Validate Phone Number</legend>
        {{> afQuickField name="phoneNumber"}}
        <div>
-         <button type="submit" class="btn btn-primary">Submit</button>
-         <button type="reset" class="btn btn-default">Reset</button>
+       <button type="submit" class="btn btn-primary">Send Authorization Text</button>
+       <button type="reset" class="btn btn-default">Reset Phone Number Field</button>
        </div>
      </fieldset>
      {{/autoForm}}
