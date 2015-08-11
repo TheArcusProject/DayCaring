@@ -6,6 +6,8 @@ Template.stats.onCreated(function(){
   //Grabs nonCompliance records for current school
   Meteor.subscribe("schoolStats", localStorage.getItem('operationId'), function(){
     console.log("successfully subscribed to the schoolStats publish");
+    var nonComplianceRecords = schoolStats.find().fetch();
+    console.log("nonCompliance records method1 : ", nonComplianceRecords);
   });
 });
 
@@ -17,8 +19,8 @@ Template.stats.helpers({
   widths :[],
 
   records : function() {
-    // console.log(localStorage.getItem('operationId'));
-    console.log(nonCompliance.find().fetch());
+    // var operationId = localStorage.getItem('operationId');
+
   },
 
 });
