@@ -19,3 +19,24 @@ if (Meteor.isServer) {
   // });
 }
 
+Meteor.methods({
+  sendEmail: function(doc) {
+    // Important server-side check for security and data integrity
+    // check(doc, Schema.authrep);
+
+    // Build the e-mail text
+    var text = "Phone number: " + doc.phoneNumber + "\n\n"
+            + "Email: " + doc.email
+
+    this.unblock();
+
+    // Send the e-mail
+    Email.send({
+        to: doc.email,
+        from: doc.email,
+        subject: "Website Contact Form: keep slayin boi",
+        text: text
+    });
+  }
+});
+
