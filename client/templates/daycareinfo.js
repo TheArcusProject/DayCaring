@@ -1,49 +1,32 @@
 //to include in html add {{> daycareinfo}}
 
 if (Meteor.isClient) {
-  
+  var getDaycare = function(){
+    var daycareID = localStorage.getItem('daycareID')
+    var daycares = localSchools.find().fetch();
+    for (var i = 0; i < daycares.length; i++) {
+      if (daycares[i][0] === parseInt(daycareID)) {
+        return daycares[i]
+      }
+    }    
+  }
 
   Template.daycareinfo.helpers({
     address: function() {
-      var daycareID = localStorage.getItem('daycareID')
-      var daycares = localSchools.find().fetch();
-      for (var i = 0; i < daycares.length; i++) {
-
-        if (daycares[i][0] === parseInt(daycareID)) {
-          var daycare = daycares[i]
-        }
-      }
+      var daycare = getDaycare();
       return daycare[12] + daycare[13]
       
     },
     phoneNumber: function() {
-      var daycareID = localStorage.getItem('daycareID')
-      var daycares = localSchools.find().fetch();
-      for (var i = 0; i < daycares.length; i++) {
-        if (daycares[i][0] === parseInt(daycareID)) {
-          var daycare = daycares[i]
-        }
-      }  
+      var daycare = getDaycare();
       return daycare[16]
     },
     operationHours: function() {
-      var daycareID = localStorage.getItem('daycareID')
-      var daycares = localSchools.find().fetch();
-      for (var i = 0; i < daycares.length; i++) {
-        if (daycares[i][0] === parseInt(daycareID)) {
-          var daycare = daycares[i]
-        }
-      }
+      var daycare = getDaycare();
       return daycare[19]
     },
     website: function() {
-      var daycareID = localStorage.getItem('daycareID')
-      var daycares = localSchools.find().fetch();
-      for (var i = 0; i < daycares.length; i++) {
-        if (daycares[i][0] === parseInt(daycareID)) {
-          var daycare = daycares[i]
-        }
-      }  
+      var daycare = getDaycare();  
       return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
     }
   })
