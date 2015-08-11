@@ -47,7 +47,8 @@ if (Meteor.isClient) {
             localStorage.setItem('daycareID',school[0]);
             localStorage.setItem('lat',school[37][1]);
             localStorage.setItem('lng',school[37][2]);
-            
+            localStorage.setItem('operationId',school[8].slice(1));
+
             infoWindow.setContent("<h5>" + school[11] + "</h5>" + "<h6>" + school[12]+', '+school[13]+' TX' + "</h6>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
             infoWindow.open(map.instance, marker);
             infos[0] = infoWindow;
@@ -63,9 +64,7 @@ if (Meteor.isClient) {
         }) //end of forEach loop
       });
 
-      //all day cares within 5 miles of center of given zip code
 
-   
       function closeInfos() {
         if (infos.length > 0) {
           /* detach the info-window from the marker ... undocumented in the API docs */

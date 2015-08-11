@@ -18,25 +18,25 @@ if (Meteor.isClient){
           address : school[12] + school[13] + ", Texas " + school[14].slice(0, 5),
           ages : school[18],
           phone : school[16],
+          operationId : school[8].slice(1),
         }
         schoolsArray.push(schoolObj);
       });
 
       return schoolsArray;
-    },
-
+    }
   });
 
   Template.search_results.events({
 
     "click .button" : function(event){
       event.preventDefault();
+      localStorage.setItem("operationId", this.operationId);
       FlowRouter.go('/'+ this.schoolId);
     }
   });
 
   Template.search_results.onCreated(function() {
-    
     Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
   });
 }
