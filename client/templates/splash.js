@@ -19,6 +19,8 @@ if (Meteor.isClient) {
         var zipInfo = zipCodes.find({0: '"' + event.target.zipcode.value + '"'}).fetch()[0];
         localStorage.setItem('lat', zipInfo[5]);
         localStorage.setItem('lng', zipInfo[6]);
+        Meteor.subscribe("localSchools", zipInfo[5], zipInfo[6]);
+
         //and once we have the lat and long set, we can go to the search results
         FlowRouter.go('/searchresults');
       })

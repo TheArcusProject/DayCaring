@@ -25,43 +25,46 @@ if (Meteor.isClient) {
 
     GoogleMaps.ready('gmap', function(map) {
 
-      localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
+      Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'), function(){
+        localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
+        console.log('localSchoolsArr length ', localSchoolsArr.length)
+        _.forEach(localSchoolsArr, function(school) {
+          //make a heart shaped marker bounce onto the map
+          console.log('making marker for school', school[0])
+          var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(school[37][1], school[37][2]),
+            map: map.instance,
+            icon: "/heart-light.svg"
+          })
+
+          // to hold basic information about the schools
+          var infoWindow = new google.maps.InfoWindow()
+          // show infoWindow on mouseover
+          google.maps.event.addListener(marker, 'mouseover', function() {
+
+            closeInfos();
+            localStorage.setItem('daycareID',school[0]);
+            localStorage.setItem('lat',school[37][1]);
+            localStorage.setItem('lng',school[37][2]);
+            
+            infoWindow.setContent("<h5>" + school[11] + "</h5>" + "<h6>" + school[12]+', '+school[13]+' TX' + "</h6>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
+            infoWindow.open(map.instance, marker);
+            infos[0] = infoWindow;
+            //darken heart on mouseover
+
+            marker.setIcon("/heart-dark.svg");
+          })
+
+          google.maps.event.addListener(marker, 'mouseout', function(){
+            //lighten heart on mouseoff
+            marker.setIcon("/heart-light.svg");
+          })
+        }) //end of forEach loop
+      });
 
       //all day cares within 5 miles of center of given zip code
 
-
-      _.forEach(localSchoolsArr, function(school) {
-        //make a heart shaped marker bounce onto the map
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          position: new google.maps.LatLng(school[37][1], school[37][2]),
-          map: map.instance,
-          icon: "/heart-light.svg"
-        })
-
-        // to hold basic information about the schools
-        var infoWindow = new google.maps.InfoWindow()
-        // show infoWindow on mouseover
-        google.maps.event.addListener(marker, 'mouseover', function() {
-
-          closeInfos();
-          localStorage.setItem('daycareID',school[0]);
-          localStorage.setItem('lat',school[37][1]);
-          localStorage.setItem('lng',school[37][2]);
-          
-          infoWindow.setContent("<h5>" + school[11] + "</h5>" + "<h6>" + school[12]+', '+school[13]+' TX' + "</h6>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
-          infoWindow.open(map.instance, marker);
-          infos[0] = infoWindow;
-          //darken heart on mouseover
-
-          marker.setIcon("/heart-dark.svg");
-        })
-
-        google.maps.event.addListener(marker, 'mouseout', function(){
-          //lighten heart on mouseoff
-          marker.setIcon("/heart-light.svg");
-        })
-      }) //end of forEach loop
    
       function closeInfos() {
         if (infos.length > 0) {
