@@ -1,13 +1,13 @@
 //DayCaring.js
 if (Meteor.isServer) {
-  // Meteor.startup(function () {
+  Meteor.startup(function () {
     
-  //   console.log('removing schools');
-  //   schools.remove({});
-  //   for (var i = 0; i < schoolsData.data.length; i++){
-  //     schools.insert(schoolsData.data[i]);
-  //   }
-  //   console.log('schoolsData is loaded on server'); 
+    // console.log('removing schools');
+    // schools.remove({});
+    // for (var i = 0; i < schoolsData.data.length; i++){
+    //   schools.insert(schoolsData.data[i]);
+    // }
+    // console.log('schoolsData is loaded on server'); 
   
   //   console.log('removing non-compliance data');
   //   nonCompliance.remove({});
@@ -16,7 +16,7 @@ if (Meteor.isServer) {
   //     nonCompliance.insert(nonComplianceData.data[i]);
   //   } 
   //   console.log('nonComplianceData is loaded on server');
-  // });
+  });
 }
 
 Meteor.methods({
