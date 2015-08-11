@@ -8,9 +8,7 @@ if (Meteor.isClient){
           daycare = daycares[i]
         }
       }
-
-  		return daycare[11]
-  		
+  		return daycare[11];
   	}
   });
 

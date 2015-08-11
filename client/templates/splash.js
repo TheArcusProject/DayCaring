@@ -17,8 +17,8 @@ if (Meteor.isClient) {
       //fetch the lat and long from the zipcode database on server
       Meteor.subscribe("zipCodes", event.target.zipcode.value, function(){
         var zipInfo = zipCodes.find({0: '"' + event.target.zipcode.value + '"'}).fetch()[0];
-        localStorage.setItem('lat', zipInfo[5])
-        localStorage.setItem('lng', zipInfo[6])
+        localStorage.setItem('lat', zipInfo[5]);
+        localStorage.setItem('lng', zipInfo[6]);
         //and once we have the lat and long set, we can go to the search results
         FlowRouter.go('/searchresults');
       })

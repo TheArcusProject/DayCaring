@@ -15,5 +15,4 @@ Template.auth_represent.helpers({
 	authrepSchema: function() {
     return Schema.authrep;
   }
-
 });
