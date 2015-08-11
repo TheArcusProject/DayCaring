@@ -10,7 +10,7 @@
      </fieldset>
      {{/autoForm}}
      <h2 class="text-center"> Or </h2>
-     {{#autoForm schema=phoneRepSchema id="emailRepForm" type="method"}}
+     {{#autoForm schema=phoneRepSchema id="phoneRepForm" type="method" meteormethod="sendSMS"}}
      <fieldset>
        <legend>Validate Phone Number</legend>
        {{> afQuickField name="phoneNumber"}}
