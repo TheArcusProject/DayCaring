@@ -8,14 +8,14 @@ if (Meteor.isClient) {
       if (daycares[i][0] === parseInt(daycareID)) {
         return daycares[i]
       }
-    }    
+    }
   }
 
   Template.daycareinfo.helpers({
     address: function() {
       var daycare = getDaycare();
       return daycare[12] + daycare[13]
-      
+
     },
     phoneNumber: function() {
       var daycare = getDaycare();
@@ -26,7 +26,7 @@ if (Meteor.isClient) {
       return daycare[19]
     },
     website: function() {
-      var daycare = getDaycare();  
+      var daycare = getDaycare();
       return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
     },
     partTimeCare: function(){

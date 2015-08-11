@@ -1,5 +1,5 @@
 nonComplianceData = {
- 
+
   "data" : [ [ 1, "7E873D34-677F-44D7-9D9F-857206AA9EA8", 1, 1422026606, "859798", 1422026606, "859798", "{\n  \"invalidCells\" : {\n    \"24137648\" : \"10-Mar-12\",\n    \"24137647\" : \"5-Mar-12\"\n  }\n}", "94936", "330646071", "1427207169", "968838808", "747.3703(a) Animals at Center - Documentation of Vaccinations", "Medium High", "N", null, null, "The family dog does not have a current rabies vaccination. ", "NO" ]
 , [ 2, "A525173A-1F2C-4820-BD4F-E608DAE1C2CE", 2, 1422026606, "859798", 1422026606, "859798", "{\n  \"invalidCells\" : {\n    \"24137647\" : \"24-Feb-12\"\n  }\n}", "94936", "330646071", "1427207169", "968838809", "747.3501(3) Safety - Air Conditioners, Fans, Heaters Safeguarded", "Medium High", "Y", null, null, "An oscillating fan was observed in the playroom accessible to children.     CORRECTED AT INSPECTION when the fan was removed. ", "NO" ]
 , [ 3, "257DEAE1-73AE-4B98-8BD3-49CCC29EB9BE", 3, 1422026606, "859798", 1422026606, "859798", "{\n  \"invalidCells\" : {\n    \"24137648\" : \"10-Mar-12\",\n    \"24137647\" : \"5-Mar-12\"\n  }\n}", "94936", "330646071", "1427207170", "968734470", "747.603(a)(4) Children's Records - Immunizations", "Medium", "N", null, null, "2 of 6 childrens files reviewed did not contain immunizations records. ", "NO" ]
