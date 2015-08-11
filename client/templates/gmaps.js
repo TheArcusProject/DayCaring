@@ -63,9 +63,6 @@ if (Meteor.isClient) {
         })
       }) //end of forEach loop
    
-
-
-
       function closeInfos() {
         if (infos.length > 0) {
           /* detach the info-window from the marker ... undocumented in the API docs */
@@ -76,7 +73,6 @@ if (Meteor.isClient) {
           infos.length = 0;
         }
       }
-
     });
   });
 }
