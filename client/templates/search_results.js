@@ -28,7 +28,7 @@ Template.search_results.helpers({
 
 //Subscribe to the localSchools template on load
 Template.search_results.onCreated(function() {
-  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'), function(){
-    console.log("successfully subscribed to the localSchools cursor.");
-  });
+
+  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
 });
+
