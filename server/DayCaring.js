@@ -25,8 +25,7 @@ Meteor.methods({
     // check(doc, Schema.authrep);
 
     // Build the e-mail text
-    var text = "Phone number: " + doc.phoneNumber + "\n\n"
-            + "Email: " + doc.email
+    var text = "Email: " + doc.email + "\n\n" + "Here's your validation code:"
 
     this.unblock();
 
