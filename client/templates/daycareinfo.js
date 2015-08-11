@@ -1,32 +1,51 @@
 //to include in html add {{> daycareinfo}}
 
 if (Meteor.isClient) {
-  var daycare;
+  
 
   Template.daycareinfo.helpers({
     address: function() {
-      if (daycare) {
-        return daycare[12] + daycare[13]
+      var daycareID = localStorage.getItem('daycareID')
+      var daycares = localSchools.find().fetch();
+      for (var i = 0; i < daycares.length; i++) {
+
+        if (daycares[i][0] === parseInt(daycareID)) {
+          var daycare = daycares[i]
+        }
       }
+      return daycare[12] + daycare[13]
+      
     },
     phoneNumber: function() {
-      if (daycare) {
-        return daycare[16]
-      }
+      var daycareID = localStorage.getItem('daycareID')
+      var daycares = localSchools.find().fetch();
+      for (var i = 0; i < daycares.length; i++) {
+        if (daycares[i][0] === parseInt(daycareID)) {
+          var daycare = daycares[i]
+        }
+      }  
+      return daycare[16]
     },
     operationHours: function() {
-      if (daycare) {
-        return daycare[19]
+      var daycareID = localStorage.getItem('daycareID')
+      var daycares = localSchools.find().fetch();
+      for (var i = 0; i < daycares.length; i++) {
+        if (daycares[i][0] === parseInt(daycareID)) {
+          var daycare = daycares[i]
+        }
       }
+      return daycare[19]
     },
     website: function() {
-      if (daycare) {
-        return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
-      }
+      var daycareID = localStorage.getItem('daycareID')
+      var daycares = localSchools.find().fetch();
+      for (var i = 0; i < daycares.length; i++) {
+        if (daycares[i][0] === parseInt(daycareID)) {
+          var daycare = daycares[i]
+        }
+      }  
+      return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
     }
-
-
-
   })
 
   Template.daycareinfo.events({
@@ -41,14 +60,7 @@ if (Meteor.isClient) {
   })
 
   Template.daycareinfo.onCreated(function() {
-    var daycareID = localStorage.getItem('daycareID')
-    var daycares = localSchools.find().fetch();
-    for (var i = 0; i < daycares.length; i++) {
-      if (daycares[i][0] === parseInt(daycareID)) {
-        daycare = daycares[i]
-        console.log(daycare)
-      }
-    }
-
+    
+     Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
   })
 }

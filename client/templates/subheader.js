@@ -1,8 +1,14 @@
 Template.subheader.helpers({
 	daycareName: function(){
-		if (daycare){
-			return daycare[11]
-		}
+    var dayCareID = FlowRouter.getParam('daycareId');
+    var daycares = localSchools.find().fetch();
+    for (var i = 0; i < daycares.length; i++) {
+      if (daycares[i][0] === parseInt(dayCareID)) {
+        daycare = daycares[i]
+        console.log(daycare)
+      }
+    }
+		return daycare[11]
 	}
 
   //this will snag the daycare name based on the id.
@@ -20,12 +26,7 @@ Template.subheader.events({
 })
 
 Template.subheader.onCreated(function(){
-	var dayCareID = FlowRouter.getParam('daycareId');
-    var daycares = localSchools.find().fetch();
-    for (var i = 0; i < daycares.length; i++) {
-      if (daycares[i][0] === parseInt(dayCareID)) {
-        daycare = daycares[i]
-        console.log(daycare)
-      }
-    }
+  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
+
+	
 })
