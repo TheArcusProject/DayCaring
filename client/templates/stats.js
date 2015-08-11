@@ -7,7 +7,7 @@ Template.stats.onCreated(function(){
   Meteor.subscribe("schoolStats", localStorage.getItem('operationId'), function(){
     console.log("successfully subscribed to the schoolStats publish");
     var nonComplianceRecords = schoolStats.find().fetch();
-    console.log("nonCompliance records method1 : ", nonComplianceRecords);
+    console.log("number of nonCompliance records : ", nonComplianceRecords.length);
   });
 });
 

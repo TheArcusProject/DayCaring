@@ -27,10 +27,9 @@ if (Meteor.isClient) {
 
       Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'), function(){
         localSchoolsArr = localSchools.find().fetch(); //make this variable global so that search_results.js has access
-        console.log('localSchoolsArr length ', localSchoolsArr.length)
+  
         _.forEach(localSchoolsArr, function(school) {
           //make a heart shaped marker bounce onto the map
-          console.log('making marker for school', school[0])
           var marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: new google.maps.LatLng(school[37][1], school[37][2]),
