@@ -46,7 +46,7 @@ if (Meteor.isClient) {
 
           closeInfos();
           localStorage.setItem('daycareID',school[0]);
-          infoWindow.setContent("<h4>" + school[11] + "</h4>" + "<h5>" + school[12]+', '+school[13]+' TX' + "</h5>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
+          infoWindow.setContent("<h5>" + school[11] + "</h5>" + "<h6>" + school[12]+', '+school[13]+' TX' + "</h6>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
           infoWindow.open(map.instance, marker);
           infos[0] = infoWindow;
           //darken heart on mouseover
