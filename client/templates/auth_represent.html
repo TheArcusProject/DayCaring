@@ -1,5 +1,17 @@
 <template name="auth_represent">
-  <div class="row">
+   {{#autoForm schema=authrepSchema id="authrepForm" type="method" meteormethod="sendEmail"}}
+   <fieldset>
+       <legend>Validate Authorizaion</legend>
+       {{> afQuickField name="email"}}
+       {{> afQuickField name="phoneNumber"}}
+       <div>
+         <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="reset" class="btn btn-default">Reset</button>
+       </div>
+     </fieldset>
+     {{/autoForm}}
+
+  <!-- <div class="row">
     <div id="authrepresent" class="small-12 columns">
       <form>
         <div class="small-6 small-centered columns">
@@ -13,5 +25,5 @@
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
 </template>
