@@ -25,10 +25,9 @@ Meteor.methods({
     // check(doc, Schema.authrep);
 
     // Build the e-mail text
-    var text = "Email: " + doc.email + "\n\n" + "Here's your validation code:"
-
+    var num = Math.floor(Math.random() * 90000) + 10000;
+    var text = "Email: " + doc.email + "\n\n" + "Here's your validation code: " + num
     this.unblock();
-
     // Send the e-mail
     Email.send({
       to: doc.email,
@@ -39,16 +38,17 @@ Meteor.methods({
   },
   sendSMS: function(doc) {
     var twilio = Twilio('AC528f5b6507742d3b1930a5ef129880d5', '8cb9b6181585aacbaf0e60c54fdef8f3');
+    var num = Math.floor(Math.random() * 90000) + 10000;
     this.unblock();
     twilio.sendSms({
-        to: doc.phoneNumber, // any number Twilio can deliver to
-        from: '+18323849792', // must be your Twilio account phone number
-        body: 'sup'
-      }, function(err, responseData) { //executed when a response is received from Twilio
-        if (!err) {
-          // "responseData" is a JavaScript object containing data received from Twilio.
-          console.log(responseData.body); // outputs "here is your confirmaton"
-        }
-      })
-    }
+      to: doc.phoneNumber, // any number Twilio can deliver to
+      from: '+18323849792', // must be your Twilio account phone number
+      body: "Here's your verification code: " + num
+    }, function(err, responseData) { //executed when a response is received from Twilio
+      if (!err) {
+        // "responseData" is a JavaScript object containing data received from Twilio.
+        console.log(responseData.body); // outputs "here is your confirmaton"
+      }
+    })
+  }
 })
