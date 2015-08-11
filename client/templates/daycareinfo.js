@@ -28,6 +28,14 @@ if (Meteor.isClient) {
     website: function() {
       var daycare = getDaycare();  
       return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
+    },
+    partTimeCare: function(){
+      var daycare = getDaycare();
+      return daycare[27];
+    },
+    transportationProvided: function(){
+      var daycare = getDaycare();
+      return daycare[28];
     }
   })
 
