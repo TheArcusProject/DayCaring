@@ -1,39 +1,22 @@
 <template name="auth_represent">
-   {{#autoForm schema=emailRepSchema id="emailRepForm" type="method" meteormethod="sendEmail"}}
-   <fieldset>
-       <legend>Validate Email</legend>
-       {{> afQuickField name="email"}}
-       <div>
-         <button type="submit" class="btn btn-primary">Send Authorization Email</button>
-         <button type="reset" class="btn btn-default">Reset Email Field</button>
-       </div>
-     </fieldset>
-     {{/autoForm}}
-     <h2 class="text-center"> Or </h2>
-     {{#autoForm schema=phoneRepSchema id="phoneRepForm" type="method" meteormethod="sendSMS"}}
-     <fieldset>
-       <legend>Validate Phone Number</legend>
-       {{> afQuickField name="phoneNumber"}}
-       <div>
-       <button type="submit" class="btn btn-primary">Send Authorization Text</button>
-       <button type="reset" class="btn btn-default">Reset Phone Number Field</button>
-       </div>
-     </fieldset>
-     {{/autoForm}}
-
-  <!-- <div class="row">
-    <div id="authrepresent" class="small-12 columns">
-      <form>
-        <div class="small-6 small-centered columns">
-          Please enter the official school e-mail <input class='schoolEmail' type='text'>
-        </div>
-        <div class="small-6 small-centered columns">
-          Or the official phone number <input class='schoolPhone' type='text'>
-        </div>
-        <div class="small-6 small-centered columns">
-          <button class="button text-center">Submit</button>
-        </div>
-      </form>
+  {{#autoForm schema=emailRepSchema id="emailRepForm" type="method" meteormethod="sendEmail"}}
+  <fieldset>
+    <legend>Validate Email</legend>
+    {{> afQuickField name="email"}}
+    <div>
+      <button type="submit" class="btn btn-primary">Send Authorization Email</button>
+      <button type="reset" class="btn btn-default">Reset Email Field</button>
     </div>
-  </div> -->
+  </fieldset>
+  {{/autoForm}}
+  <h2 class="text-center"> Or </h2> {{#autoForm schema=phoneRepSchema id="phoneRepForm" type="method" meteormethod="sendSMS"}}
+  <fieldset>
+    <legend>Validate Phone Number</legend>
+    {{> afQuickField name="phoneNumber"}}
+    <div>
+      <button type="submit" class="btn btn-primary">Send Authorization Text</button>
+      <button type="reset" class="btn btn-default">Reset Phone Number Field</button>
+    </div>
+  </fieldset>
+  {{/autoForm}}
 </template>
