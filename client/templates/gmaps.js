@@ -46,6 +46,9 @@ if (Meteor.isClient) {
 
           closeInfos();
           localStorage.setItem('daycareID',school[0]);
+          localStorage.setItem('lat',school[37][1]);
+          localStorage.setItem('lng',school[37][2]);
+          
           infoWindow.setContent("<h5>" + school[11] + "</h5>" + "<h6>" + school[12]+', '+school[13]+' TX' + "</h6>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
           infoWindow.open(map.instance, marker);
           infos[0] = infoWindow;

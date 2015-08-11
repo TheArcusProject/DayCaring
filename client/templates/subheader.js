@@ -26,7 +26,5 @@ Template.subheader.events({
 })
 
 Template.subheader.onCreated(function(){
-  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
-
-	
+  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));	
 })

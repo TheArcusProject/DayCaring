@@ -2,7 +2,7 @@
 
 if (Meteor.isClient) {
   var getDaycare = function(){
-    var daycareID = localStorage.getItem('daycareID')
+    var daycareID = FlowRouter.getParam('daycareId')
     var daycares = localSchools.find().fetch();
     for (var i = 0; i < daycares.length; i++) {
       if (daycares[i][0] === parseInt(daycareID)) {
@@ -43,7 +43,6 @@ if (Meteor.isClient) {
   })
 
   Template.daycareinfo.onCreated(function() {
-    
-     Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
+    Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
   })
 }
