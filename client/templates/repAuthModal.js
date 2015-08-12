@@ -1,7 +1,7 @@
 Schema.validationCode = new SimpleSchema({
 	code: {
 		type: String,
-		label: "Validation Code"
+		label: "5 Digit Validation Code"
 	}
 });
 

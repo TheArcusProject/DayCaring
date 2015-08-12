@@ -23,17 +23,18 @@ Meteor.methods({
   sendEmail: function(doc) {
     // Important server-side check for security and data integrity
     // check(doc, Schema.authrep);
-
     // Build the e-mail text
+    //generate a 5 digit random number for the verificatioon code
     var num = Math.floor(Math.random() * 90000) + 10000;
+    //save it locally on DayCaring.js, so that we may use it to check
     code = num
-    var text = "Email: " + doc.email + "\n\n" + "Here's your validation code: " + code
+    var text = 'Hi!\n\nThanks for using DayCaring. To finish verifying that you represent this school, please click the "I recieved a code!" button and enter your 5-digit verification code:' + "\n" + code + "\n\n\n" + "As a Representative for your DayCare, you can upload photos and customize your Daycare's page to further attract visitors."
     this.unblock();
     // Send the e-mail
     Email.send({
       to: doc.email,
       from: doc.email,
-      subject: "Website Contact Form: keep slayin boi",
+      subject: "Verify that you represent this school",
       text: text
     });
   },
@@ -45,7 +46,7 @@ Meteor.methods({
     twilio.sendSms({
       to: doc.phoneNumber, // any number Twilio can deliver to
       from: '+18323849792', // must be your Twilio account phone number
-      body: "Here's your verification code: " + code
+      body: 'Your 5-digit verification code:' + "\n" + code
     }, function(err, responseData) { //executed when a response is received from Twilio
       if (!err) {
         // "responseData" is a JavaScript object containing data received from Twilio.
@@ -56,6 +57,7 @@ Meteor.methods({
   checkValidation: function(doc){
     if (doc.code === code.toString()) {
       console.log('checks out!')
+      //things to do: add the permission to the User and reroute them to the page of the daycare they were on before
     }
     else {
       console.log("nope")
