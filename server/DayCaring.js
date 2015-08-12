@@ -46,7 +46,7 @@ Meteor.methods({
     twilio.sendSms({
       to: doc.phoneNumber, // any number Twilio can deliver to
       from: '+18323849792', // must be your Twilio account phone number
-      body: 'To finish verifying that you represent this school, please click the "I recieved a code!" button and enter your 5-digit verification code:' + "\n" + code
+      body: 'Your 5-digit verification code:' + "\n" + code
     }, function(err, responseData) { //executed when a response is received from Twilio
       if (!err) {
         // "responseData" is a JavaScript object containing data received from Twilio.
