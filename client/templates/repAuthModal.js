@@ -3,10 +3,10 @@ Schema.validationCode = new SimpleSchema({
 		type: String,
 		label: "Validation Code"
 	}
-})
+});
 
 Template.repAuthModal.helpers({
 	codeAuthSchema: function(){
 		return Schema.validationCode;
 	}
-})
+});
