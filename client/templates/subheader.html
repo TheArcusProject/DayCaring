@@ -1,21 +1,17 @@
 <template name="subheader">
-
   <div class="row">
     <div id="subheader" class="small-12 columns">
       <h2>{{daycareName}}</h2>
-<!--       {{#if user}}
- -->       
-      	<a href="#" class="button" data-reveal-id="reviewModal">Write a Review</a>
-        <button type="button" class="button represent">Represent this Daycare</button>
-        <button type="button" class="button backToResults">Return to Search Results</button>
-<!--       {{/if}}
- --></div>
+    </div>
   </div>
-
-  <div id ="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-	
-	{{> reviewModal}}
-
+  <div class="row">
+    <div class="small-12 columns">
+      <a href="#" class="button" data-reveal-id="reviewModal">Write a Review</a>
+      <button type="button" class="button represent">Represent this Daycare</button>
+      <button type="button" class="button backToResults">Return to Search Results</button>
+    </div>
   </div>
-
+  <div id="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    {{> reviewModal}}
+  </div>
 </template>
