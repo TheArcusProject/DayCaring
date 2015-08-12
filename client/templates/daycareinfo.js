@@ -21,9 +21,13 @@ if (Meteor.isClient) {
       var daycare = getDaycare();
       return daycare[16]
     },
+    daysOpen: function() {
+      var daycare = getDaycare();
+      return daycare[30];
+    },
     operationHours: function() {
       var daycare = getDaycare();
-      return daycare[19]
+      return daycare[19];
     },
     website: function() {
       var daycare = getDaycare();  
