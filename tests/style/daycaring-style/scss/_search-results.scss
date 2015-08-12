@@ -1,0 +1,29 @@
+
+
+#searchSubheader {
+  background-color: $smoke;
+}
+
+#results {
+  li {
+    background-color: $smoke;
+    border: 5px solid #fff;
+  }
+
+  p {
+    color: $base;
+  }
+
+  img {
+    height: 100px;
+    width: auto;
+    float: right;
+  }
+
+  padding-bottom: 1.25rem;
+}
+
+.pagination {
+  padding-top: 10px;
+}
+

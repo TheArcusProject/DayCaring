@@ -104,12 +104,12 @@ $silver      : #EFEFEF;
 $smoke       : #EEEEEE;
 // $gainsboro   : #DDDDDD;
 // $iron        : #CCCCCC;
-// $base        : #AAAAAA;
+$base        : #AAAAAA;
 // $aluminum    : #999999;
 // $jumbo       : #888888;
 // $monsoon     : #777777;
 // $steel       : #666666;
-// $charcoal    : #555555;
+$charcoal    : #555555;
 // $tuatara     : #444444;
 // $oil         : #333333;
 // $jet         : #222222;
@@ -117,7 +117,7 @@ $smoke       : #EEEEEE;
 
 // We use these as default colors throughout
 $primary-color: #5A97A7;
-$secondary-color: #DD593E;
+$secondary-color: #FFD34E;
 $dc-pink: #F48FB1;
 // $alert-color: #f04124;
 $success-color: #66C282;
@@ -450,7 +450,7 @@ $header-font-family: "Roboto Condensed", "Helvetica Neue";
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
-// $button-font-color: $white;
+$button-font-color: $charcoal;
 // $button-font-color-alt: $oil;
 // $button-font-tny: rem-calc(11);
 // $button-font-sml: rem-calc(13);
@@ -465,8 +465,8 @@ $header-font-family: "Roboto Condensed", "Helvetica Neue";
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-// $button-bg-color: $primary-color;
-// $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+$button-bg-color: $secondary-color;
+$button-bg-hover: scale-color($button-bg-color, $lightness: 20%);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
 // $secondary-button-border-color: $secondary-button-bg-hover;
@@ -1402,10 +1402,10 @@ $header-font-family: "Roboto Condensed", "Helvetica Neue";
 
 // Background color for the top bar
 $topbar-bg-color: $primary-color;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg: $primary-color;
 
 // Height and margin
-$topbar-height: 70px;
+$topbar-height: 80px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1414,17 +1414,17 @@ $topbar-height: 70px;
 
 // Set the link colors and styles for top-level nav
 // $topbar-link-color: $white;
-// $topbar-link-color-hover: $white;
+// $topbar-link-color-hover: $secondary-color;
 // $topbar-link-color-active: $white;
-// $topbar-link-color-active-hover: $white;
+$topbar-link-color-active-hover: $secondary-color;
 // $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
-// $topbar-link-bg-color-hover: $charcoal;
+$topbar-link-bg: $primary-color;
+$topbar-link-bg-hover: none;
+$topbar-link-bg-color-hover: none;
 // $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-bg-active-hover: none;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
