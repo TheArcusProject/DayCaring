@@ -22,6 +22,7 @@ if (Meteor.isClient) {
       var daycare = getDaycare();
       var street = daycare[12]
       var city = daycare[13]
+      //properly capitalize addresses
       street = toTitleCase(street)
       city = toTitleCase(city)
       return street + city + ' TX ' + daycare[14].slice(0, 5)

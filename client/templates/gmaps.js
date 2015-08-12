@@ -1,3 +1,8 @@
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
 //to include in html add {{> gmap}}
 if (Meteor.isClient) {
   Meteor.startup(function() {
@@ -50,13 +55,8 @@ if (Meteor.isClient) {
               var name = school[11]
               var street = school[12]
               var city = school[13]
-
-              function toTitleCase(str) {
-                return str.replace(/\w\S*/g, function(txt) {
-                  return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-                });
-              }
-              name = toTitleCase(name)
+              //fix capitalization of addresses and names
+              name = toTitleCase(name) 
               street = toTitleCase(street)
               city = toTitleCase(city)
 

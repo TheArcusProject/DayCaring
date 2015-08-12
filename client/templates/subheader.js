@@ -15,6 +15,7 @@ Template.subheader.helpers({
     }
     var daycarename = daycare[11]
     daycarename = toTitleCase(daycarename)
+    //return properly capitalized name
 		return daycarename;
 	}
 });
