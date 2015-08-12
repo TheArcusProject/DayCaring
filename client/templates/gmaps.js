@@ -47,7 +47,7 @@ if (Meteor.isClient) {
               localStorage.setItem('lat', school[37][1]);
               localStorage.setItem('lng', school[37][2]);
               localStorage.setItem('operationId', school[8].slice(1));
-
+              var name = school[11]
               var street = school[12]
               var city = school[13]
 
@@ -56,10 +56,11 @@ if (Meteor.isClient) {
                   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 });
               }
+              name = toTitleCase(name)
               street = toTitleCase(street)
               city = toTitleCase(city)
 
-              infoWindow.setContent("<h5>" + school[11] + "</h5>" + "<h6>" + street + city + ' TX' + "</h6>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>")
+              infoWindow.setContent("<h6>" + name + "</h6>" + "<h7>" + street + city + ' TX ' + school[14].slice(0, 5) + "</h7>" + "<div>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>" + "</div>")
               infoWindow.open(map.instance, marker);
               infos[0] = infoWindow;
               //darken heart on mouseover

@@ -1,7 +1,13 @@
 //to include in html add {{> daycareinfo}}
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
 
 if (Meteor.isClient) {
-  var getDaycare = function(){
+  var getDaycare = function() {
     var daycareID = FlowRouter.getParam('daycareId')
     var daycares = localSchools.find().fetch();
     for (var i = 0; i < daycares.length; i++) {
@@ -14,7 +20,11 @@ if (Meteor.isClient) {
   Template.daycareinfo.helpers({
     address: function() {
       var daycare = getDaycare();
-      return daycare[12] + daycare[13]
+      var street = daycare[12]
+      var city = daycare[13]
+      street = toTitleCase(street)
+      city = toTitleCase(city)
+      return street + city + ' TX ' + daycare[14].slice(0, 5)
 
     },
     phoneNumber: function() {
@@ -33,17 +43,17 @@ if (Meteor.isClient) {
       var daycare = getDaycare();
       return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
     },
-    partTimeCare: function(){
+    partTimeCare: function() {
       var daycare = getDaycare();
-      if(daycare[27] === "N") {
+      if (daycare[27] === "N") {
         return "No";
       } else {
         return "Yes";
       }
     },
-    transportationProvided: function(){
+    transportationProvided: function() {
       var daycare = getDaycare();
-      if(daycare[28] === "N") {
+      if (daycare[28] === "N") {
         return "No";
       } else {
         return "Yes";
