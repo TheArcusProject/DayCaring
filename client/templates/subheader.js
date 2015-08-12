@@ -24,6 +24,11 @@ Template.subheader.events({
   'click .represent': function(e) {
     e.preventDefault();
     FlowRouter.go('/authrepresent');
+  },
+  'click .backToResults': function(e){
+    console.log('clicked!')
+    e.preventDefault();
+    FlowRouter.go('/searchresults');
   }
 })
 
