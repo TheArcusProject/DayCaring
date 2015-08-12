@@ -1,20 +1,42 @@
 <template name="search_results">
+
+<!--   <div id="searchSubheader" class="row">
+    <div class="small-12 columns">
+      <h3>Your results</h3>
+    </div>
+  </div> -->
+
+<!--   <div id="results" class="row">
+    <div class="small-12 columns">
+      <div class="small-4 columns ">
+        <img src="/search-results.svg">
+      </div>
+      <div class="small-3 columns end">
+        <h1>Your results</h1>
+      </div>
+    </div>
+  </div> -->
+
   <div class="row">
     <div class="small-12 columns">
       {{> gmap}}
     </div>
   </div>
 
-  <div class="row" data-equalizer>
-    {{#each schoolsArray}}
-      <div class="small-6 columns panel" data-equalizer-watch>
-        <h4>{{name}}</h4>
-        <p> {{address}}
-        <br>{{ages}}
-        <br>{{phone}}</p>
-        <a class="button small">more info</a>
-      </div>
-    {{/each}}
+  <div id="results" class="row">
+    <div class="small-12 columns">
+      <ul class="small-block-grid-3">
+        {{#each schoolsArray}}
+        <li>
+          <h4>{{name}}</h4>
+          <p> {{address}}
+          <br>{{ages}}
+          <br>{{phone}}</p>
+          <a class="button small">more info</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 
 </template>

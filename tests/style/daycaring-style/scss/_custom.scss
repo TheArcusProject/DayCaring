@@ -17,6 +17,7 @@
 
 .button {
   box-shadow: 0 3px 0 darken($secondary-color, 10%);
+  margin-bottom: 0;
 }
 
 .top-bar-section ul li {
@@ -46,7 +47,7 @@
 .map-container {
  min-width: 100%;
  // max-width: 100%;
- height: 500px;
+ height: 300px;
 }
 
 // .top-bar {
