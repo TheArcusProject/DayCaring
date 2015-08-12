@@ -2,6 +2,13 @@
 
 // Helper functions for the overarching search_results page
 //Subscribe to the localSchools template on load
+
+//for capitalization of names and addresses
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
 if (Meteor.isClient) {
 
   Template.search_results.helpers({
@@ -9,22 +16,20 @@ if (Meteor.isClient) {
     schoolsArray: function() {
       var localSchoolsArr = localSchools.find().fetch();
       var schoolsArray = [];
-      function toTitleCase(str) {
-        return str.replace(/\w\S*/g, function(txt) {
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
-      }
+
 
       localSchoolsArr.forEach(function(school) {
+        var daycarename = school[11] 
         var street = school[12]
         var city = school[13]
+        //properly capitalize names and addresses
+        daycarename = toTitleCase(daycarename)
         street = toTitleCase(street)
         city = toTitleCase(city)
-
         //make an obj with releveant info to push into school
         var schoolObj = {
           schoolId: school[0],
-          name: school[11],
+          name: daycarename,
           address: street + city + ", Texas " + school[14].slice(0, 5),
           ages: school[18],
           phone: school[16],
