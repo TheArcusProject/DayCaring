@@ -15,6 +15,9 @@
   margin-top: 7px;
 }
 
+.button {
+  box-shadow: 0 3px 0 darken($secondary-color, 10%);
+}
 #daycareinfo {
   border-bottom: 1px solid $white-smoke;
   .panel {

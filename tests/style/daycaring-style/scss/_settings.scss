@@ -109,7 +109,7 @@ $smoke       : #EEEEEE;
 // $jumbo       : #888888;
 // $monsoon     : #777777;
 // $steel       : #666666;
-// $charcoal    : #555555;
+$charcoal    : #555555;
 // $tuatara     : #444444;
 // $oil         : #333333;
 // $jet         : #222222;
@@ -117,7 +117,7 @@ $smoke       : #EEEEEE;
 
 // We use these as default colors throughout
 $primary-color: #5A97A7;
-$secondary-color: #DD593E;
+$secondary-color: #FFD34E;
 $dc-pink: #F48FB1;
 // $alert-color: #f04124;
 $success-color: #66C282;
@@ -450,7 +450,7 @@ $header-font-family: "Roboto Condensed", "Helvetica Neue";
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
-// $button-font-color: $white;
+$button-font-color: $charcoal;
 // $button-font-color-alt: $oil;
 // $button-font-tny: rem-calc(11);
 // $button-font-sml: rem-calc(13);
@@ -465,8 +465,8 @@ $header-font-family: "Roboto Condensed", "Helvetica Neue";
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-// $button-bg-color: $primary-color;
-// $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+$button-bg-color: $secondary-color;
+$button-bg-hover: scale-color($button-bg-color, $lightness: 20%);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
 // $secondary-button-border-color: $secondary-button-bg-hover;
