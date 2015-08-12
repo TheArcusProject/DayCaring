@@ -1,3 +1,9 @@
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
 Template.subheader.helpers({
 	daycareName: function(){
     var dayCareID = FlowRouter.getParam('daycareId');
@@ -7,7 +13,10 @@ Template.subheader.helpers({
         daycare = daycares[i];
       }
     }
-		return daycare[11];
+    var daycarename = daycare[11]
+    daycarename = toTitleCase(daycarename)
+    //return properly capitalized name
+		return daycarename;
 	}
 });
 
