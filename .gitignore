@@ -1,3 +1,4 @@
 tests/style/bower_components
 tests/style/node_modules
 .DS_Store
+tests/style/daycaring-style/npm-debug.log
