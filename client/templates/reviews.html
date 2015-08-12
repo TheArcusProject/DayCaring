@@ -1,24 +1,20 @@
 <template name="review">
-  <div id="review" class="row">
-    <div class="small-3 columns">
-      <h4>username</h4>
-      <p>location</p>
-    </div>
-    <div class="small-9 columns">
-      <h6>created at _____</h6>
-      <p>Lorem ipsum dolor sit amet, natum malis dicta pri te, at vel tation possim fabulas, cum doming denique hendrerit ei. Quo erat dicunt nonumes ea. In case utinam corpora his, urbanitas consequuntur signiferumque no mel, no vim legere vivendum. At iriure abhorreant usu. Est ei facilisi assentior.
+  
+    {{#each getComments}}
+  <div id="reviews" class="row">
+    {{#if isReady "daycareReviews"}}
+      <div class="small-3 columns">
+        <h4>{{user.profile.name}}</h4>
+        <p>Austin, Texas</p>
+      </div>
+      <div class="small-9 columns">
+        <h6>{{createdAt}}</h6>
+        <p>{{comment}}</p>
+      </div>
+    {{else}}
+    Loading...
+    {{/if}}
+  </div>
+    {{/each}}
 
-Vidisse verterem dissentiunt in sea, eu omnis gloriatur repudiandae sea. Id nec lucilius referrentur dissentiunt, doming aliquam offendit eum no, an mea suas everti. Laudem apeirian appellantur id sea. Et has mutat salutandi.</p>
-    </div>
-  </div>
-  <div id="review" class="row">
-    <div class="small-3 columns">
-      <h4>username</h4>
-      <p>location</p>
-    </div>
-    <div class="small-9 columns">
-      <h6>created at _____</h6>
-      <p>Lorem ipsum vivamus jfpoiwjafsldkfj sa;ldkfjk I love this daycare. super fun and hip and cool.</p>
-    </div>
-  </div>
 </template>
