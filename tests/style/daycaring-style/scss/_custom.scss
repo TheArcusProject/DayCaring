@@ -33,11 +33,8 @@
   }
 }
 
-#daycareinfo {
-  border-bottom: 1px solid $white-smoke;
-  .panel {
-    margin-bottom: 0px;
-  }
+.daycareinfo {
+  max-width: 100px;
 }
 
 #stats {

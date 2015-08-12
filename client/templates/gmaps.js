@@ -40,11 +40,13 @@ if (Meteor.isClient) {
               position: new google.maps.LatLng(school[37][1], school[37][2]),
               map: map.instance,
               icon: "/heart-light.svg"
-            })
+            });
 
             // to hold basic information about the schools
-            var infoWindow = new google.maps.InfoWindow()
-              // show infoWindow on mouseover
+            var infoWindow = new google.maps.InfoWindow({
+              maxWidth: 180,
+            });
+            // show infoWindow on mouseover
             google.maps.event.addListener(marker, 'mouseover', function() {
 
               closeInfos();
@@ -56,11 +58,11 @@ if (Meteor.isClient) {
               var street = school[12]
               var city = school[13]
               //fix capitalization of addresses and names
-              name = toTitleCase(name) 
+              name = toTitleCase(name)
               street = toTitleCase(street)
               city = toTitleCase(city)
 
-              infoWindow.setContent("<h6>" + name + "</h6>" + "<h7>" + street + city + ' TX ' + school[14].slice(0, 5) + "</h7>" + "<div>" + "<button type='button' class='button daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>" + "</div>")
+              infoWindow.setContent("<h6>" + name + "</h6>" + "<h7>" + street + city + ' TX ' + school[14].slice(0, 5) + "</h7>" + "<div>" + "<button type='button' class='button tiny daycareinfo' onclick=\"FlowRouter.go(" + "\'/" + school[0] + "\')\">Information</button>" + "</div>")
               infoWindow.open(map.instance, marker);
               infos[0] = infoWindow;
               //darken heart on mouseover
