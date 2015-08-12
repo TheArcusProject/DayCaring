@@ -21,9 +21,13 @@ if (Meteor.isClient) {
       var daycare = getDaycare();
       return daycare[16]
     },
+    daysOpen: function() {
+      var daycare = getDaycare();
+      return daycare[30];
+    },
     operationHours: function() {
       var daycare = getDaycare();
-      return daycare[19]
+      return daycare[19];
     },
     website: function() {
       var daycare = getDaycare();  
@@ -31,11 +35,19 @@ if (Meteor.isClient) {
     },
     partTimeCare: function(){
       var daycare = getDaycare();
-      return daycare[27];
+      if(daycare[27] === "N") {
+        return "No";
+      } else {
+        return "Yes";
+      }
     },
     transportationProvided: function(){
       var daycare = getDaycare();
-      return daycare[28];
+      if(daycare[28] === "N") {
+        return "No";
+      } else {
+        return "Yes";
+      }
     }
   })
 
