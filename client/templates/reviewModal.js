@@ -1,20 +1,13 @@
 if (Meteor.isClient){
 
-	var daycareName = function(){
-		var daycares = localSchools.find().fetch();
-    for (var i = 0; i < daycares.length; i++) {
-      if (daycares[i][0] === parseInt(FlowRouter.getParam('daycareId'))) {
-        var daycare = daycares[i]
-      }
-    }
-		return daycare[11];
-	}
 
   Template.reviewModal.helpers({
-    name: function() {
-      return daycareName();
-    }
-  })
+  	daycareName: function(){
+  		var daycares = localdaycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
+  		return daycares[0].name;
+  	}
+  });
+
 
   Template.reviewModal.events({
     "click .button": function(event, template) {
@@ -34,7 +27,6 @@ if (Meteor.isClient){
   })
 
   Template.reviewModal.onCreated(function(){
-    Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng')); 
+    Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng')); 
   })
-
 }

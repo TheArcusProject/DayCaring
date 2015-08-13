@@ -7,16 +7,11 @@ function toTitleCase(str) {
 Template.subheader.helpers({
 	daycareName: function(){
     var dayCareID = FlowRouter.getParam('daycareId');
-    var daycares = localSchools.find().fetch();
-    for (var i = 0; i < daycares.length; i++) {
-      if (daycares[i][0] === parseInt(dayCareID)) {
-        daycare = daycares[i];
-      }
-    }
-    var daycarename = daycare[11]
-    daycarename = toTitleCase(daycarename)
-    //return properly capitalized name
-		return daycarename;
+
+    var daycares = localDaycares.find({iD:dayCareID}).fetch();
+    
+		return daycares[0].name;
+
 	}
 });
 
@@ -33,5 +28,5 @@ Template.subheader.events({
 })
 
 Template.subheader.onCreated(function(){
-  Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));	
+  Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng'));	
 })
