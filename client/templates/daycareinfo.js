@@ -44,6 +44,10 @@ if (Meteor.isClient) {
       var daycare = getDaycare();
       return '<a href="http://' + daycare[31] + '">' + daycare[31] + '</a>'
     },
+    agesServed: function() {
+      var daycare = getDaycare();
+      return daycare[18];
+    },
     partTimeCare: function() {
       var daycare = getDaycare();
       if (daycare[27] === "N") {
