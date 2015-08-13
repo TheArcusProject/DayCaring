@@ -19,6 +19,5 @@ sanjo:jasmine
 velocity:html-reporter
 matthew:foundation5-sass
 aldeed:simple-schema
-aldeed:autoform
 abhiaiyer:meteor-twilio
 momentjs:moment

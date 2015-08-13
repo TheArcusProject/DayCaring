@@ -19,6 +19,8 @@ Template.repAuthModal.events({
 
     Meteor.call("checkValidation", code, function (err, results){
       if (err) console.log(err);
+
+      event.target.code.value = '';
     });
     $('#repAuthModal').foundation('reveal', 'close');
   }

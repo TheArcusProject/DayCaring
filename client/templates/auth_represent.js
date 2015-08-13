@@ -29,6 +29,8 @@ Template.auth_represent.events({
     console.log("email :", email);
     Meteor.call("sendEmail", email, function (err, results){
       if (err) console.log(err);
+
+      event.target.email.value = '';
     });
     $('#repAuthModal').foundation('reveal', 'open');
 
@@ -40,6 +42,8 @@ Template.auth_represent.events({
     console.log("phone :", phone);
     Meteor.call("sendSMS", phone, function (err, results){
       if (err) console.log(err);
+
+      event.target.phone.value = '';
     });
     $('#repAuthModal').foundation('reveal', 'open');
   },
