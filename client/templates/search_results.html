@@ -19,22 +19,28 @@
 
   <div class="row">
     <div class="small-12 columns">
-      {{> gmap}}
+      {{#if Template.subscriptionsReady}}
+        {{#with daycaresArray}}
+          {{> gmap}}
+        {{/with}}
+      {{/if}}
     </div>
   </div>
 
   <div id="results" class="row">
     <div class="small-12 columns">
-      <ul class="small-block-grid-3">
-        {{#each schoolsArray}}
-        <li>
-          <h4>{{name}}</h4>
-          <p> {{address}}
-          <br>{{ages}}
-          <br>{{phone}}</p>
-          <a class="button small">more info</a>
-        </li>
-        {{/each}}
+      <ul class="small-block-grid-3">      
+        {{#if Template.subscriptionsReady}}
+          {{#each daycaresArray}}
+            <li>
+              <h4>{{name}}</h4>
+              <p> {{address}}
+              <br>{{ages}}
+              <br>{{phone}}</p>
+              <a class="button small">more info</a>
+            </li>
+          {{/each}}
+        {{/if}}
       </ul>
     </div>
   </div>
