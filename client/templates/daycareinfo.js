@@ -9,11 +9,19 @@ function toTitleCase(str) {
 // this template sets lat and lng on Session
 
 Template.daycareinfo.helpers({
-  getDaycare: function() {
-    return Template.instance().daycare();
-  },
+  
   daycaresArray : function() {
     return Template.instance().daycareArr();
+  },
+  getDaycare : function() {
+    
+    var dcArr = Template.instance().daycareArr().fetch();
+    for (var i = 0; i < dcArr.length; i++){
+      if (dcArr[i].iD === FlowRouter.getParam('daycareId')) {
+        console.log('found the school')
+        return dcArr[i];
+      }
+    }
   }
 });
 
@@ -29,25 +37,17 @@ Template.daycareinfo.events({
   }
 });
 
+
 Template.daycareinfo.onCreated(function() {
   // https://www.discovermeteor.com/blog/template-level-subscriptions/
   var instance = this;
   instance.loaded = new ReactiveVar(0);
 
   instance.autorun(function(){
-    instance.subscribe('daycare', FlowRouter.getParam('daycareId'), function(){
-      console.log(daycare);
-      var daycareObj = daycare.find().fetch();
-      Session.set('lat',daycareObj.lat);
-      Session.set('lng',daycareObj.lng);
-    });
-    var localSubscription = instance.subscribe('localDaycares',
+    
+    instance.subscribe('localDaycares',
         Session.get('lat'),Session.get('lng'));
   });
-
-  instance.daycare = function(){
-    return daycare.find({}); 
-  }
 
   instance.daycareArr = function(){
     return localDaycares.find({});
