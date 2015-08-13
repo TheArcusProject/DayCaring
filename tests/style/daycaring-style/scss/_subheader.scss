@@ -2,12 +2,13 @@
 
 #subheader {
   border-bottom: 1px solid $white-smoke;
+  padding-bottom: 0.9375rem;
   h2 {
-    display: inline;
+    // display: inline;
   }
 
   .button {
-    float: right;
+    margin-bottom: 3px;
   }
 
 }

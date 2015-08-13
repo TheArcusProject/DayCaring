@@ -7,3 +7,8 @@ Deps.autorun( function() {
         var username = user.username;
     }
 });
+
+
+// Template.main.onCreated(function() {
+//   $("#login-buttons").addClass("button small");
+// });

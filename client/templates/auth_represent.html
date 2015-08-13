@@ -1,29 +1,36 @@
 <template name="auth_represent">
-  {{#autoForm schema=emailRepSchema id="emailRepForm" type="method" meteormethod="sendEmail"}}
-  <fieldset>
-    <legend>Validate Email</legend>
-    {{> afQuickField name="email"}}
-    <div>
-      <button type="submit" class="btn btn-primary">
-      Send Authorization Email</button>
-      <button type="reset" class="btn btn-default">Reset Email Field</button>
-    </div>
-  </fieldset>
-  {{/autoForm}}
-  <h2 class="text-center"> Or </h2> {{#autoForm schema=phoneRepSchema id="phoneRepForm" type="method" meteormethod="sendSMS"}}
-  <fieldset>
-    <legend>Validate Phone Number</legend>
-    {{> afQuickField name="phoneNumber"}}
-    <div>
-      <button type="submit" class="btn btn-primary">Send Authorization Text</button>
-      <button type="reset" class="btn btn-default">Reset Phone Number Field</button>
-    </div>
-  </fieldset>
-  {{/autoForm}}
 
-  <div class="text-center"><a href='#' class="button" data-reveal-id="repAuthModal">I recieved a code!</a></div>
+  <div class="row">
+    <div class="small-12 columns">
 
-  <div id="repAuthModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <div class="small-6 columns">
+        <fieldset>
+          <legend>Validate Email</legend>
+          <form class="form1">
+            <label>Email</label>
+            <input type="text" name="email">
+            <button type="submit" class="btn btn-primary">Send Authorization Email</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+          </form>
+        </fieldset>
+      </div>
+
+      <div class="small-6 columns">
+        <fieldset>
+          <legend>Validate Phone Number</legend>
+          <form class="form2">
+            <label>Phone Number</label>
+            <input type="text" name="phone">
+            <button type="submit" class="btn btn-primary">Send Authorization Text</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+          </form>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="repAuthModal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   {{> repAuthModal}}
   </div>
 

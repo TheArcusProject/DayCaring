@@ -1,16 +1,13 @@
 <template name="repAuthModal">
-  <!-- <div class="row">
-    <div class="small-6 columns"> -->
-      {{#autoForm schema=codeAuthSchema id="codeAuthForm" type="method" meteormethod="checkValidation"}}
-      <fieldset>
-        <legend>Enter Validation Code</legend>
-        {{> afQuickField name="code"}}
-        <div>
-          <button type="submit" class="btn btn-primary">
-            Submit</button>
-        </div>
-      </fieldset>
-      {{/autoForm}}
-    <!-- </div>
-  </div> -->
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <fieldset>
+    <legend>Enter Validation Code</legend>
+    <form class="authForm">
+      <label>Code</label>
+      <input type="text" name="code">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </fieldset>
+
 </template>
