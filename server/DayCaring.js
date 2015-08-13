@@ -1,24 +1,35 @@
-//DayCaring.js
-if (Meteor.isServer) {
-  Meteor.startup(function() {
 
-    // console.log('removing schools');
-    // schools.remove({});
-    // for (var i = 0; i < schoolsData.data.length; i++){
-    //   schools.insert(schoolsData.data[i]);
-    // }
-    // console.log('schoolsData is loaded on server');
-
-    //   console.log('removing non-compliance data');
-    //   nonCompliance.remove({});
-
-    //   for (var i = 0; i < nonComplianceData.data.length; i++){
-    //     nonCompliance.insert(nonComplianceData.data[i]);
-    //   }
-    //   console.log('nonComplianceData is loaded on server');
-  });
-}
 var code;
+//DayCaring.js : server only
+// Contains:
+// startup code
+// Meteor.methods
+// publications
+
+Meteor.startup(function() {
+  //Put all code in startup that is not
+  //  template events
+  //  template helpers
+  //  Meteor.methods
+  //  Meteor.publish
+  //  Meteor.subscribe
+
+  daycares = new Mongo.Collection('daycares');
+  zipCodes = new Mongo.Collection('zipCodes');
+  reviews = new Mongo.Collection('reviews');
+
+  // console.log('removing daycares');
+  // daycares.remove({});
+  // for (key in daycareData){
+  //   daycareData[key].iD = key;
+  //   if (daycareData.hasOwnProperty(key)){
+  //     daycares.insert(daycareData[key])
+  //   }
+  // }
+  // console.log('daycaresData is loaded on server');
+
+});
+
 Meteor.methods({
   sendEmail: function(doc) {
     // Important server-side check for security and data integrity
@@ -66,3 +77,36 @@ Meteor.methods({
     }
   }
 })
+
+
+// --------------publications--------------
+
+Meteor.publish("zipCodes", function(zip) {
+  return zipCodes.find({
+    0: '"' + zip + '"'
+  });
+});
+
+//create new publish for daycare reviews
+Meteor.publish("daycareReviews", function(id) {
+  return reviews.find({});
+});
+
+Meteor.publish("localDaycares", function(lat, lng) {
+  var self = this;
+  var daycaresArr = daycares.find().fetch();
+  for (var i = 0; i < daycaresArr.length; i++){
+    var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
+      Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
+    if (dist < 5){
+      self.added('localDaycares',i,daycaresArr[i]);
+    }
+  }
+  self.ready();
+});
+
+Meteor.publish("daycare", function(daycareId) {
+  var self = this;
+  var daycaresArr = daycares.find({iD:daycareId});
+});
+
