@@ -20,11 +20,12 @@ if (Meteor.isServer) {
 }
 var code;
 Meteor.methods({
-  sendEmail: function(doc) {
+  sendEmail: function(email) {
     // Important server-side check for security and data integrity
     // check(doc, Schema.authrep);
     // Build the e-mail text
     //generate a 5 digit random number for the verificatioon code
+    console.log(email);
     var num = Math.floor(Math.random() * 90000) + 10000;
     //save it locally on DayCaring.js, so that we may use it to check
     code = num
@@ -32,19 +33,20 @@ Meteor.methods({
     this.unblock();
     // Send the e-mail
     Email.send({
-      to: doc.email,
-      from: doc.email,
+      to: email,
+      from: "w.zachary.lee@gmail.com",
       subject: "Verify that you represent this school",
       text: text
     });
   },
-  sendSMS: function(doc) {
+  sendSMS: function(phoneNumber) {
+    console.log(phoneNumber);
     var twilio = Twilio('AC528f5b6507742d3b1930a5ef129880d5', '8cb9b6181585aacbaf0e60c54fdef8f3');
     var num = Math.floor(Math.random() * 90000) + 10000;
     code = num
     this.unblock();
     twilio.sendSms({
-      to: doc.phoneNumber, // any number Twilio can deliver to
+      to: phoneNumber, // any number Twilio can deliver to
       from: '+18323849792', // must be your Twilio account phone number
       body: 'Your 5-digit verification code:' + "\n" + code
     }, function(err, responseData) { //executed when a response is received from Twilio
@@ -54,14 +56,15 @@ Meteor.methods({
       }
     })
   },
-  checkValidation: function(doc){
-    if (doc.code === code.toString()) {
+
+  //We still need to solve the problem that code will be redefined upon multiple simultaneous requests
+  checkValidation: function(userCode){
+    if (userCode === code.toString()) {
       console.log('checks out!')
       //things to do: add the permission to the User and reroute them to the page of the daycare they were on before
     }
     else {
       console.log("nope")
-      console.log("this is doc", doc.code)
       console.log("this is code", code)
     }
   }
