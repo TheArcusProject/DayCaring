@@ -9,6 +9,9 @@ zipCodes = new Mongo.Collection('zipCodes');
 reviews = new Mongo.Collection('reviews');
 
 
+Meteor.startup(function() {
+  GoogleMaps.load();
+});
 
 Deps.autorun( function() {  //turns user into a reactive variable??
   user = Meteor.user();
