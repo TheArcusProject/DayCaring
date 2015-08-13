@@ -3,7 +3,7 @@ if (Meteor.isClient){
 
   Template.reviewModal.helpers({
   	daycareName: function(){
-  		var daycares = localdaycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
+  		var daycares = localDaycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
   		return daycares[0].name;
   	}
   });
@@ -12,7 +12,7 @@ if (Meteor.isClient){
   Template.reviewModal.events({
     "click .button": function(event, template) {
       event.preventDefault();
-      Meteor.subscribe("reviews", function() {
+      Meteor.subscribe("daycareReviews", function() {
         var comment = $('textarea#review').val();
         var currentUser = Meteor.user();
         var daycare = daycareName();
@@ -20,7 +20,7 @@ if (Meteor.isClient){
           comment: comment,
           user: currentUser,
           daycare: daycare,
-          createdAt: new Date().toDateString()
+          createdAt: new Date()
         })
       })
     }
