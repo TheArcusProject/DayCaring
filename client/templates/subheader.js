@@ -24,6 +24,10 @@ Template.subheader.events({
     console.log('clicked!')
     e.preventDefault();
     FlowRouter.go('/searchresults');
+  },
+  'click .review': function(e) {
+    e.preventDefault();
+    $('#reviewModal').foundation('reveal', 'open');
   }
 })
 
