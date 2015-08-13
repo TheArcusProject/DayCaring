@@ -5,6 +5,13 @@ function toTitleCase(str) {
 }
 
 Template.subheader.helpers({
+  isLoggedIn : function () {
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 	daycareName: function(){
     var dayCareID = FlowRouter.getParam('daycareId');
 
