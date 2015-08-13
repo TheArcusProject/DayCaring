@@ -1,6 +1,10 @@
 //to include in html add {{> search_results}}
 
+// https://www.discovermeteor.com/blog/template-level-subscriptions/
+
+
 // Helper functions for the overarching search_results page
+
 //Subscribe to the localSchools template on load
 
 //for capitalization of names and addresses
@@ -9,49 +13,32 @@ function toTitleCase(str) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 }
-if (Meteor.isClient) {
 
-  Template.search_results.helpers({
+  
+Template.search_results.helpers({
 
-    schoolsArray: function() {
-      var localSchoolsArr = localSchools.find().fetch();
-      var schoolsArray = [];
+  daycaresArray : function() {
+    return Template.instance().daycareArr();
+  }
+});
 
+Template.search_results.events({
 
-      localSchoolsArr.forEach(function(school) {
-        var daycarename = school[11] 
-        var street = school[12]
-        var city = school[13]
-        //properly capitalize names and addresses
-        daycarename = toTitleCase(daycarename)
-        street = toTitleCase(street)
-        city = toTitleCase(city)
-        //make an obj with releveant info to push into school
-        var schoolObj = {
-          schoolId: school[0],
-          name: daycarename,
-          address: street + city + ", Texas " + school[14].slice(0, 5),
-          ages: school[18],
-          phone: school[16],
-          operationId: school[8].slice(1),
-        }
-        schoolsArray.push(schoolObj);
-      });
+  "click .button" : function(event){
+    event.preventDefault();
+    FlowRouter.go('/'+ this.iD);
+  }
+});
 
-      return schoolsArray;
-    }
+Template.search_results.onCreated(function() {
+  var instance = this;
+  instance.loaded = new ReactiveVar(0);
+
+  instance.autorun(function(){
+    instance.subscribe('localDaycares', Session.get('lat'), Session.get('lng'));
   });
 
-  Template.search_results.events({
-
-    "click .button": function(event) {
-      event.preventDefault();
-      localStorage.setItem("operationId", this.operationId);
-      FlowRouter.go('/' + this.schoolId);
-    }
-  });
-
-  Template.search_results.onCreated(function() {
-    Meteor.subscribe("localSchools", localStorage.getItem('lat'), localStorage.getItem('lng'));
-  });
-}
+  instance.daycareArr = function(){
+    return localDaycares.find({});
+  }
+});
