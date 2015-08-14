@@ -14,19 +14,18 @@ if (Meteor.isClient){
   Template.reviewModal.events({
     "click .button": function(event, template) {
       event.preventDefault();
-        var comment = $('textarea#review').val();
-        var daycare = daycareName();
-        Meteor.call("insertComments", comment, daycare, function(err, results) {
-          if(err) console.log(err);
-        })
-        // var currentUser = Meteor.user();
-        // var daycare = daycareName();
-        // reviews.insert({
-        //   comment: comment,
-        //   user: currentUser,
-        //   daycare: daycare.iD,
-        //   createdAt: new Date()
-        // })
+      var comment = $('textarea#review').val();
+      var daycare = daycareName();
+      var currentUser = Meteor.user()
+      Meteor.call("insertComments", comment, daycare, function(err, results) {
+        if(err) console.log(err);
+      })
+      // reviews.insert({
+      //   comment: comment,
+      //   user: currentUser,
+      //   daycare: daycare,
+      //   createdAt: new Date()
+      // })
     }
   })
 

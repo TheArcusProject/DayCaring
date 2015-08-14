@@ -79,11 +79,12 @@ Meteor.methods({
   },
   insertComments: function(comment, daycare) {
     var currentUser = Meteor.user();
+    var daycareName = daycares.find({name: daycare}).fetch();
     if(currentUser) {
       reviews.insert({
         comment: comment,
         user: currentUser,
-        daycare: daycare,
+        daycare: daycareName,
         createdAt: new Date()
       })
     }

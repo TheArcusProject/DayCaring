@@ -16,8 +16,8 @@ Template.subheader.helpers({
     var dayCareID = FlowRouter.getParam('daycareId');
 
     var daycares = localDaycares.find({iD:dayCareID}).fetch();
-    
-		return daycares[0].name;
+		
+    return daycares[0].name;
 
 	}
 });
