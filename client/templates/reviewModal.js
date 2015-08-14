@@ -29,7 +29,3 @@ if (Meteor.isClient){
     }
   })
 
-  Template.reviewModal.onCreated(function(){
-    Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng')); 
-  })
-}
