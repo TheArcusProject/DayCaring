@@ -2,13 +2,13 @@
 
 
 Template.splash.helpers({
-  
+
 });
 
 Template.splash.events({
 
   "submit form": function(event, template){
-    
+
     event.preventDefault();
     //fetch the lat and long from the zipcode database on server
     Meteor.subscribe("zipCodes", event.target.zipcode.value, function(){
@@ -21,4 +21,21 @@ Template.splash.events({
       FlowRouter.go('/searchresults');
     })
   }
+});
+
+
+Template.splash.onRendered(function() {
+
+  this.autorun(function () {
+    if (GoogleMaps.loaded()) {
+      $("input").geocomplete()
+      .bind("geocode:result", function(event, result){
+        console.log("lat :", result.geometry.location.G);
+        Session.set('lat', result.geometry.location.G);
+        Session.set('lng', result.geometry.location.K)
+        FlowRouter.go('/searchresults');
+      })
+
+    }
+  });
 });
