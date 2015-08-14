@@ -17,9 +17,14 @@ Deps.autorun( function() {  //turns user into a reactive variable??
   }
 });
 
+Meteor.startup(function() {
 
+  GoogleMaps.load({
+    libraries: 'places'  // also accepts an array if you need more than one
+  });
+});
 
-// example daycare 
+// example daycare
 // {
 //   "iD": "97147",
 //   "name":"Camille McCain",

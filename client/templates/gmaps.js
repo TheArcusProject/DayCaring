@@ -5,9 +5,6 @@ function toTitleCase(str) {
 }
 //to include in html add {{> gmap}}
 
-Meteor.startup(function() {
-  GoogleMaps.load();
-});
 
 Template.gmap.helpers({
   GmapOptions: function() {
@@ -16,7 +13,7 @@ Template.gmap.helpers({
       return {
         //lat and lng are set as global client vars in splash.js
         center: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
-        zoom: 13
+        zoom: 15
       };
       // Map initialization options
     }
@@ -32,7 +29,13 @@ Template.gmap.onCreated(function() {
   GoogleMaps.ready('gmap', function(map) {
 
     Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng'), function(){
-      
+
+      //creates the home marker
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
+        map: map.instance,
+      });
+
       _.forEach(daycareArr, function(daycare) {
         //make a heart shaped marker bounce onto the map
         var marker = new google.maps.Marker({
@@ -49,8 +52,8 @@ Template.gmap.onCreated(function() {
         // show infoWindow on mouseover
         google.maps.event.addListener(marker, 'mouseover', function() {
           closeInfos();
-          
-          infoWindow.setContent("<h5>" + toTitleCase(daycare.name) + "</h5>" + "<h6>" + toTitleCase(daycare.address) +' TX' + "</h6>" + 
+
+          infoWindow.setContent("<h5>" + toTitleCase(daycare.name) + "</h5>" + "<h6>" + toTitleCase(daycare.address) +' TX' + "</h6>" +
             "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
             "\'/" + daycare.iD + "\')\">Information</button>")
           infoWindow.open(map.instance, marker);
