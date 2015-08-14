@@ -43,7 +43,9 @@
     <h4>Daycare Reviews</h4>
     <div class="small-12 columns panel">
       {{#if Template.subscriptionsReady}}
-        {{> review getDaycare}}
+      {{#with getReviews}}
+        {{> review}}
+      {{/with}}
       {{/if}}
     </div>
   </div>

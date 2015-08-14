@@ -22,6 +22,10 @@ Template.daycareinfo.helpers({
         return dcArr[i];
       }
     }
+  },
+  getReviews: function() {
+    var revArr = Template.instance().reviewArr().fetch();
+    return revArr;
   }
 });
 
@@ -47,10 +51,15 @@ Template.daycareinfo.onCreated(function() {
     
     instance.subscribe('localDaycares',
         Session.get('lat'),Session.get('lng'));
+    instance.subscribe('getReviews',
+        FlowRouter.getParam('daycareId'));
   });
 
   instance.daycareArr = function(){
     return localDaycares.find({});
+  };
+  instance.reviewArr = function() {
+    return getReviews.find({});
   }
 });
 
