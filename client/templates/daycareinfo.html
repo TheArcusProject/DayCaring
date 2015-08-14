@@ -7,12 +7,12 @@
 
   <div id="daycareinfo" class="row" data-equalizer>
     <div id="localmap" class="small-12 medium-4 columns panel" data-equalizer-watch>
-      {{#if Template.subscriptionsReady}}
-        <!-- {{#with daycaresArray}}
+      {{#if isReady 'daycares'}}
+        {{#with getDaycare}}
           {{> gmap}}
-        {{/with}} -->
+        {{/with}}
       {{/if}}
-      
+
     </div>
     <div class="small-12 medium-8 columns" data-equalizer-watch>
       <ul>
@@ -34,18 +34,18 @@
   </div>
 
   <div id="stats" class="row">
-    <!-- {{#if Template.subscriptionsReady}}
+    {{#if isReady 'daycares'}}
       {{#with getDaycare}}
         {{> stats}}
       {{/with}}
-    {{/if}} -->
+    {{/if}}
   </div>
 
   <div class="row">
     <h4>Daycare Reviews</h4>
     <div class="small-12 columns panel">
-      {{#if Template.subscriptionsReady}}
-        {{#with reviewArr}}
+      {{#if isReady 'daycares'}}
+        {{#with getDaycare}}
           {{> review}}
         {{/with}}
       {{/if}}
