@@ -1,5 +1,5 @@
 <template name="daycareinfo">
-  {{#if Template.subscriptionsReady}}
+  {{#if isReady 'daycares'}}
     {{#with getDaycare}}
       {{> subheader}}
     {{/with}}
@@ -8,15 +8,15 @@
   <div id="daycareinfo" class="row" data-equalizer>
     <div id="localmap" class="small-12 medium-4 columns panel" data-equalizer-watch>
       {{#if Template.subscriptionsReady}}
-        {{#with daycaresArray}}
+        <!-- {{#with daycaresArray}}
           {{> gmap}}
-        {{/with}}
+        {{/with}} -->
       {{/if}}
       
     </div>
     <div class="small-12 medium-8 columns" data-equalizer-watch>
       <ul>
-        {{#if Template.subscriptionsReady}}
+        {{#if isReady 'daycares'}}
           {{#with getDaycare}}
             <li>Address: {{address}}</li>
             <li>Phone Number: {{phone}}</li>
@@ -34,18 +34,20 @@
   </div>
 
   <div id="stats" class="row">
-    {{#if Template.subscriptionsReady}}
-      {{> stats getDaycare}}
-    {{/if}}
+    <!-- {{#if Template.subscriptionsReady}}
+      {{#with getDaycare}}
+        {{> stats}}
+      {{/with}}
+    {{/if}} -->
   </div>
 
   <div class="row">
     <h4>Daycare Reviews</h4>
     <div class="small-12 columns panel">
       {{#if Template.subscriptionsReady}}
-      {{#with getReviews}}
-        {{> review}}
-      {{/with}}
+        {{#with reviewArr}}
+          {{> review}}
+        {{/with}}
       {{/if}}
     </div>
   </div>

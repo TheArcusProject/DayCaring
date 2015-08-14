@@ -6,61 +6,19 @@ function toTitleCase(str) {
   });
 }
 
-// this template sets lat and lng on Session
-
 Template.daycareinfo.helpers({
-  
-  daycaresArray : function() {
-    return Template.instance().daycareArr();
+
+  isReady: function(sub) {
+    if(sub) {
+      return FlowRouter.subsReady(sub);
+    } else {
+      return FlowRouter.subsReady();
+    } 
   },
-  getDaycare : function() {
-    
-    var dcArr = Template.instance().daycareArr().fetch();
-    for (var i = 0; i < dcArr.length; i++){
-      if (dcArr[i].iD === FlowRouter.getParam('daycareId')) {
-        console.log('found the school')
-        Session.set('dayCareID', FlowRouter.getParam('daycareId'))
-        return dcArr[i];
-      }
-    }
-  },
-  getReviews: function() {
-    var revArr = Template.instance().reviewArr().fetch();
-    return revArr;
-  }
-});
-
-  
-Template.daycareinfo.events({
-  //submit daycare review
-  reviewSubmit: function() {
-
-  },
-  //check compliance on a daycare
-  checkCompliance: function() {
-
-  }
-});
-
-
-Template.daycareinfo.onCreated(function() {
-  // https://www.discovermeteor.com/blog/template-level-subscriptions/
-  var instance = this;
-  instance.loaded = new ReactiveVar(0);
-
-  instance.autorun(function(){
-    
-    instance.subscribe('localDaycares',
-        Session.get('lat'),Session.get('lng'));
-    instance.subscribe('getReviews',
-        FlowRouter.getParam('daycareId'));
-  });
-
-  instance.daycareArr = function(){
-    return localDaycares.find({});
-  };
-  instance.reviewArr = function() {
-    return getReviews.find({});
+  getDaycare: function() {
+    var dc = daycares.find().fetch()[0];
+    console.log(dc);
+    return dc;
   }
 });
 

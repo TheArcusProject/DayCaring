@@ -1,10 +1,4 @@
-// a sub collection of daycares populated by localDaycares(lat,lng) publication
-localDaycares = new Mongo.Collection('localDaycares');
-// a single daycare populated by daycare(daycareId) publication
-daycare = new Mongo.Collection('daycare');
-// a sub collection of reviews populated by schoolReviews(id) publication
-getReviews = new Mongo.Collection('getReviews');
-// the entire collection zipCodes populated by zipCodes() publication
+daycares = new Mongo.Collection('daycares');
 zipCodes = new Mongo.Collection('zipCodes');
 reviews = new Mongo.Collection('reviews');
 

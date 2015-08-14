@@ -105,8 +105,8 @@ Meteor.publish("localDaycares", function(lat, lng) {
   self.ready();
 });
 
-Meteor.publish("daycare", function(daycareId) {
-  var self = this;
-  var daycaresArr = daycares.find({iD:daycareId});
+Meteor.publish("aDaycare", function(daycareId) {
+  return daycares.find({iD:""+daycareId+""});
+  
 });
 
