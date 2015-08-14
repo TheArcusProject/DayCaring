@@ -87,13 +87,15 @@ Meteor.publish("getReviews", function(id) {
 });
 
 Meteor.publish("localDaycares", function(lat, lng) {
+  var lat = parseFloat(lat);
+  var lng = parseFloat(lng);
   var self = this;
   var daycaresArr = daycares.find().fetch();
   for (var i = 0; i < daycaresArr.length; i++){
     var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
       Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
     if (dist < 5){
-      self.added('localDaycares',i,daycaresArr[i]);
+      self.added('daycares',i,daycaresArr[i]);
     }
   }
   self.ready();
