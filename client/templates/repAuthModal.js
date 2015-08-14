@@ -15,6 +15,7 @@ Template.repAuthModal.events({
           //show success notification!
           toastr.success('Successfully authenticated!');
           $('#repAuthModal').foundation('reveal', 'close');
+          // FlowRouter.go('/' + dcID)
 
         } else {
           //else, show err message
