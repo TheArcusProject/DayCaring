@@ -5,9 +5,6 @@ function toTitleCase(str) {
 }
 //to include in html add {{> gmap}}
 
-// Meteor.startup(function() {
-//   GoogleMaps.load();
-// });
 
 Template.gmap.helpers({
   GmapOptions: function() {
