@@ -71,12 +71,11 @@ Meteor.methods({
   //We still need to solve the problem that code will be redefined upon multiple simultaneous requests
   checkValidation: function(userCode){
     if (userCode === code.toString()) {
-      console.log('checks out!')
-      //things to do: add the permission to the User and reroute them to the page of the daycare they were on before
+      return true
+           //things to do: add the permission to the User and reroute them to the page of the daycare they were on before
     }
     else {
-      console.log("nope")
-      console.log("this is code", code)
+      return false
     }
   }
 })
