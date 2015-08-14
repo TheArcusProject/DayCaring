@@ -19,8 +19,8 @@
 
   <div class="row">
     <div class="small-12 columns">
-      {{#if Template.subscriptionsReady}}
-        {{#with daycaresArray}}
+      {{#if isReady 'daycares'}}
+        {{#with getDaycares}}
           {{> gmap}}
         {{/with}}
       {{/if}}
@@ -29,9 +29,9 @@
 
   <div id="results" class="row">
     <div class="small-12 columns">
-      <ul class="small-block-grid-3">      
-        {{#if Template.subscriptionsReady}}
-          {{#each daycaresArray}}
+      <ul class="small-block-grid-3">
+        {{#if isReady 'daycares'}}
+          {{#with getDaycares}}
             <li>
               <h4>{{name}}</h4>
               <p> {{address}}
@@ -39,7 +39,7 @@
               <br>{{phone}}</p>
               <a class="button small">more info</a>
             </li>
-          {{/each}}
+          {{/with}}
         {{/if}}
       </ul>
     </div>

@@ -87,6 +87,8 @@ Meteor.publish("getReviews", function(id) {
 });
 
 Meteor.publish("localDaycares", function(lat, lng) {
+  var lat = parseFloat(lat);
+  var lng = parseFloat(lng);
   var self = this;
   var daycaresArr = daycares.find().fetch();
   for (var i = 0; i < daycaresArr.length; i++){

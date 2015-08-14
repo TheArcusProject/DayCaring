@@ -14,11 +14,25 @@ function toTitleCase(str) {
   });
 }
 
-  
+
 Template.search_results.helpers({
 
-  daycaresArray : function() {
-    return Template.instance().daycareArr();
+  // daycaresArray : function() {
+  //   return Template.instance().daycareArr();
+  // },
+
+  isReady: function(sub) {
+    if(sub) {
+      return FlowRouter.subsReady(sub);
+    } else {
+      return FlowRouter.subsReady();
+    }
+  },
+
+  getDaycares : function() {
+    // return daycares.find({}).fetch();
+    console.log(daycares.find());
+    console.log(daycares.find().fetch());
   }
 });
 
@@ -30,15 +44,15 @@ Template.search_results.events({
   }
 });
 
-Template.search_results.onCreated(function() {
-  var instance = this;
-  instance.loaded = new ReactiveVar(0);
+// Template.search_results.onCreated(function() {
+//   var instance = this;
+//   instance.loaded = new ReactiveVar(0);
 
-  instance.autorun(function(){
-    instance.subscribe('localDaycares', Session.get('lat'), Session.get('lng'));
-  });
+//   instance.autorun(function(){
+//     instance.subscribe('localDaycares', Session.get('lat'), Session.get('lng'));
+//   });
 
-  instance.daycareArr = function(){
-    return localDaycares.find({});
-  }
-});
+//   instance.daycareArr = function(){
+//     return localDaycares.find({});
+//   }
+// });

@@ -22,10 +22,13 @@ Template.splash.onRendered(function() {
     if (GoogleMaps.loaded()) {
       $("input").geocomplete()
       .bind("geocode:result", function(event, result){
-        console.log("lat :", result.geometry.location.G);
-        Session.set('lat', result.geometry.location.G);
-        Session.set('lng', result.geometry.location.K)
-        FlowRouter.go('/searchresults');
+        // console.log("lat :", result.geometry.location.G);
+        // Session.set('lat', result.geometry.location.G);
+        // Session.set('lng', result.geometry.location.K);
+
+        var lat = result.geometry.location.G;
+        var lng = result.geometry.location.K;
+        FlowRouter.go('/searchresults/'+ lat +'/' + lng);
       });
     }
   });
