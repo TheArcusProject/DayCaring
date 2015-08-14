@@ -23,16 +23,18 @@ Template.repAuthModal.events({
       } else {
         if (results) {
           var dcID = Session.get('dayCareID').toString()
-          console.log("this is sessionID", dcID)
+          //assign the ID of the daycare to the user
           Meteor.users.update({_id:Meteor.user()._id}, {$set: {'profile.dayCare': [dcID]}})
-          //if code matches, add permission to user account
+          //show success notification!
+          toastr.success('Successfully authenticated!');
+          $('#repAuthModal').foundation('reveal', 'close');
+
         } else {
           //else, show err message
+          toastr.error('Whoops! Incorrect Code.')
         }
       }
-      console.log(Meteor.user())
       event.target.code.value = '';
     })
-    $('#repAuthModal').foundation('reveal', 'close');
   }
 });

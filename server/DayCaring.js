@@ -36,7 +36,6 @@ Meteor.methods({
     // check(doc, Schema.authrep);
     // Build the e-mail text
     //generate a 5 digit random number for the verificatioon code
-    console.log(email);
     var num = Math.floor(Math.random() * 90000) + 10000;
     //save it locally on DayCaring.js, so that we may use it to check
     code = num
@@ -62,8 +61,7 @@ Meteor.methods({
       body: 'Your 5-digit verification code:' + "\n" + code
     }, function(err, responseData) { //executed when a response is received from Twilio
       if (!err) {
-        // "responseData" is a JavaScript object containing data received from Twilio.
-        console.log(responseData.body); // outputs "here is your confirmaton"
+        // "responseData" is a JavaScript object containing data received from Twilio
       }
     })
   },
