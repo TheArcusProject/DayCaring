@@ -30,9 +30,7 @@ Template.search_results.helpers({
   },
 
   getDaycares : function() {
-    // return daycares.find({}).fetch();
-    console.log(daycares.find());
-    console.log(daycares.find().fetch());
+    return daycares.find().fetch();
   }
 });
 

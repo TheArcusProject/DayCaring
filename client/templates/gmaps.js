@@ -12,7 +12,7 @@ Template.gmap.helpers({
     if (GoogleMaps.loaded()) {
       return {
         //lat and lng are set as global client vars in splash.js
-        center: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
+        center: new google.maps.LatLng(FlowRouter.getParam('lat'),FlowRouter.getParam('lng')),
         zoom: 15
       };
       // Map initialization options
@@ -22,21 +22,21 @@ Template.gmap.helpers({
 
 Template.gmap.onCreated(function() {
   var infos = []; //hacky way to close infowindows
-
+  
   // We can use the `ready` callback to interact with the map API once the map is ready.
-
+  var that = this;
   GoogleMaps.ready('gmap', function(map) {
     //creates the home marker
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
+      position: new google.maps.LatLng(FlowRouter.getParam('lat'), FlowRouter.getParam('lng')),
       map: map.instance,
     });
 
-    _.forEach(this, function(daycare) {
+    for (var i = 0; i < that.data.length; i++){
       //make a heart shaped marker bounce onto the map
       var marker = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
-        position: new google.maps.LatLng(daycare.lat, daycare.lng),
+        position: new google.maps.LatLng(parseFloat(that.data[i].lat), parseFloat(that.data[i].lng)),
         map: map.instance,
         icon: "/heart-light.svg"
       })
@@ -46,12 +46,13 @@ Template.gmap.onCreated(function() {
             maxWidth: 180,
           })
       // show infoWindow on mouseover
+      var daycareObj = that.data[i];
       google.maps.event.addListener(marker, 'mouseover', function() {
         closeInfos();
 
-        infoWindow.setContent("<h5>" + toTitleCase(daycare.name) + "</h5>" + "<h6>" + toTitleCase(daycare.address) +' TX' + "</h6>" +
+        infoWindow.setContent("<h5>" + toTitleCase(daycareObj.name) + "</h5>" + "<h6>" + toTitleCase(daycareObj.address) +' TX' + "</h6>" +
           "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
-          "\'/" + daycare.iD + "\')\">Information</button>")
+          "\'/" + daycareObj.iD + "\')\">Information</button>")
         infoWindow.open(map.instance, marker);
         infos[0] = infoWindow;
         //darken heart on mouseover
@@ -63,7 +64,7 @@ Template.gmap.onCreated(function() {
         //lighten heart on mouseoff
         marker.setIcon("/heart-light.svg");
       })
-    }); //end of forEach loop
+    };
 
     function closeInfos() {
       if (infos.length > 0) {
