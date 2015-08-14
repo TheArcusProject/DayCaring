@@ -8,7 +8,9 @@
 			}
 		},
 		getComments: function() {
-			return this;
+			var comments = reviews.find().fetch();
+			console.log(comments);
+			return comments;
 		}
 	})
 

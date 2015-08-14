@@ -1,8 +1,8 @@
 if (Meteor.isClient){
 
   var daycareName = function(){
-  		var daycares = localDaycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
-  		return daycares[0].name;
+  		var currentDaycare = daycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
+  		return currentDaycare[0].name;
   	}
 
   Template.reviewModal.helpers({
@@ -14,7 +14,7 @@ if (Meteor.isClient){
   Template.reviewModal.events({
     "click .button": function(event, template) {
       event.preventDefault();
-      Meteor.subscribe("reviews", function() {
+      Meteor.subscribe("getReviews", function() {
         var comment = $('textarea#review').val();
         var daycare = daycareName();
         Meteor.call("insertComments", comment, daycare, function(err, results) {

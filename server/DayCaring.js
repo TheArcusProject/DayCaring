@@ -94,12 +94,8 @@ Meteor.methods({
 // --------------publications--------------
 
 //create new publish for daycare reviews
-Meteor.publish("getReviews", function(id) {
-  return reviews.find({daycare: ""+id+""});
-});
-
-Meteor.publish("reviews", function() {
-  return reviews.find();
+Meteor.publish("getReviews", function(daycareId) {
+  return reviews.find({daycare: ""+daycareId+""});
 });
 
 Meteor.publish("localDaycares", function(lat, lng) {
