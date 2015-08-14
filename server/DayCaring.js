@@ -36,7 +36,6 @@ Meteor.methods({
     // check(doc, Schema.authrep);
     // Build the e-mail text
     //generate a 5 digit random number for the verificatioon code
-    console.log(email);
     var num = Math.floor(Math.random() * 90000) + 10000;
     //save it locally on DayCaring.js, so that we may use it to check
     code = num
@@ -62,8 +61,7 @@ Meteor.methods({
       body: 'Your 5-digit verification code:' + "\n" + code
     }, function(err, responseData) { //executed when a response is received from Twilio
       if (!err) {
-        // "responseData" is a JavaScript object containing data received from Twilio.
-        console.log(responseData.body); // outputs "here is your confirmaton"
+        // "responseData" is a JavaScript object containing data received from Twilio
       }
     })
   },
@@ -71,12 +69,11 @@ Meteor.methods({
   //We still need to solve the problem that code will be redefined upon multiple simultaneous requests
   checkValidation: function(userCode){
     if (userCode === code.toString()) {
-      console.log('checks out!')
-      //things to do: add the permission to the User and reroute them to the page of the daycare they were on before
+      return true
+           //things to do: add the permission to the User and reroute them to the page of the daycare they were on before
     }
     else {
-      console.log("nope")
-      console.log("this is code", code)
+      return false
     }
   }
 })

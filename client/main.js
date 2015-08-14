@@ -8,8 +8,6 @@ getReviews = new Mongo.Collection('getReviews');
 zipCodes = new Mongo.Collection('zipCodes');
 reviews = new Mongo.Collection('reviews');
 
-
-
 Deps.autorun( function() {  //turns user into a reactive variable??
   user = Meteor.user();
   if(user){
@@ -18,7 +16,6 @@ Deps.autorun( function() {  //turns user into a reactive variable??
 });
 
 Meteor.startup(function() {
-
   GoogleMaps.load({
     libraries: 'places'  // also accepts an array if you need more than one
   });

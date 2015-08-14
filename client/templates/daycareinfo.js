@@ -19,6 +19,7 @@ Template.daycareinfo.helpers({
     for (var i = 0; i < dcArr.length; i++){
       if (dcArr[i].iD === FlowRouter.getParam('daycareId')) {
         console.log('found the school')
+        Session.set('dayCareID', FlowRouter.getParam('daycareId'))
         return dcArr[i];
       }
     }
