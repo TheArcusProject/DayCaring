@@ -13,16 +13,19 @@ Template.daycareinfo.helpers({
       return FlowRouter.subsReady(sub);
     } else {
       return FlowRouter.subsReady();
-    } 
+    }
   },
+
   getDaycare: function() {
     var dc = daycares.find().fetch()[0];
     console.log(dc);
     return dc;
   }
+
 });
 
-// example daycare 
+
+// example daycare
 // {
 //   "iD": "97147",
 //   "name":"Camille McCain",

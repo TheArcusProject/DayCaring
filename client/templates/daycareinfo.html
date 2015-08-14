@@ -2,6 +2,7 @@
   {{#if isReady 'daycares'}}
     {{#with getDaycare}}
       {{> subheader}}
+      {{getViolations}}
     {{/with}}
   {{/if}}
 
@@ -12,7 +13,7 @@
           {{> gmap}}
         {{/with}} -->
       {{/if}}
-      
+
     </div>
     <div class="small-12 medium-8 columns" data-equalizer-watch>
       <ul>
