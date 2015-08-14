@@ -14,7 +14,6 @@ if (Meteor.isClient){
   Template.reviewModal.events({
     "click .button": function(event, template) {
       event.preventDefault();
-      Meteor.subscribe("getReviews", function() {
         var comment = $('textarea#review').val();
         var daycare = daycareName();
         Meteor.call("insertComments", comment, daycare, function(err, results) {
@@ -28,7 +27,6 @@ if (Meteor.isClient){
         //   daycare: daycare.iD,
         //   createdAt: new Date()
         // })
-      })
     }
   })
 
