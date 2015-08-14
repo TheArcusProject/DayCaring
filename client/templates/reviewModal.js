@@ -16,14 +16,18 @@ if (Meteor.isClient){
       event.preventDefault();
       Meteor.subscribe("reviews", function() {
         var comment = $('textarea#review').val();
-        var currentUser = Meteor.user();
         var daycare = daycareName();
-        reviews.insert({
-          comment: comment,
-          user: currentUser,
-          daycare: daycare.iD,
-          createdAt: new Date()
+        Meteor.call("insertComments", comment, daycare, function(err, results) {
+          if(err) console.log(err);
         })
+        // var currentUser = Meteor.user();
+        // var daycare = daycareName();
+        // reviews.insert({
+        //   comment: comment,
+        //   user: currentUser,
+        //   daycare: daycare.iD,
+        //   createdAt: new Date()
+        // })
       })
     }
   })
