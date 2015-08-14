@@ -33,6 +33,12 @@ Template.gmap.onCreated(function() {
 
     Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng'), function(){
 
+      //creates the home marker
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
+        map: map.instance,
+      });
+
       _.forEach(daycareArr, function(daycare) {
         //make a heart shaped marker bounce onto the map
         var marker = new google.maps.Marker({
