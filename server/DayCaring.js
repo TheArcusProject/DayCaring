@@ -91,8 +91,8 @@ Meteor.publish("zipCodes", function(zip) {
 });
 
 //create new publish for daycare reviews
-Meteor.publish("daycareReviews", function(id) {
-  return reviews.find({});
+Meteor.publish("getReviews", function(id) {
+  return reviews.find({daycare: id});
 });
 
 Meteor.publish("localDaycares", function(lat, lng) {

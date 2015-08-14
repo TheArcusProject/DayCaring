@@ -3,9 +3,11 @@ localDaycares = new Mongo.Collection('localDaycares');
 // a single daycare populated by daycare(daycareId) publication
 daycare = new Mongo.Collection('daycare');
 // a sub collection of reviews populated by schoolReviews(id) publication
-daycareReviews = new Mongo.Collection('daycareReviews');
+getReviews = new Mongo.Collection('getReviews');
 // the entire collection zipCodes populated by zipCodes() publication
 zipCodes = new Mongo.Collection('zipCodes');
+reviews = new Mongo.Collection('reviews');
+
 
 
 Deps.autorun( function() {  //turns user into a reactive variable??

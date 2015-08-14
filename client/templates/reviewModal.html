@@ -2,13 +2,13 @@
 	
 	<div class="row">
 		<div class="small-8 columns">
-      <h2>{{daycareName}}</h2>
+      <h2>{{getDaycareName}}</h2>
     </div>
   </div>
 
   <div class="row">
 		<div class="small-10 columns panel">
-			<h4>Your Review for {{daycareName}}</h4>
+			<h4>Your Review for {{getDaycareName}}</h4>
 				<textarea rows="10" id="review" placeholder="Help others to find the perfect daycare."></textarea>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-	<div id="submittedReview" class="reveal-modal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
+	<div id="submittedReview" class="reveal-modal small" align="center" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
 	  <h2 id="secondModalTitle">Thank you for your review!</h2>
 	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 	</div>

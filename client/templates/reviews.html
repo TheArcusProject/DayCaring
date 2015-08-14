@@ -2,7 +2,6 @@
   
     {{#each getComments}}
   <div id="reviews" class="row">
-    {{#if isReady "daycareReviews"}}
       <div class="small-3 columns">
         <h4>{{user.profile.name}}</h4>
         <p>Austin, Texas</p>
@@ -12,9 +11,6 @@
         <p>{{comment}}</p>
       </div>
       <hr>
-    {{else}}
-    Loading...
-    {{/if}}
   </div>
     {{/each}}
 
