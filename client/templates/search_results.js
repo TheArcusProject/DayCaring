@@ -7,14 +7,6 @@
 
 //Subscribe to the localSchools template on load
 
-//for capitalization of names and addresses
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function(txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
-
-
 Template.search_results.helpers({
 
   // daycaresArray : function() {
@@ -28,10 +20,16 @@ Template.search_results.helpers({
       return FlowRouter.subsReady();
     }
   },
-
   getDaycares : function() {
     return daycares.find().fetch();
+  },
+  //for capitalization of names and addresses
+  toTitleCase: function(str) {
+    return str.replace(/\w\S*/g, function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    })
   }
+
 });
 
 Template.search_results.events({
