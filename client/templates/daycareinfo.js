@@ -1,11 +1,4 @@
 //to include in html add {{> daycareinfo}}
-
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function(txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
-
 Template.daycareinfo.helpers({
 
   isReady: function(sub) {
@@ -15,7 +8,6 @@ Template.daycareinfo.helpers({
       return FlowRouter.subsReady();
     }
   },
-
   getDaycare: function() {
     var dc = daycares.find().fetch();
     return dc;
@@ -23,6 +15,20 @@ Template.daycareinfo.helpers({
   getReviews: function() {
     var rev =  reviews.find({},{sort:{createdAt:-1}}).fetch();
     return rev; 
+  },
+  toTitleCase: function(str) {
+    return str.replace(/\w\S*/g, function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    })
+  },
+  convertBoolean: function(str) {
+    if(str === "N") {
+      return "No";
+    } else if(str === "Y") {
+      return "Yes";
+    } else {
+      return "N/A"
+    }
   }
 
 });

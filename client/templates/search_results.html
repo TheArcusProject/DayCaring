@@ -33,9 +33,9 @@
         {{#if isReady 'daycares'}}
           {{#each getDaycares}}
             <li>
-              <h4>{{name}}</h4>
-              <p> {{address}}
-              <br>{{ages}}
+              <h4>{{toTitleCase name}}</h4>
+              <p> {{toTitleCase address}}, Texas
+              <br>{{accepts}}
               <br>{{phone}}</p>
               <a class="button small">more info</a>
             </li>
