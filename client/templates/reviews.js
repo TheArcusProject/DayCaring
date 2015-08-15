@@ -23,7 +23,7 @@
 			}
 		},
 		getComments: function() {
-			var comments = reviews.find().fetch();
+			var comments = reviews.find({}, {sort: {createdAt: -1}}).fetch();
 			console.log(comments);
 			return comments;
 		}

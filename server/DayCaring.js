@@ -84,7 +84,7 @@ Meteor.methods({
       reviews.insert({
         comment: comment,
         user: currentUser,
-        daycare: daycareName,
+        daycare: daycareName[0].iD,
         createdAt: new Date()
       })
     }
