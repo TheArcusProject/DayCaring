@@ -20,6 +20,9 @@ if (Meteor.isClient){
       Meteor.call("insertComments", comment, daycare, function(err, results) {
         if(err) console.log(err);
       })
+      setTimeout(function() {
+        $('#submittedReview').foundation('reveal', 'close');
+      }, 1500)
     }
   })
 }
