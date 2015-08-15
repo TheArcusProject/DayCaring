@@ -5,9 +5,8 @@ Template.review.helpers({
 			return moment(date).format("MMM Do YYYY");
 		}
 	},
-	getComments: function() {
-		var comments = reviews.find({}, {sort: {createdAt: -1}}).fetch();
-		return comments;
+	getReviews: function() {
+		return this;
 	}
 })
 

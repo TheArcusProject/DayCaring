@@ -1,19 +1,15 @@
-<template name="review">
-
-  {{#if isReady 'reviews'}}
-    {{#each getComments}}
-      <div id="reviews" class="row">
-        <div class="small-3 columns">
-          <h4>{{user.profile.name}}</h4>
-          <p>Austin, Texas</p>
-        </div>
-        <div class="small-9 columns">
-          <h6>{{formattedDate createdAt}}</h6>
-          <p>{{comment}}</p>
-        </div>
-        <hr>
+<template name="review"> 
+  {{#each getReviews}}
+    <div id="reviews" class="row">
+      <div class="small-3 columns">
+        <h4>{{user.profile.name}}</h4>
+        <p>Austin, Texas</p>
       </div>
-    {{/each}}
-  {{/if}}
-
+      <div class="small-9 columns">
+        <h6>{{formattedDate createdAt}}</h6>
+        <p>{{comment}}</p>
+      </div>
+      <hr>
+    </div>
+  {{/each}}
 </template>
