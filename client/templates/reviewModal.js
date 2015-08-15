@@ -1,8 +1,8 @@
 if (Meteor.isClient){
 
   var daycareName = function(){
-  		var daycares = localDaycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
-  		return daycares[0].name;
+  		var currentDaycare = daycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
+  		return currentDaycare[0].name;
   	}
 
   Template.reviewModal.helpers({
@@ -14,21 +14,19 @@ if (Meteor.isClient){
   Template.reviewModal.events({
     "click .button": function(event, template) {
       event.preventDefault();
-      Meteor.subscribe("reviews", function() {
-        var comment = $('textarea#review').val();
-        var currentUser = Meteor.user();
-        var daycare = daycareName();
-        reviews.insert({
-          comment: comment,
-          user: currentUser,
-          daycare: daycare.iD,
-          createdAt: new Date()
-        })
+      var comment = $('textarea#review').val();
+      var daycare = daycareName();
+      var currentUser = Meteor.user()
+      Meteor.call("insertComments", comment, daycare, function(err, results) {
+        if(err) console.log(err);
       })
+      // reviews.insert({
+      //   comment: comment,
+      //   user: currentUser,
+      //   daycare: daycare,
+      //   createdAt: new Date()
+      // })
     }
   })
-
-  Template.reviewModal.onCreated(function(){
-    Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng')); 
-  })
 }
+

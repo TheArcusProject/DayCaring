@@ -1,5 +1,6 @@
 <template name="review">
-  
+
+  {{#if isReady 'reviews'}}
   {{#each getComments}}
     <div id="reviews" class="row">
         <div class="small-3 columns">
@@ -13,5 +14,6 @@
         <hr>
     </div>
   {{/each}}
+  {{/if}}
 
 </template>

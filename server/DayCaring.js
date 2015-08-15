@@ -1,5 +1,6 @@
 
 var code;
+
 //DayCaring.js : server only
 // Contains:
 // startup code
@@ -75,6 +76,18 @@ Meteor.methods({
     else {
       return false
     }
+  },
+  insertComments: function(comment, daycare) {
+    var currentUser = Meteor.user();
+    var daycareName = daycares.find({name: daycare}).fetch();
+    if(currentUser) {
+      reviews.insert({
+        comment: comment,
+        user: currentUser,
+        daycare: daycareName[0].iD,
+        createdAt: new Date()
+      })
+    }
   }
 })
 
@@ -82,8 +95,8 @@ Meteor.methods({
 // --------------publications--------------
 
 //create new publish for daycare reviews
-Meteor.publish("getReviews", function(id) {
-  return reviews.find({daycare: ""+id+""});
+Meteor.publish("getReviews", function(daycareId) {
+  return reviews.find({daycare: ""+daycareId+""});
 });
 
 Meteor.publish("localDaycares", function(lat, lng) {
