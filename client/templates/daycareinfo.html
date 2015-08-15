@@ -1,8 +1,8 @@
 <template name="daycareinfo">
   {{#if isReady 'daycares'}}
-    {{#with getDaycare}}
+    {{#each getDaycare}}
       {{> subheader}}
-    {{/with}}
+    {{/each}}
   {{/if}}
 
   <div id="daycareinfo" class="row" data-equalizer>
@@ -17,17 +17,15 @@
     <div class="small-12 medium-8 columns" data-equalizer-watch>
       <ul>
         {{#if isReady 'daycares'}}
-          {{#with getDaycare}}
+          {{#each getDaycare}}
             <li>Address: {{address}}</li>
             <li>Phone Number: {{phone}}</li>
             <li>Hours of Operation: {{hours}}</li>
             <li>Website or Email: {{{website}}}</li>
             <li>Ages Served: {{accepts}}</li>
             <li>Part-time Care: {{parttime}}</li>
-            <!-- 8 in booleans index 27-->
             <li>Transportation Provided: {{transportation}}</li>
-            <!-- 9 in booleans index 28-->
-          {{/with}}
+          {{/each}}
         {{/if}}
       </ul>
     </div>
@@ -35,17 +33,17 @@
 
   <div id="stats" class="row">
     {{#if isReady 'daycares'}}
-      {{#with getDaycare}}
+      {{#each getDaycare}}
         {{> stats}}
-      {{/with}}
+      {{/each}}
     {{/if}}
   </div>
 
   <div class="row">
     <h4>Daycare Reviews</h4>
     <div class="small-12 columns panel">
-      {{#if isReady 'daycares'}}
-        {{#with getDaycare}}
+      {{#if isReady 'reviews'}}
+        {{#with getReviews}}
           {{> review}}
         {{/with}}
       {{/if}}
