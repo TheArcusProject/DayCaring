@@ -22,7 +22,6 @@ Template.daycareinfo.helpers({
   },
   getReviews: function() {
     var rev =  reviews.find({},{sort:{createdAt:-1}}).fetch();
-    console.log(rev)
     return rev; 
   }
 
