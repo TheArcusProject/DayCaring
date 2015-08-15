@@ -22,10 +22,12 @@ Template.daycareinfo.helpers({
     })
   },
   convertBoolean: function(str) {
-    if(str === 'N') {
+    if(str === "N") {
       return "No";
-    } else {
+    } else if(str === "Y") {
       return "Yes";
+    } else {
+      return "N/A"
     }
   }
 
