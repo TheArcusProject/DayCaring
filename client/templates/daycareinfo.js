@@ -17,10 +17,10 @@ Template.daycareinfo.helpers({
   },
 
   getDaycare: function() {
-    var dc = daycares.find().fetch()[0];
-    console.log(dc);
+    var dc = daycares.find().fetch();
     return dc;
-  }
+  },
+  getCo
 
 });
 
