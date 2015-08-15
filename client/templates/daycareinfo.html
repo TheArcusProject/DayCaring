@@ -18,8 +18,9 @@
       <ul>
         {{#if isReady 'daycares'}}
           {{#each getDaycare}}
-            <li>Address: {{toTitleCase address}}</li>
+            <li>Address: {{toTitleCase address}}, Texas</li>
             <li>Phone Number: {{phone}}</li>
+            <li>Days Open: {{days}}</li>
             <li>Hours of Operation: {{hours}}</li>
             <li>Website or Email: {{{website}}}</li>
             <li>Ages Served: {{accepts}}</li>
