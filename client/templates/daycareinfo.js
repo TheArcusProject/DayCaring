@@ -21,7 +21,9 @@ Template.daycareinfo.helpers({
     return dc;
   },
   getReviews: function() {
-    return reviews.find().fetch(); 
+    var rev =  reviews.find({},{sort:{createdAt:-1}}).fetch();
+    console.log(rev)
+    return rev; 
   }
 
 });
