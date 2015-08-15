@@ -1,8 +1,8 @@
 <template name="review">
 
   {{#if isReady 'reviews'}}
-  {{#each getComments}}
-    <div id="reviews" class="row">
+    {{#each getComments}}
+      <div id="reviews" class="row">
         <div class="small-3 columns">
           <h4>{{user.profile.name}}</h4>
           <p>Austin, Texas</p>
@@ -12,8 +12,8 @@
           <p>{{comment}}</p>
         </div>
         <hr>
-    </div>
-  {{/each}}
+      </div>
+    {{/each}}
   {{/if}}
 
 </template>

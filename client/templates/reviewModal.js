@@ -3,7 +3,7 @@ if (Meteor.isClient){
   var daycareName = function(){
   		var currentDaycare = daycares.find({iD:FlowRouter.getParam('daycareId')}).fetch();
   		return currentDaycare[0].name;
-  	}
+  }
 
   Template.reviewModal.helpers({
     getDaycareName: function() {
@@ -20,12 +20,6 @@ if (Meteor.isClient){
       Meteor.call("insertComments", comment, daycare, function(err, results) {
         if(err) console.log(err);
       })
-      // reviews.insert({
-      //   comment: comment,
-      //   user: currentUser,
-      //   daycare: daycare,
-      //   createdAt: new Date()
-      // })
     }
   })
 }
