@@ -20,7 +20,9 @@ Template.daycareinfo.helpers({
     var dc = daycares.find().fetch();
     return dc;
   },
-  getCo
+  getReviews: function() {
+    return reviews.find().fetch(); 
+  }
 
 });
 
