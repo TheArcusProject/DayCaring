@@ -20,7 +20,6 @@ Template.gmap.helpers({
     }
     if (GoogleMaps.loaded()) {
       return {
-        //lat and lng are set as global client vars in splash.js
         center: new google.maps.LatLng(mapCenter.lat,mapCenter.lng),
         zoom: 15
       };
@@ -38,7 +37,6 @@ Template.gmap.onCreated(function() {
 
   GoogleMaps.ready('gmap', function(map) {
     //creates the home marker
-    console.log('Here: ',FlowRouter.current())
     var mapCenter = {};
     try {
       mapCenter.lat = FlowRouter.getParam('lat');
