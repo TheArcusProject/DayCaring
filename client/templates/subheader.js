@@ -13,12 +13,7 @@ Template.subheader.helpers({
     }
   },
 	daycareName: function(){
-    var dayCareID = FlowRouter.getParam('daycareId');
-
-    var daycares = localDaycares.find({iD:dayCareID}).fetch();
-		
-    return daycares[0].name;
-
+    return this.name;
 	}
 });
 
@@ -28,9 +23,8 @@ Template.subheader.events({
     FlowRouter.go('/authrepresent');
   },
   'click .backToResults': function(e){
-    console.log('clicked!')
     e.preventDefault();
-    FlowRouter.go('/searchresults');
+    FlowRouter.go('/searchresults/'+this.lat+'/'+this.lng);
   },
   'click .review': function(e) {
     e.preventDefault();
@@ -38,6 +32,3 @@ Template.subheader.events({
   }
 })
 
-Template.subheader.onCreated(function(){
-  Meteor.subscribe("localDaycares", Session.get('lat'), Session.get('lng'));	
-})

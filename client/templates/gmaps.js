@@ -9,10 +9,19 @@ function toTitleCase(str) {
 Template.gmap.helpers({
   GmapOptions: function() {
     // Make sure the maps API has loaded
+    var mapCenter = {};
+    if (FlowRouter.getParam('lat')){
+      mapCenter.lat = FlowRouter.getParam('lat');
+      mapCenter.lng = FlowRouter.getParam('lng');
+    } else {
+      console.log("this is:",this)
+      mapCenter.lat = parseFloat(this[0].lat);
+      mapCenter.lng = parseFloat(this[0].lng);
+    }
     if (GoogleMaps.loaded()) {
       return {
         //lat and lng are set as global client vars in splash.js
-        center: new google.maps.LatLng(FlowRouter.getParam('lat'),FlowRouter.getParam('lng')),
+        center: new google.maps.LatLng(mapCenter.lat,mapCenter.lng),
         zoom: 15
       };
       // Map initialization options
@@ -26,12 +35,22 @@ Template.gmap.onCreated(function() {
   var that = this;
   var markers = [];
   
+
   GoogleMaps.ready('gmap', function(map) {
     //creates the home marker
-    var homeMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(FlowRouter.getParam('lat'), FlowRouter.getParam('lng')),
-      map: map.instance,
-    });
+    console.log('Here: ',FlowRouter.current())
+    var mapCenter = {};
+    try {
+      mapCenter.lat = FlowRouter.getParam('lat');
+      mapCenter.lng = FlowRouter.getParam('lng');
+      var homeMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(mapCenter.lat, mapCenter.lng),
+        map: map.instance,
+      });
+    } catch(e) {
+      mapCenter.lat = parseFloat(that[0].lat);
+      mapCenter.lng = parseFloat(that[0].lng);
+    }
     
     for (var i = 0; i < that.data.length; i++){
       //make a heart shaped marker bounce onto the map
