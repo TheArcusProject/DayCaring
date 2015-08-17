@@ -14,13 +14,11 @@ Template.gmap.helpers({
       mapCenter.lat = FlowRouter.getParam('lat');
       mapCenter.lng = FlowRouter.getParam('lng');
     } else {
-      console.log("this is:",this)
       mapCenter.lat = parseFloat(this[0].lat);
       mapCenter.lng = parseFloat(this[0].lng);
     }
     if (GoogleMaps.loaded()) {
       return {
-        //lat and lng are set as global client vars in splash.js
         center: new google.maps.LatLng(mapCenter.lat,mapCenter.lng),
         zoom: 15
       };
@@ -38,7 +36,6 @@ Template.gmap.onCreated(function() {
 
   GoogleMaps.ready('gmap', function(map) {
     //creates the home marker
-    console.log('Here: ',FlowRouter.current())
     var mapCenter = {};
     try {
       mapCenter.lat = FlowRouter.getParam('lat');
