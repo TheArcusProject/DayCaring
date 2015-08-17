@@ -6,7 +6,10 @@ Template.review.helpers({
     }
   },
   getReviews: function() {
-    return this;
+    return this.reviews;
+  },
+  getIsRep: function() {
+    return this.isAdmin;
   }
 })
 
