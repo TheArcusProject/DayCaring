@@ -29,6 +29,10 @@ Template.subheader.events({
   'click .review': function(e) {
     e.preventDefault();
     $('#reviewModal').foundation('reveal', 'open');
+  },
+  'click .waitlist': function(e){
+    e.preventDefault();
+    $('#waitlistModal').foundation('reveal', 'open');
   }
 })
 
