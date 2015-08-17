@@ -6,13 +6,11 @@ Template.splash.helpers({
 });
 
 Template.splash.events({
-
     //if user wants to type and use button, this triggers the geocode event
   "submit form": function(event, template){
     event.preventDefault();
     $("input").trigger("geocode");
   }
-
 });
 
 
