@@ -13,8 +13,10 @@ Template.daycareinfo.helpers({
     return dc;
   },
   getReviews: function() {
-    var rev =  reviews.find({},{sort:{createdAt:-1}}).fetch();
-    return rev; 
+    var revObj;
+    revObj.reviews =  reviews.find({},{sort:{createdAt:-1}}).fetch();
+    revObj.isAdmin = false;
+    return revObj; 
   },
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {

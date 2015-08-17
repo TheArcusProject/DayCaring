@@ -1,0 +1,41 @@
+<template name="represent">
+ 
+  <div class="row">
+    <div class="small-12 medium-6 columns" data-equalizer-watch>
+        <div class="row">
+          <div class="small-10 columns panel">
+            {{#if isReady 'daycares'}}
+              {{#each getDaycare}}
+                <h4>Describe {{toTitleCase name}}</h4>
+                  <textarea rows="10" id="description" placeholder="Describe your daycare."></textarea>
+              {{/each}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    <div class="medium-6 columns" data-equializer-watch>
+      <div class="row">
+          <div class="small-10 columns panel">
+            {{#if isReady 'daycares'}}
+              {{#each getDaycare}}
+                <h4>Upload pictures</h4>
+                <input type="file" name="file" />
+              {{/each}}
+            {{/if}}
+          </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="small-12 columns panel">
+    <h4>Daycare Reviews</h4>
+      {{#if isReady 'reviews'}}
+        {{#with getReviews}}
+          {{> review}}
+        {{/with}}
+      {{/if}}
+    </div>
+  </div>
+
+</template>

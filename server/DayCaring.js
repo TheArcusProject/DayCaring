@@ -19,15 +19,15 @@ Meteor.startup(function() {
   zipCodes = new Mongo.Collection('zipCodes');
   reviews = new Mongo.Collection('reviews');
 
-  console.log('removing daycares');
-  daycares.remove({});
-  for (key in daycareData){
-    daycareData[key].iD = key;
-    if (daycareData.hasOwnProperty(key)){
-      daycares.insert(daycareData[key])
-    }
-  }
-  console.log('daycaresData is loaded on server');
+  // console.log('removing daycares');
+  // daycares.remove({});
+  // for (key in daycareData){
+  //   daycareData[key].iD = key;
+  //   if (daycareData.hasOwnProperty(key)){
+  //     daycares.insert(daycareData[key])
+  //   }
+  // }
+  // console.log('daycaresData is loaded on server');
 
 });
 
