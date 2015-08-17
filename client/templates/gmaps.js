@@ -14,7 +14,6 @@ Template.gmap.helpers({
       mapCenter.lat = FlowRouter.getParam('lat');
       mapCenter.lng = FlowRouter.getParam('lng');
     } else {
-      console.log("this is:",this)
       mapCenter.lat = parseFloat(this[0].lat);
       mapCenter.lng = parseFloat(this[0].lng);
     }

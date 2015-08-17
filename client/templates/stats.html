@@ -1,12 +1,12 @@
 <template name="stats">
+  {{grossHack}}
   <div class="row" data-equalizer>
     <div class="small-2 columns" data-equalizer-watch>
       <h4>Administration</h4>
-      {{getViolations}}
     </div>
     <div class="small-10 columns" data-equalizer-watch>
-      <div class="progress">
-        <span class="meter"></span>
+      <div class={{getColor 0}}>
+        <span class="meter" style={{getScore 0}}></span>
       </div>
     </div>
   </div>
@@ -15,8 +15,8 @@
       <h4>Basic Care</h4>
     </div>
     <div class="small-10 columns">
-      <div class="progress success">
-        <span class="meter" style="width: 87%;"></span>
+      <div class={{getColor 1}}>
+        <span class="meter" style={{getScore 1}}></span>
       </div>
     </div>
   </div>
@@ -25,8 +25,8 @@
       <h4>Health &amp; Safety</h4>
     </div>
     <div class="small-10 columns">
-      <div class="progress alert">
-        <span class="meter" style="width: 30%;"></span>
+      <div class={{getColor 2}}>
+        <span class="meter" style={{getScore 2}}></span>
       </div>
     </div>
   </div>
@@ -35,8 +35,8 @@
       <h4>Facilities</h4>
     </div>
     <div class="small-10 columns">
-      <div class="progress">
-        <span class="meter"></span>
+      <div class={{getColor 3}}>
+        <span class="meter" style={{getScore 3}}></span>
       </div>
     </div>
   </div>
