@@ -41,6 +41,27 @@ Template.daycareinfo.helpers({
 
 });
 
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
+Template.daycareinfo.events({
+  'click .represent': function(e) {
+    e.preventDefault();
+    FlowRouter.go('/authrepresent');
+  },
+  'click .backToResults': function(e){
+    e.preventDefault();
+    FlowRouter.go('/searchresults/'+this.lat+'/'+this.lng);
+  },
+  'click .review': function(e) {
+    e.preventDefault();
+    $('#reviewModal').foundation('reveal', 'open');
+  }
+});
+
 
 // example daycare
 // {
