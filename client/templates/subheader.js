@@ -11,10 +11,7 @@ Template.subheader.helpers({
     } else {
       return false;
     }
-  },
-	daycareName: function(){
-    return this.name;
-	}
+  }
 });
 
 Template.subheader.events({

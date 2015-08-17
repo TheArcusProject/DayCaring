@@ -1,0 +1,49 @@
+<template name="waitlistModal">
+  <h2 class="text-center centered">Waitlist for {{name}}</h2>
+  <form class="centered multi-form">
+    <!-- <ul id="progressbar">
+      <li class="active">Account Setup</li>
+      <li>Social Profiles</li>
+      <li>Personal Details</li>
+    </ul> -->
+    <!--First Section of Multi Form-->
+    <fieldset class="active">
+      <legend>
+        <h5 class="text-center fs-title">Register for the Waitlist</h5>
+      </legend>
+      <h6 class="fs-subtitle">Please enter the following info to be added to the waitlist</h6>
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <label for="">First Name</label>
+          <input type="text" name="firstName" placeholder="First Name">
+        </div>
+        <div class="small-12 medium-6 columns">
+          <label for="">Last Name</label>
+          <input type="text" name="lastName" placeholder="Last Name">
+        </div>
+      </div>
+    </fieldset>
+    <!--Second Section of Multi Form-->
+    <fieldset>
+      <legend>
+        <h5 class="text-center fs-title">
+    		  Enter Payment Information
+    		</h5>
+      </legend>
+      <h6>
+    		Please fill out the following form to waive the $50 waitlist fee.
+    	</h6>
+      <div class="row">
+        <div class="small-12 columns">
+          <label for="">Credit Card Number></label>
+          <input type="number" name="ccNum" placeholder="Enter Credit Card Number">
+        </div>
+      </div>
+    </fieldset>
+    <div class="buttons">
+      <a class="button secondary prev left">Prev</a>
+      <a class="button secondary next right">Next</a>
+      <button class="submit right">Submit</button>
+    </div>
+  </form>
+</template>
