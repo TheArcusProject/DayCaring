@@ -23,15 +23,15 @@
               <li><i class="fa fa-clock-o fa-fw"></i>&nbsp; Hours of Operation: {{hours}}</li>
               <li><i class="fa fa-laptop fa-fw"></i>&nbsp; Website or Email: <a target="_blank" href="{{website}}">{{website}}</a></li>
               <li><i class="fa fa-child fa-fw"></i>&nbsp; Ages Served: {{accepts}}</li>
-              {{#if parttime}}
-                <li><i class="fa fa-check fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
-                {{else}}
-                <li><i class="fa fa-times"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
+              {{#if checkBool}}
+              <li><i class="fa fa-check fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
+              {{else}}
+              <li><i class="fa fa-times fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
               {{/if}}
-              {{#if transportation}}
-                <li><i class="fa fa-check fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
-                {{else}}
-                <li><i class="fa fa-times fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
+              {{#if checkBool}}
+              <li><i class="fa fa-check fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
+              {{else}}
+              <li><i class="fa fa-times fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
               {{/if}}
             </ul>
             <div class="row">
@@ -49,6 +49,10 @@
     </div>
   </div>
 
+  <div class="row">
+    <small>* the following ratings were calculated based on data pulled from the National Institutes of Health (NIH)</small>
+  </div>
+
   <div id="stats" class="row">
     {{#if isReady 'daycares'}}
       {{#each getDaycare}}
@@ -57,7 +61,7 @@
     {{/if}}
   </div>
 
-  <div class="row">
+  <div id="reviews" class="row">
     <h4>Daycare Reviews</h4>
     <div class="small-12 columns panel">
       {{#if isReady 'reviews'}}

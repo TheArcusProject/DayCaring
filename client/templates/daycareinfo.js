@@ -29,6 +29,7 @@ Template.daycareinfo.helpers({
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     })
   },
+
   convertBoolean: function(str) {
     if(str === "N") {
       return "No";
@@ -37,15 +38,16 @@ Template.daycareinfo.helpers({
     } else {
       return "N/A"
     }
-  }
+  },
 
+  checkBool: function(str){
+    if(str === "Y") {
+      return true;
+    } else {
+      return false
+    }
+  },
 });
-
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function(txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
 
 Template.daycareinfo.events({
   'click .represent': function(e) {
