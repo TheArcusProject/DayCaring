@@ -1,6 +1,12 @@
 //to include in html add {{> daycareinfo}}
 Template.daycareinfo.helpers({
-
+  isLoggedIn : function () {
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   isReady: function(sub) {
     if(sub) {
       return FlowRouter.subsReady(sub);
@@ -16,7 +22,7 @@ Template.daycareinfo.helpers({
     var revObj;
     revObj.reviews =  reviews.find({},{sort:{createdAt:-1}}).fetch();
     revObj.isAdmin = false;
-    return revObj; 
+    return revObj;
   },
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {

@@ -2,8 +2,28 @@
   margin-top: 7px;
 }
 
-.daycareinfo {
-  max-width: 100px;
+#daycareinfo {
+  // max-width: 100px;
+  border-bottom: 1px solid $white-smoke;
+  .panel {
+    background-color: #fff;
+    border: none;
+  }
+  h3 {
+    display: inline-block;
+  }
+
+  .phone {
+    float: right;
+  }
+  ul {
+    list-style-type: none;
+    margin-bottom: 0;
+  }
+
+  .button {
+    margin-top: 13px;
+  }
 }
 
 #stats {
@@ -12,6 +32,6 @@
 
 #localmap {
   .map-container {
-    height: 280px;
+    height: 300px;
   }
 }
