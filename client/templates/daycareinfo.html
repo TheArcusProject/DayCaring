@@ -12,12 +12,8 @@
     <div class="small-12 medium-8 columns panel" data-equalizer-watch>
         {{#if isReady 'daycares'}}
           {{#each getDaycare}}
-            <div class="row">
-              <div class="small-12 columns">
-                <h3>{{name}}</h3><h3 class="phone">{{phone}}</h3>
-              </div>
-            </div>
             <ul>
+              <li><h3>{{name}}</h3><h3 class="phone">{{phone}}</h3></li>
               <li><i class="fa fa-home fa-fw"></i>&nbsp; {{toTitleCase address}}, Texas</li>
               <li><i class="fa fa-calendar-check-o fa-fw"></i>&nbsp; Days Open: {{days}}</li>
               <li><i class="fa fa-clock-o fa-fw"></i>&nbsp; Hours of Operation: {{hours}}</li>
@@ -55,7 +51,7 @@
   </div>
 
   <div class="row">
-    <small>* the following ratings were calculated based on data pulled from the National Institutes of Health (NIH)</small>
+    <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
   </div>
 
   <div id="stats" class="row">
