@@ -7,7 +7,9 @@
   height: 180px;
 }
 #search {
-  margin-top: 5%;
+  // margin-top: 5%;
+  position: absolute;
+  z-index: 2;
   h1 {
     text-align: center;
   }
@@ -16,7 +18,23 @@
   }
 }
 
+input[type="text"] {
+  border: none;
+  box-shadow: none;
+}
+// .section1 {
+//   .map-container {
+//     height: 550px;
+
+//   }
+// }
+
 #submit {
   display: inherit;
   margin: 0 auto;
+}
+
+#map {
+  // background-color: #ccc;
+  z-index: 0;
 }

@@ -1,5 +1,6 @@
 <template name="splash">
-  <div class="map-section">
+
+  <div id="map" class="map-container">
     <div id="search" class="row">
       <div class="small-6 small-centered columns">
         <img id="magnify" src="/mg02.svg">
@@ -10,7 +11,10 @@
         </form>
       </div>
     </div>
+
+    {{> googleMap name="splashMap" options=customMap}}
   </div>
+
 
 
 </template>
