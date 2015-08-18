@@ -19,14 +19,15 @@ Template.daycareinfo.helpers({
     return dc;
   },
   getReviews: function() {
-    var revObj;
-    revObj.reviews =  reviews.find({},{sort:{createdAt:-1}}).fetch();
+    var revObj = {};
+    var cursor = reviews.find({},{sort:{createdAt:-1}});
+    revObj.reviews =  cursor.fetch();
+    console.log('reviews : ', revObj.reviews)
     revObj.isAdmin = false;
-    if (revObj.reviews.length === 0) {
-      return false;
-    } else {
-      return revObj;
-    }
+    return revObj;
+  },
+  hasReviews: function() {
+    return this.reviews.length > 0;
   },
 
   toTitleCase: function(str) {
