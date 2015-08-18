@@ -63,11 +63,15 @@
 
   <div id="reviews" class="row">
     <h4>Daycare Reviews</h4>
-    <div class="small-12 columns panel">
+    <div class="small-12 columns">
       {{#if isReady 'reviews'}}
-        {{#with getReviews}}
-          {{> review}}
-        {{/with}}
+        {{#if getReviews}}
+          {{#with getReviews}}
+            {{> review}}
+          {{/with}}
+        {{else}}
+        <h5>No reviews yet, login to write one!</h5>
+        {{/if}}
       {{/if}}
     </div>
   </div>

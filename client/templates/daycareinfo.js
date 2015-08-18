@@ -22,8 +22,13 @@ Template.daycareinfo.helpers({
     var revObj;
     revObj.reviews =  reviews.find({},{sort:{createdAt:-1}}).fetch();
     revObj.isAdmin = false;
-    return revObj;
+    if (revObj.reviews.length === 0) {
+      return false;
+    } else {
+      return revObj;
+    }
   },
+
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
