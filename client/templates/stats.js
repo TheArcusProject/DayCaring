@@ -1,7 +1,6 @@
 
 Template.stats.helpers({
   grossHack : function(){
-    console.log('in oncreated, this is: ', this)
     var violsArr = this.violations;
     this.widths = [100,100,100,100];
     risks = {
@@ -26,7 +25,6 @@ Template.stats.helpers({
     })
   },
   getScore : function(num){
-    console.log('in helpers, this is ',this)
     return "width: "+this.widths[num]+"%;";
   },
   getColor : function(num){
@@ -43,6 +41,6 @@ Template.stats.helpers({
 });
 
 Template.stats.onCreated(function(){
-  
+
 
 });

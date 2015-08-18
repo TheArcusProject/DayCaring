@@ -1,0 +1,39 @@
+.progress {
+  margin-top: 7px;
+}
+
+#daycareinfo {
+  // max-width: 100px;
+  border-bottom: 1px solid $white-smoke;
+  .panel {
+    background-color: #fff;
+    border: none;
+  }
+  h3 {
+    display: inline-block;
+  }
+
+  .phone {
+    float: right;
+  }
+  ul {
+    list-style-type: none;
+    margin-bottom: 0;
+  }
+
+  .button {
+    margin-top: 13px;
+  }
+}
+
+#stats {
+  padding: 10px;
+  border-bottom: 1px solid $white-smoke;
+
+}
+
+#localmap {
+  .map-container {
+    height: 300px;
+  }
+}

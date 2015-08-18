@@ -1,6 +1,12 @@
 //to include in html add {{> daycareinfo}}
 Template.daycareinfo.helpers({
-
+  isLoggedIn : function () {
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   isReady: function(sub) {
     if(sub) {
       return FlowRouter.subsReady(sub);
@@ -16,13 +22,19 @@ Template.daycareinfo.helpers({
     var revObj;
     revObj.reviews =  reviews.find({},{sort:{createdAt:-1}}).fetch();
     revObj.isAdmin = false;
-    return revObj; 
+    if (revObj.reviews.length === 0) {
+      return false;
+    } else {
+      return revObj;
+    }
   },
+
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     })
   },
+
   convertBoolean: function(str) {
     if(str === "N") {
       return "No";
@@ -31,8 +43,30 @@ Template.daycareinfo.helpers({
     } else {
       return "N/A"
     }
-  }
+  },
 
+  checkBool: function(str){
+    if(str === "Y") {
+      return true;
+    } else {
+      return false
+    }
+  },
+});
+
+Template.daycareinfo.events({
+  'click .represent': function(e) {
+    e.preventDefault();
+    FlowRouter.go('/authrepresent');
+  },
+  'click .backToResults': function(e){
+    e.preventDefault();
+    FlowRouter.go('/searchresults/'+this.lat+'/'+this.lng);
+  },
+  'click .review': function(e) {
+    e.preventDefault();
+    $('#reviewModal').foundation('reveal', 'open');
+  }
 });
 
 

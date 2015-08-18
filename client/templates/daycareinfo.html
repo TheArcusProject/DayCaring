@@ -1,35 +1,56 @@
 <template name="daycareinfo">
-  {{#if isReady 'daycares'}}
-    {{#each getDaycare}}
-      {{> subheader}}
-    {{/each}}
-  {{/if}}
 
   <div id="daycareinfo" class="row" data-equalizer>
-    <div id="localmap" class="small-12 medium-4 columns panel" data-equalizer-watch>
+    <div id="localmap" class="small-12 medium-4 columns" data-equalizer-watch>
       {{#if isReady 'daycares'}}
         {{#with getDaycare}}
           {{> gmap}}
         {{/with}}
       {{/if}}
-
     </div>
-    <div class="small-12 medium-8 columns" data-equalizer-watch>
-      <ul>
+
+    <div class="small-12 medium-8 columns panel" data-equalizer-watch>
         {{#if isReady 'daycares'}}
           {{#each getDaycare}}
-            <li>Address: {{toTitleCase address}}, Texas</li>
-            <li>Phone Number: {{phone}}</li>
-            <li>Days Open: {{days}}</li>
-            <li>Hours of Operation: {{hours}}</li>
-            <li>Website or Email: <a target="_blank" href="{{website}}">{{website}}</a></li>
-            <li>Ages Served: {{accepts}}</li>
-            <li>Part-time Care: {{convertBoolean parttime}}</li>
-            <li>Transportation Provided: {{convertBoolean transportation}}</li>
+            <div class="row">
+              <div class="small-12 columns">
+                <h3>{{name}}</h3><h3 class="phone">{{phone}}</h3>
+              </div>
+            </div>
+            <ul>
+              <li><i class="fa fa-home fa-fw"></i>&nbsp; {{toTitleCase address}}, Texas</li>
+              <li><i class="fa fa-calendar-check-o fa-fw"></i>&nbsp; Days Open: {{days}}</li>
+              <li><i class="fa fa-clock-o fa-fw"></i>&nbsp; Hours of Operation: {{hours}}</li>
+              <li><i class="fa fa-laptop fa-fw"></i>&nbsp; Website or Email: <a target="_blank" href="{{website}}">{{website}}</a></li>
+              <li><i class="fa fa-child fa-fw"></i>&nbsp; Ages Served: {{accepts}}</li>
+              {{#if checkBool}}
+              <li><i class="fa fa-check fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
+              {{else}}
+              <li><i class="fa fa-times fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
+              {{/if}}
+              {{#if checkBool}}
+              <li><i class="fa fa-check fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
+              {{else}}
+              <li><i class="fa fa-times fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
+              {{/if}}
+            </ul>
+            <div class="row">
+              <div id="" class="small-12 columns">
+                <!-- <h2>{{name}}</h2> -->
+                {{#if isLoggedIn}}
+                  <a href="#" class="button small review" data-reveal-id="reviewModal">Write a Review</a>
+                {{/if}}
+                <button type="button" class="button small represent">Represent this Daycare</button>
+                <button type="button" class="button small backToResults">Return to Search Results</button>
+              </div>
+            </div>
           {{/each}}
         {{/if}}
-      </ul>
     </div>
+  </div>
+
+  <div class="row">
+    <small>* the following ratings were calculated based on data pulled from the National Institutes of Health (NIH)</small>
   </div>
 
   <div id="stats" class="row">
@@ -40,15 +61,23 @@
     {{/if}}
   </div>
 
-  <div class="row">
+  <div id="reviews" class="row">
     <h4>Daycare Reviews</h4>
-    <div class="small-12 columns panel">
+    <div class="small-12 columns">
       {{#if isReady 'reviews'}}
-        {{#with getReviews}}
-          {{> review}}
-        {{/with}}
+        {{#if getReviews}}
+          {{#with getReviews}}
+            {{> review}}
+          {{/with}}
+        {{else}}
+        <h5>No reviews yet, login to write one!</h5>
+        {{/if}}
       {{/if}}
     </div>
+  </div>
+
+  <div id="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    {{> reviewModal}}
   </div>
 
 </template>
