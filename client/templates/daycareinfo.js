@@ -22,7 +22,6 @@ Template.daycareinfo.helpers({
     var revObj = {};
     var cursor = reviews.find({},{sort:{createdAt:-1}});
     revObj.reviews =  cursor.fetch();
-    console.log('reviews : ', revObj.reviews)
     revObj.isAdmin = false;
     return revObj;
   },
