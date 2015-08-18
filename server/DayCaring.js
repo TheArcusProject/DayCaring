@@ -81,13 +81,13 @@ Meteor.methods({
       return false
     }
   },
-  insertComments: function(comment, daycareId) {
+  insertComments: function(comment, daycareId, userName) {
     var currentUser = Meteor.user();
     
     if(currentUser) {
       reviews.insert({
         comment: comment,
-        user: currentUser,
+        user: userName,
         daycare: daycareId,
         createdAt: new Date()
       })

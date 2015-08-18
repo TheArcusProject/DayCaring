@@ -6,7 +6,6 @@ Template.review.helpers({
     }
   },
   getReviews: function() {
-    console.log("in reviews getReviews, this is ",this)
     return this.reviews;
   },
   getIsRep: function() {
