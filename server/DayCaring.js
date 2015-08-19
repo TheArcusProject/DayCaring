@@ -139,7 +139,7 @@ Meteor.methods({
       console.log("this is charge", charge)
     });
   },
-  insertPicture: function(daycareId, file){  
+  insertPicture: function(daycareId, file){
     pictures.insert({
       file:file,
       daycareId:daycareId
@@ -173,6 +173,9 @@ Meteor.publish("localDaycares", function(lat, lng) {
 
 Meteor.publish("aDaycare", function(daycareId) {
   return daycares.find({iD:""+daycareId+""});
+});
 
+Meteor.publish("daycarePhotos", function(daycareId) {
+  return pictures.find({daycareId:""+daycareId+""});
 });
 

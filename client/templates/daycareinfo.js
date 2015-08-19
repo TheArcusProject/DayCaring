@@ -33,6 +33,11 @@ Template.daycareinfo.helpers({
     revObj.isAdmin = false;
     return revObj;
   },
+  getPictures: function() {
+    var picturesArr = pictures.find().fetch();
+    console.log(picturesArr);
+    return picturesArr;
+  },
   hasReviews: function() {
     return this.reviews.length > 0;
   },
