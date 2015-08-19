@@ -14,9 +14,9 @@
   margin-top: 7%;
   h1 {
     text-align: center;
-    box-shadow: 0 2px 5px #999999;
+    box-shadow: 0 4px 2px #999999;
     // background-color: #fff;
-    border-bottom: 4px solid #fff;
+    // border-bottom: 4px solid #fff;
     background-color: #5A97A7;
     color: #fff;
   }
@@ -27,8 +27,8 @@
 
 input[type="text"] {
   border: none;
-  box-shadow: 0 2px 2px #999999;
-  border-bottom: 4px solid #999999;
+  box-shadow: 0 4px 2px #999999;
+  // border-bottom: 4px solid #999999;
   :focus {
     border-bottom: 4px solid $warning-color;
   }
@@ -43,7 +43,7 @@ input[type="text"] {
 #submit {
   display: inherit;
   margin: 0 auto;
-  box-shadow: 0 2px 2px #999999;
+  box-shadow: 0 4px 2px #999999;
 }
 
 #map {
