@@ -7,16 +7,47 @@
   height: 180px;
 }
 #search {
-  margin-top: 5%;
+  // margin-top: 5%;
+  position: absolute;
+  z-index: 2;
+  min-width: 100%;
+  margin-top: 7%;
   h1 {
     text-align: center;
+    box-shadow: 0 2px 5px #999999;
+    // background-color: #fff;
+    border-bottom: 4px solid #fff;
+    background-color: #5A97A7;
+    color: #fff;
   }
   h4 {
     text-align: center;
   }
 }
 
+input[type="text"] {
+  border: none;
+  box-shadow: 0 2px 2px #999999;
+  border-bottom: 4px solid #999999;
+  :focus {
+    border-bottom: 4px solid $warning-color;
+  }
+}
+// .section1 {
+//   .map-container {
+//     height: 550px;
+
+//   }
+// }
+
 #submit {
   display: inherit;
   margin: 0 auto;
+  box-shadow: 0 2px 2px #999999;
+}
+
+#map {
+  // background-color: #ccc;
+  z-index: 0;
+  height: 650px;
 }

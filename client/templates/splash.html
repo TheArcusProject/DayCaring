@@ -1,7 +1,7 @@
 <template name="splash">
 
   <div id="search" class="row">
-    <div class="small-6 small-centered columns">
+    <div class="small-12 medium-6 large-4 small-centered columns">
       <img id="magnify" src="/mg02.svg">
       <h1>Find the perfect daycare.</h1>
       <form>
@@ -10,5 +10,11 @@
       </form>
     </div>
   </div>
+  <div id="map" class="map-container">
+
+    {{> googleMap name="splashMap" options=customMap}}
+  </div>
+
+
 
 </template>
