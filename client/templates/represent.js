@@ -22,3 +22,21 @@ Template.represent.helpers({
     })
   },
 })
+
+Template.represent.events({
+  'change #file': function(e){
+    //http://stackoverflow.com/questions/27934141/meteor-uploading-file-from-client-to-mongo-collection-vs-file-system-vs-gridfs
+    e.preventDefault();
+    console.log(e);
+    var reader = new FileReader();
+
+    reader.onload = function(e){
+      var buffer = new Uint8Array(reader.result)
+      Meteor.call('insertPicture', FlowRouter.getParam('daycareId'), buffer);
+    }
+
+    reader.readAsArrayBuffer(e.target.files[0]);
+    // file is e.target.files[0]
+  },
+  
+})
