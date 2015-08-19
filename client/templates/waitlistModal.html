@@ -1,6 +1,6 @@
 <template name="waitlistModal">
   <h2 class="text-center centered">Waitlist for {{name}}</h2>
-  <form class="centered multi-form">
+  <form class="centered waitlistForm">
     <fieldset class="active">
       <legend>
         <h5 class="text-center fs-title">Register for the Waitlist</h5>
@@ -80,7 +80,8 @@
       </div>
     </fieldset>
     <div class="buttons">
-      <a href="#" class="button secondary next right" data-reveal-id="paymentModal">Next</a>
+      <button type="submit" class="btn btn-primary right">Next</button>
+      <!-- <a href="#" type="submit" class="button secondary next right" data-reveal-id="paymentModal">Next</a> -->
     </div>
   </form>
 </template>
