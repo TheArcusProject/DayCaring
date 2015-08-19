@@ -7,47 +7,81 @@
       </legend>
       <h6 class="fs-subtitle">Please enter the following info to be added to the waitlist</h6>
       <div class="row">
+        <div class="small-12 medium-12 columns">
+          <label for="">Name</label>
+          <input type="text" name="parentName" placeholder="Parent Name">
+        </div>
+      </div>
+      <!--Child 1-->
+      <div class="row">
         <div class="small-12 medium-6 columns">
-          <label for="">First Name</label>
-          <input type="text" name="firstName" placeholder="First Name">
+          <label for="">Child #1</label>
+          <input type="text" name="firstChildName" placeholder="Child Name">
         </div>
         <div class="small-12 medium-6 columns">
-          <label for="">Last Name</label>
-          <input type="text" name="lastName" placeholder="Last Name">
+          <label for="">Age of Child</label>
+          <input type="number" name="firstChildAge" placeholder="Age of Child">
+        </div>
+      </div>
+      <!--Child2-->
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <label for="">Child #2</label>
+          <input type="text" name="secondChildName" placeholder="Child Name">
+        </div>
+        <div class="small-12 medium-6 columns">
+          <label for="">Age of Child</label>
+          <input type="number" name="secondChildAge" placeholder="Age of Child">
+        </div>
+      </div>
+      <!--Child3-->
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <label for="">Child #3</label>
+          <input type="text" name="thirdChildName" placeholder="Child Name">
+        </div>
+        <div class="small-12 medium-6 columns">
+          <label for="">Age of Child</label>
+          <input type="number" name="thirdChildAge" placeholder="Age of Child">
+        </div>
+      </div>
+      <!--Requested start date/phone number-->
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <label for="">Desired Start Date</label>
+          <input type="date" name="startDate">
+        </div>
+        <div class="small-12 medium-6 columns">
+          <label for="">Phone Number</label>
+          <input type="text" name="phoneNumber" placeholder="Phone #">
+        </div>
+      </div>
+      <!--Address Line 1-->
+      <div class="row">
+        <div class="small-12 medium-12 columns">
+          <label for="">Address Line 1</label>
+          <input type="text" name="address1" placeholder="Address Line 1">
+        </div>
+      </div>
+      <!--Address Line 2-->
+      <div class="row">
+        <div class="small-12 medium-4 columns">
+          <label for="">City</label>
+          <input type="text" name="city" placeholder="City">
+        </div>
+        <div class="small-12 medium-4 columns">
+          <label for="">State</label>
+          <input type="text" name="state" placeholder="State">
+        </div>
+        <div class="small-12 medium-4 columns">
+          <label for="">Zip Code</label>
+          <input type="text" name="zipcode" placeholder="Zip Code">
         </div>
       </div>
     </fieldset>
     <div class="buttons">
-      
       <a href="#" class="button secondary next right" data-reveal-id="paymentModal">Next</a>
       <button class="submit right">Submit</button>
     </div>
   </form>
 </template>
-
-<!-- <template name="paymentModal">
-  <h2 class="text-center centered">Waitlist for {{name}}</h2>
-  <form class="centered multi-form">
-    <fieldset>
-      <legend>
-        <h5 class="text-center fs-title">
-    		  Enter Payment Information
-    		</h5>
-      </legend>
-      <h6>
-    		Please fill out the following form to waive the $50 waitlist fee.
-    	</h6>
-      <div class="row">
-        <div class="small-12 columns">
-          <label for="">Credit Card Number</label>
-          <input type="string" name="ccNum" placeholder="Enter Credit Card Number">
-        </div>
-      </div>
-    </fieldset>
-    <div class="buttons">
-    <a href="#" class="button secondary prev left" data-reveal-id="waitlistModal">
-    Prev</a>
-    <a class="button secondary next right">Next</a>
-    </div>
-  </form>
-</template> -->
