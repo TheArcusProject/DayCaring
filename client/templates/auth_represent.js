@@ -9,7 +9,7 @@ Template.auth_represent.events({
     event.preventDefault();
     var email = event.target.email.value;
     if (validateEmail(email)) {
-      Meteor.call("sendEmail", email, function(err, results) {
+      Meteor.call("sendEmail", email, FlowRouter.getParam('daycareId'), function(err, results) {
         if (err) {
           toastr.warning("Failed to send!");
         } else {
@@ -20,7 +20,6 @@ Template.auth_represent.events({
     } else {
       toastr.warning('Not a valid email!');
     }
-
   },
 
   "submit .form2": function(event) {
@@ -38,3 +37,19 @@ Template.auth_represent.events({
   },
 
 });
+
+Template.auth_represent.helpers({
+  isLoggedIn : function () {
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  getUIDandDCID : function(){
+    var thing = {};
+    thing.userId = user._id
+    thing.daycareId = FlowRouter.getParam('daycareId');
+    return thing;
+  }
+})
