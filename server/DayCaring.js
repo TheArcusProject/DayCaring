@@ -132,7 +132,8 @@ Meteor.methods({
       currency: 'usd',
       source: stripeToken
     }, function(err, charge) {
-      console.log(err, charge)
+      console.log("this is err", err)
+      console.log("this is charge", charge)
     });
   }
 })
