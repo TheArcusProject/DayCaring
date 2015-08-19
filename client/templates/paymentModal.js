@@ -23,7 +23,7 @@ Template.paymentModal.events({
       //add user to collection
       var daycare = this.iD;
       var currentUser = Meteor.user();
-      Meteor.call('addToWaitlist', daycare, currentUser.profile.name, function(err, results) {
+      Meteor.call('addToWaitlist', daycare, currentUser.profile.name, parentName, childName, age, address, city, zippycode, phoneNumber, startDate, function(err, results) {
         if(err) console.log(err);
       })
     });
