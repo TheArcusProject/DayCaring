@@ -5,3 +5,5 @@ DayCaring is an app designed for parents and daycare owners to locate and connec
 DayCaring has a comprehensive list of all Day Cares and Preschools in the state of Texas.  We pull registration and compliance data for all schools from data.Texas.gov.
 
 Important: to populate MongoDB the first time, uncomment the relevant sections of DayCaring.js in the server folder and zipCodeFileParse.js in the server folder.
+
+To run the application in the command line interface, type "meteor --settings settings.json".
