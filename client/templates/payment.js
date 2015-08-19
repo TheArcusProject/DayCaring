@@ -1,20 +1,13 @@
-// Meteor.startup(function(){
-//   var stripeKey = Meteor.settings.public.stripe.testPublishableKey;
-//   Stripe.setPublishableKey(stripeKey);
+Template.payment.onCreated(function() {
 
-//   STRIPE = {
-//     getToken: function (domElement, card, cb) {
-//       Stripe.card.createToken(card, function(status, response) {
-//         if(response.error) {
-//           alert(response.error.message, "danger");
-//         } else {
-//           STRIPE.setToken(response.id, domElement, cb);
-//         }
-//       });
-//     },
-//     setToken: function (token, domElement, cb) {
-//       $(domElement).append($("<input type='hidden' name='stripeToken' />").val(token));
-//       cb();
-//     }
-//   };
-// });
+	STRIPE.getToken('#ccsubmit', {
+		ccNum: $('[data-stripe="cardNumber"]').val(),
+		expMon: $('[data-stripe="expMo"').val(),
+		expYr: $('[data-stripe="expYr"').val(),
+		cvc: $('[data-stripe="cvc"').val()
+	}, function(status, response) {
+		 	stripeToken = response.id;
+		 	Meteor.call("chargeCard", stripeToken);
+	})
+	
+})

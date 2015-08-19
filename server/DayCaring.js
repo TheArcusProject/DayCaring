@@ -1,6 +1,9 @@
 
 var code;
 
+var secret = Meteor.settings.private.stripe.testSecretKey;
+var Stripe = StripeAPI(secret);
+
 //DayCaring.js : server only
 // Contains:
 // startup code
@@ -21,7 +24,6 @@ Meteor.startup(function() {
   daycares = new Mongo.Collection('daycares');
   zipCodes = new Mongo.Collection('zipCodes');
   reviews = new Mongo.Collection('reviews');
-
 
   // daycareData["09701411"] = {"name":"Inaccessable Daycare","address":"The Only Shack On The Island","phone":"479-387-8940","email":"Redford.john.m@gmail.com","website":"http://xkcd.com","accepts":"4 To 12","hours":"N/A","days":"N/A","parttime":"N/A","transportation":"N/A","capacity":"27","lat":"-37.3","lng":"-12.67","violations":[]}
   // //
@@ -107,7 +109,7 @@ Meteor.methods({
     }
   },
   chargeCard: function(stripeToken) {
-    var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');
+    var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production
     Stripe.charges.create({
       amount: 1000,
       currency: 'usd',
