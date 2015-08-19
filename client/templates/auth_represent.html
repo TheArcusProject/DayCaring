@@ -31,6 +31,8 @@
   </div>
 
   <div id="repAuthModal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  {{> repAuthModal}}
+  {{#with getUIDandDCID}}
+    {{> repAuthModal}}
+  {{/with}}
   </div>
 </template>

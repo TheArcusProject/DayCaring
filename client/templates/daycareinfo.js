@@ -57,7 +57,7 @@ Template.daycareinfo.helpers({
 Template.daycareinfo.events({
   'click .represent': function(e) {
     e.preventDefault();
-    FlowRouter.go('/authrepresent');
+    FlowRouter.go('/authrepresent/'+ FlowRouter.getParam('daycareId'));
   },
   'click .backToResults': function(e){
     e.preventDefault();
