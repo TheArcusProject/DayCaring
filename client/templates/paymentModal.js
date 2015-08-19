@@ -1,23 +1,3 @@
-// Template.paymentModal.helpers({
-
-//   getStripeToken: STRIPE.getToken('#ccsubmit', {
-//     ccNum: $('[data-stripe="cardNumber"]').val(),
-//     expMon: $('[data-stripe="expMo"').val(),
-//     expYr: $('[data-stripe="expYr"').val(),
-//     cvc: $('[data-stripe="cvc"').val()
-//   }, function(status, response) {
-//     stripeToken = response.id;
-//     Meteor.call("chargeCard", stripeToken, function(err, charge) {
-//       if (err) {
-//         console.log(err)
-//       } else {
-//         console.log(charge)
-//       }
-//     });
-//   })
-
-// })
-
 Template.paymentModal.events({
   "click #ccsubmit": function(e) {
     ccNum = $('[data-stripe="cardNumber"]').val();
