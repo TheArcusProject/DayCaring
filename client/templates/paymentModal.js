@@ -18,11 +18,14 @@ Template.paymentModal.events({
           console.log("ERROR", err)
         } else {
           console.log("add this user to database!")
-          //add user to collection
         }
       });
+      //add user to collection
+      var daycare = this.iD;
+      var currentUser = Meteor.user();
+      Meteor.call('addToWaitlist', daycare, currentUser.profile.name, function(err, results) {
+        if(err) console.log(err);
+      })
     });
-
-
   }
 })

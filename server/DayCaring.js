@@ -144,7 +144,30 @@ Meteor.methods({
       file:file,
       daycareId:daycareId
     });
+  },
+  addToWaitlist: function(daycareId, user) {
+    var currentUser = Meteor.user();
+
+    waitlists.insert({
+      daycareId: daycareId,
+      user: currentUser,
+      children: [ 
+        { childName: childName,
+         age: age }
+        ],
+      address: address,
+      city: city,
+      zipcode: zippycode,
+      phone: phoneNumber,
+      startDate: startDate,
+      createdAt: new Date()
+    });
+    daycares.update({
+      iD: daycareId
+    }, { $push: { waitlist: waitlists._id }}
+    )
   }
+
 })
 
 

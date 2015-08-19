@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-    <div class="medium-6 columns" data-equializer-watch>
+    <div class="medium-6 columns" data-equalizer-watch>
       <div class="row">
           <div class="small-10 columns panel">
             {{#if isReady 'daycares'}}
@@ -24,6 +24,16 @@
             {{/if}}
           </div>
         </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-10 columns panel" data-equalizer-watch>
+      <h4>Waitlist</h4>
+      {{#if isReady 'waitlists'}}
+        {{#each getWaitlist}}
+        {{/each}}
+      {{/if}}
     </div>
   </div>
   

@@ -20,7 +20,7 @@ Meteor.startup(function() {
   var stripeKey = Meteor.settings.public.stripe.testPublishableKey;
   Stripe.setPublishableKey(stripeKey);
   waitlists.insert({'daycareID':'9999', 'userID': '1000', 'children': [{"name": "cora", "age": 2}], 'address': '78201 South Street, Austin TX 78709', 'phone': '512555555', 'email': 'johndoe@john.doe', 'startDate': '08/20/2015'})
-  //daycares.update({iD: daycareID}, { $push: { waitlist: waitlists._id })
+  //daycares.update({iD: daycareID}, { $push: { waitlist: waitlists._id }})
 });
 
 // example daycare
