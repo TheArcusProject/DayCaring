@@ -18,7 +18,7 @@ Meteor.startup(function() {
   //  Meteor.publish
   //  Meteor.subscribe
 
-  daycareAdmins = new Mongo.Collection('daycareAdmins') 
+  daycareAdmins = new Mongo.Collection('daycareAdmins')
   //The client should NEVER subscribe to daycareAdmins
 
   daycares = new Mongo.Collection('daycares');
@@ -40,7 +40,25 @@ Meteor.startup(function() {
 
 });
 
+var hash = function(str) {
+
+  var arr = str.split(""),
+      retVal = 1;
+
+  for (var i=0; i < arr.length; i++) {
+    retVal *= (parseInt(arr[i]) + 4);
+    console.log("retVal inside for loop : ", retVal);
+  }
+
+  retVal *= ((parseInt(arr[2]) + 2) % 10) + 1;
+  retVal *= ((parseInt(arr[4]) + 2) % 10) + 1;
+  console.log("retVal inside hash func :", retVal)
+
+  return retVal
+};
+
 Meteor.methods({
+
   sendEmail: function(email, daycareId) {
     // Important server-side check for security and data integrity
     // Build the e-mail text
@@ -61,7 +79,7 @@ Meteor.methods({
     console.log(phoneNumber);
     var twilio = Twilio('AC528f5b6507742d3b1930a5ef129880d5', '8cb9b6181585aacbaf0e60c54fdef8f3');
     var num = Math.floor(Math.random() * 90000) + 10000;
-    daycares.update({iD:daycareId}, {$set: {authCode: num}});
+    daycares.update({iD:daycareId}, {$set: {authCode: ''+num}});
     this.unblock();
     twilio.sendSms({
       to: phoneNumber, // any number Twilio can deliver to
@@ -97,7 +115,7 @@ Meteor.methods({
   },
   insertComments: function(comment, daycareId, userName) {
     var currentUser = Meteor.user();
-    
+
     if(currentUser) {
       reviews.insert({
         comment: comment,
