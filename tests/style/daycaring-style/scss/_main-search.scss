@@ -10,8 +10,13 @@
   // margin-top: 5%;
   position: absolute;
   z-index: 2;
+  min-width: 100%;
   h1 {
     text-align: center;
+    // background-color: #fff;
+    border-bottom: 4px solid #fff;
+    background-color: #5A97A7;
+    color: #fff;
   }
   h4 {
     text-align: center;
@@ -37,4 +42,5 @@ input[type="text"] {
 #map {
   // background-color: #ccc;
   z-index: 0;
+  height: 650px;
 }
