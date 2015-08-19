@@ -1,16 +1,16 @@
 <template name="daycareinfo">
   <div class="row">
     <div class="small-12 columns">
-    <div id="daycareinfo" class="row" data-equalizer>
-      <div id="localmap" class="small-12 medium-4 columns" data-equalizer-watch>
-        {{#if isReady 'daycares'}}
-          {{#with getDaycare}}
-            {{> gmap}}
-          {{/with}}
-        {{/if}}
-      </div>
+      <div id="daycareinfo" class="row" data-equalizer>
+        <div id="localmap" class="small-12 medium-4 columns" data-equalizer-watch>
+          {{#if isReady 'daycares'}}
+            {{#with getDaycare}}
+              {{> gmap}}
+            {{/with}}
+          {{/if}}
+        </div>
 
-      <div class="small-12 medium-8 columns panel" data-equalizer-watch>
+        <div class="small-12 medium-8 columns panel" data-equalizer-watch>
           {{#if isReady 'daycares'}}
             {{#each getDaycare}}
               <ul>
@@ -43,51 +43,54 @@
               </div>
             {{/each}}
           {{/if}}
+        </div>
+      </div>
+
+      <div class="row">
+        <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
+      </div>
+
+      <div id="stats" class="row">
+        {{#if isReady 'daycares'}}
+          {{#each getDaycare}}
+            {{> stats}}
+          {{/each}}
+        {{/if}}
+      </div>
+
+      <div id="reviews" class="row">
+        <h4>Daycare Reviews</h4>
+        <div class="small-12 columns">
+          {{#if isReady 'reviews'}}
+            {{#with getReviews}}
+              {{#if hasReviews}}
+                {{#with getReviews}}
+                  {{> review}}
+                {{/with}}
+              {{else}}
+                <h5>No reviews yet, login to write one!</h5>
+              {{/if}}
+            {{/with}}
+          {{/if}}
+        </div>
+      </div>
+
+      <div id="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+        {{#if isReady 'daycares'}}
+          {{#each getDaycare}}
+            {{> reviewModal}}
+          {{/each}}
+        {{/if}}
+      </div>
+
+      <div id="waitlistModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
+        {{> waitlistModal}}
+      </div>
+
+      <div id="paymentModal" class="reveal-modal" data-reveal aria-labelledby="anotherModalTitle" aria-hidden="true" role="dialog">
+        {{> paymentModal}}
       </div>
     </div>
-
-    <div class="row">
-      <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
-    </div>
-
-    <div id="stats" class="row">
-      {{#if isReady 'daycares'}}
-        {{#each getDaycare}}
-          {{> stats}}
-        {{/each}}
-      {{/if}}
-    </div>
-
-  <div id="reviews" class="row">
-    <h4>Daycare Reviews</h4>
-    <div class="small-12 columns">
-      {{#if isReady 'reviews'}}
-        {{#with getReviews}}
-          {{#if hasReviews}}
-            {{#with getReviews}}
-              {{> review}}
-            {{/with}}
-          {{else}}
-            <h5>No reviews yet, login to write one!</h5>
-          {{/if}}
-        {{/with}}
-      {{/if}}
-    </div>
-
-  <div id="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-    {{#if isReady 'daycares'}}
-      {{#each getDaycare}}
-        {{> reviewModal}}
-      {{/each}}
-    {{/if}}
-  </div>
-
-  <div id="waitlistModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
-    {{> waitlistModal}}
-  </div>
-
-  <div id="paymentModal" class="reveal-modal" data-reveal aria-labelledby="anotherModalTitle" aria-hidden="true" role="dialog">
-    {{> paymentModal}}
   </div>
 
 </template>
