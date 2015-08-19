@@ -43,6 +43,15 @@
         </div>
       </div>
       <div class="row">
+        <div class="small-block-grid-5">
+          {{#if isReady 'pictures'}}
+            {{#with getPictures}}
+              {{> pictureRow}}
+            {{/with}}
+          {{/if}}
+        </div>
+      </div>
+      <div class="row">
         <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
       </div>
       <div id="stats" class="row">
