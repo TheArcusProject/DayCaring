@@ -20,7 +20,7 @@ Meteor.startup(function() {
   var stripeKey = Meteor.settings.public.stripe.testPublishableKey;
   Stripe.setPublishableKey(stripeKey);
   waitlists.insert({'daycareID':'9999', 'userID': '1000', 'children': [{"name": "cora", "age": 2}], 'address': '78201 South Street, Austin TX 78709', 'phone': '512555555', 'email': 'johndoe@john.doe', 'startDate': '08/20/2015'})
-
+  //daycares.update({iD: daycareID}, { $push: { waitlist: waitlists._id })
 });
 
 // example daycare
@@ -55,5 +55,6 @@ Meteor.startup(function() {
 //       "violation":"747.35",
 //       "risk":"High"
 //     }
-//   ]
+//   ],
+//	"waitlist": [1234, 15544, 23345]
 // }

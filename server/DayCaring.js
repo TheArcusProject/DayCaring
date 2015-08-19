@@ -179,3 +179,7 @@ Meteor.publish("daycarePhotos", function(daycareId) {
   return pictures.find({daycareId:""+daycareId+""});
 });
 
+Meteor.publish("getWaitlist", function(daycareId) {
+  return waitlists.find({daycare: ""+daycareId+""}); 
+})
+
