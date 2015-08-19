@@ -10,15 +10,7 @@ Template.waitlistModal.events({
 		zippycode = event.target.zippycode.value;
 		phoneNumber = event.target.phoneNumber.value;
 		startDate = event.target.startDate.value;
-		console.log("this is parent name", parentName)
-		console.log("this is childName", childName)
-		console.log("this is address", address)
-		console.log('this is age', age)
-		console.log('this is city', city)
-		console.log('this is state', state)
-		console.log('this is zippycode', zippycode)
-		console.log('this is phoneNumber', phoneNumber)
-		console.log('this is startDate', startDate)
+		event.target.parentName.value = event.target.firstChildName.value = event.target.address1.value = event.target.firstChildAge.value = event.target.city.value = event.target.state.value = event.target.zippycode.value = event.target.phoneNumber.value = event.target.startDate.value = ""
 		$('#paymentModal').foundation('reveal', 'open');
 	}
 })
