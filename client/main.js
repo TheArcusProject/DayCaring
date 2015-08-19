@@ -2,9 +2,6 @@ daycares = new Mongo.Collection('daycares');
 zipCodes = new Mongo.Collection('zipCodes');
 reviews = new Mongo.Collection('reviews');
 
-var secret = Meteor.settings.private.stripe.testSecretKey;
-var Stripe = StripeAPI(secret);
-
 Deps.autorun( function() {  //turns user into a reactive variable??
   user = Meteor.user();
   if(user){
