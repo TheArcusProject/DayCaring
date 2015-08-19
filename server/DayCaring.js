@@ -96,7 +96,7 @@ Meteor.methods({
   checkValidation: function(userCode, daycareId, userId){
     var dc = daycares.find({iD:daycareId}).fetch()[0];
 
-    if (hash(''+userCode) === dc.authCode) {
+    if (userCode === dc.authCode) {
       daycareAdmins.insert({daycareId:daycareId, userId:userId});
       return true;
     }
