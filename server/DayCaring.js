@@ -25,6 +25,7 @@ Meteor.startup(function() {
   zipCodes = new Mongo.Collection('zipCodes');
   reviews = new Mongo.Collection('reviews');
   waitlists = new Mongo.Collection('waitlists');
+  pictures = new Mongo.Collection('pictures');
 
   // daycareData["09701411"] = {"name":"Inaccessable Daycare","address":"The Only Shack On The Island","phone":"479-387-8940","email":"Redford.john.m@gmail.com","website":"http://xkcd.com","accepts":"4 To 12","hours":"N/A","days":"N/A","parttime":"N/A","transportation":"N/A","capacity":"27","lat":"-37.3","lng":"-12.67","violations":[]}
   // //
@@ -107,6 +108,7 @@ Meteor.methods({
   },
   checkAdmin: function(daycareId, userId){
     var dcAdmins = daycareAdmins.find({daycareId:daycareId}).fetch()
+
     for (var i = 0; i < dcAdmins.length; i++){
       if (dcAdmins[i].userId === userId) {
         return true;
@@ -135,6 +137,12 @@ Meteor.methods({
     }, function(err, charge) {
       console.log("this is err", err)
       console.log("this is charge", charge)
+    });
+  },
+  insertPicture: function(daycareId, file){  
+    pictures.insert({
+      file:file,
+      daycareId:daycareId
     });
   }
 })
