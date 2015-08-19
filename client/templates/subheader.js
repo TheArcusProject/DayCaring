@@ -11,10 +11,7 @@ Template.subheader.helpers({
     } else {
       return false;
     }
-  },
-	daycareName: function(){
-    return this.name;
-	}
+  }
 });
 
 Template.subheader.events({
@@ -29,6 +26,10 @@ Template.subheader.events({
   'click .review': function(e) {
     e.preventDefault();
     $('#reviewModal').foundation('reveal', 'open');
+  },
+  'click .waitlist': function(e){
+    e.preventDefault();
+    $('#waitlistModal').foundation('reveal', 'open');
   }
 })
 

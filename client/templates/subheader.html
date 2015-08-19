@@ -1,17 +1,19 @@
 <template name="subheader">
-
   <div class="row">
     <div id="subheader" class="small-12 columns">
       <!-- <h2>{{name}}</h2> -->
       {{#if isLoggedIn}}
-        <a href="#" class="button small review" data-reveal-id="reviewModal">Write a Review</a>
+      <a href="#" class="button review" data-reveal-id="reviewModal">Write a Review</a>
+      <a href="#" class="button waitlist" data-reveal-id="waitlistModal">Join Waitlist</a>
+      <button type="button" class="button represent">Represent this Daycare</button>
       {{/if}}
-      <button type="button" class="button small represent">Represent this Daycare</button>
-      <button type="button" class="button small backToResults">Return to Search Results</button>
+      <button type="button" class="button backToResults">Return to Search Results</button>
     </div>
   </div>
-
   <div id="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     {{> reviewModal}}
+  </div>
+  <div id="waitlistModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
+    {{> waitlistModal}}
   </div>
 </template>
