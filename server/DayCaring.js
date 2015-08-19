@@ -144,7 +144,31 @@ Meteor.methods({
       file:file,
       daycareId:daycareId
     });
+  },
+  addToWaitlist: function(daycareId, user, parentName, childName, age, address, city, zippycode, phoneNumber, startDate) {
+    var currentUser = Meteor.user();
+
+    waitlists.insert({
+      daycareId: daycareId,
+      user: currentUser,
+      parent: parentName,
+      children: [ 
+        { childName: childName,
+         age: age }
+        ],
+      address: address,
+      city: city,
+      zipcode: zippycode,
+      phone: phoneNumber,
+      startDate: startDate,
+      createdAt: new Date()
+    });
+    daycares.update({
+      iD: daycareId
+    }, { $push: { waitlist: waitlists._id }}
+    )
   }
+
 })
 
 
@@ -178,4 +202,8 @@ Meteor.publish("aDaycare", function(daycareId) {
 Meteor.publish("daycarePhotos", function(daycareId) {
   return pictures.find({daycareId:""+daycareId+""});
 });
+
+Meteor.publish("getWaitlist", function(daycareId) {
+  return waitlists.find({daycare: ""+daycareId+""}); 
+})
 
