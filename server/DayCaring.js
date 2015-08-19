@@ -21,7 +21,7 @@ Meteor.startup(function() {
 
 
   // daycareData["09701411"] = {"name":"Inaccessable Daycare","address":"The Only Shack On The Island","phone":"479-387-8940","email":"Redford.john.m@gmail.com","website":"http://xkcd.com","accepts":"4 To 12","hours":"N/A","days":"N/A","parttime":"N/A","transportation":"N/A","capacity":"27","lat":"-37.3","lng":"-12.67","violations":[]}
-  //
+  // //
   // console.log('removing daycares');
   // daycares.remove({});
   // for (key in daycareData){

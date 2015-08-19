@@ -17,6 +17,17 @@
         </div>
       </div>
     </fieldset>
+    <div class="buttons">
+      
+      <a href="#" class="button secondary next right" data-reveal-id="paymentModal">Next</a>
+      <button class="submit right">Submit</button>
+    </div>
+  </form>
+</template>
+
+<template name="paymentModal">
+  <h2 class="text-center centered">Waitlist for {{name}}</h2>
+  <form class="centered multi-form">
     <!--Second Section of Multi Form-->
     <fieldset>
       <legend>
@@ -30,14 +41,14 @@
       <div class="row">
         <div class="small-12 columns">
           <label for="">Credit Card Number</label>
-          <input type="number" name="ccNum" placeholder="Enter Credit Card Number">
+          <input type="string" name="ccNum" placeholder="Enter Credit Card Number">
         </div>
       </div>
     </fieldset>
     <div class="buttons">
-      <a class="button secondary prev left">Prev</a>
-      <a class="button secondary next right">Next</a>
-      <button class="submit right">Submit</button>
+    <a href="#" class="button secondary prev left" data-reveal-id="waitlistModal">
+    Prev</a>
+    <a class="button secondary next right">Next</a>
     </div>
   </form>
 </template>
