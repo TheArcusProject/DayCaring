@@ -128,11 +128,11 @@ Meteor.methods({
   chargeCard: function(stripeToken) {
     var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production
     Stripe.charges.create({
-      amount: 1,
+      amount: 50,
       currency: 'usd',
       source: stripeToken
     }, function(err, charge) {
-      console.log(err, charge);
+      console.log(err, charge)
     });
   }
 })
