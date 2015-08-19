@@ -1,4 +1,6 @@
 //to include in html add {{> daycareinfo}}
+var isUserAdminReact = new ReactiveVar(false);
+
 Template.daycareinfo.helpers({
   isLoggedIn : function () {
     if (user) {
@@ -13,6 +15,12 @@ Template.daycareinfo.helpers({
     } else {
       return FlowRouter.subsReady();
     }
+  },
+  isUserAdmin: function() {
+    Meteor.call('checkAdmin',FlowRouter.getParam('daycareId'),user._id, function(err,result){
+      isUserAdminReact.set(result);
+    })
+    return isUserAdminReact.get();
   },
   getDaycare: function() {
     var dc = daycares.find().fetch();
@@ -66,6 +74,10 @@ Template.daycareinfo.events({
   'click .review': function(e) {
     e.preventDefault();
     $('#reviewModal').foundation('reveal', 'open');
+  },
+  'click .admin': function(e) {
+    e.preventDefault();
+    FlowRouter.go('/represent/'+ FlowRouter.getParam('daycareId'));
   }
 });
 
