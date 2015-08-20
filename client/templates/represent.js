@@ -27,7 +27,7 @@ Template.represent.events({
   'change #file': function(e){
     //http://stackoverflow.com/questions/27934141/meteor-uploading-file-from-client-to-mongo-collection-vs-file-system-vs-gridfs
     e.preventDefault();
-    console.log(e);
+    
     var reader = new FileReader();
 
     reader.onload = function(e){

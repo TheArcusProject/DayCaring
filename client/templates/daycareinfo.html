@@ -45,9 +45,9 @@
       <div class="row">
         <div class="small-block-grid-5">
           {{#if isReady 'pictures'}}
-            {{#with getPictures}}
+            {{#each getPictures}}
               {{> pictureRow}}
-            {{/with}}
+            {{/each}}
           {{/if}}
         </div>
       </div>
