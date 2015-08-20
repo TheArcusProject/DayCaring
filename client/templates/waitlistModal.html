@@ -1,11 +1,11 @@
 <template name="waitlistModal">
-  <h2 class="text-center centered">Waitlist for {{name}}</h2>
+  <h2 class="text-center centered">Waitlist for {{getDaycareName}}</h2>
   <form class="centered waitlistForm">
     <fieldset class="active">
       <legend>
         <h5 class="text-center fs-title">Register for the Waitlist</h5>
       </legend>
-      <h6 class="fs-subtitle">Please enter the following info to be added to the waitlist</h6>
+      <h6 class="fs-subtitle">Please enter the following info to be added to the waitlist!</h6>
       <div class="row">
         <div class="small-12 medium-12 columns">
           <label for="">Name</label>
@@ -20,7 +20,7 @@
         </div>
         <div class="small-12 medium-6 columns">
           <label for="">Age of Child</label>
-          <input type="number" name="firstChildAge" placeholder="Age of Child">
+          <input type="text" name="firstChildAge" placeholder="Age of Child">
         </div>
       </div>
       <!--Child2-->

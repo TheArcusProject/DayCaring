@@ -68,7 +68,7 @@
         {{#if isReady 'daycares'}} {{#each getDaycare}} {{> reviewModal}} {{/each}} {{/if}}
       </div>
       <div id="waitlistModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
-        {{> waitlistModal}}
+        {{#if isReady 'daycares'}} {{#each getDaycare}} {{> waitlistModal}} {{/each}} {{/if}}
       </div>
       <div id="paymentModal" class="reveal-modal" data-reveal aria-labelledby="anotherModalTitle" aria-hidden="true" role="dialog">
         {{> paymentModal}}

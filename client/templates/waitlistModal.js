@@ -1,3 +1,9 @@
+Template.waitlistModal.helpers({
+	getDaycareName: function() {
+	  return this.name;
+	}
+})
+
 Template.waitlistModal.events({
   "submit .waitlistForm": function(event) {
     event.preventDefault();
