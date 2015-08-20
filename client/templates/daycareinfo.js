@@ -35,7 +35,6 @@ Template.daycareinfo.helpers({
   },
   getPictures: function() {
     var picturesArr = pictures.find().fetch();
-    console.log(picturesArr);
     return picturesArr;
   },
   hasReviews: function() {
