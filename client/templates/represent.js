@@ -38,5 +38,12 @@ Template.represent.events({
     reader.readAsArrayBuffer(e.target.files[0]);
     // file is e.target.files[0]
   },
-  
-})
+
+  "submit #description" : function(e){
+    console.log(e.currentTarget[0].value)
+    e.preventDefault();
+    if (e.currentTarget[0].value){
+      Meteor.call('addDescription', FlowRouter.getParam('daycareId'), e.currentTarget[0].value)
+    }
+  },
+});
