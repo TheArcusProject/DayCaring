@@ -16,6 +16,10 @@ Template.represent.helpers({
     revObj.isAdmin = true;
     return revObj; 
   },
+  getPictures: function() {
+    var picturesArr = pictures.find().fetch();
+    return picturesArr;
+  },
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -36,6 +40,7 @@ Template.represent.events({
     }
 
     reader.readAsArrayBuffer(e.target.files[0]);
+    toastr.success('Image Uploaded!')
     // file is e.target.files[0]
   },
 

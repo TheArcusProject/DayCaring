@@ -1,53 +1,47 @@
 <template name="represent">
   <div class="row">
     <div class="small-12 columns" data-equalizer-watch>
-        <div class="row">
-          <div class="small-10 columns panel">
-            {{#if isReady 'daycares'}}
-              {{#each getDaycare}}
-                <form id='description'>
-                  <h4>Describe {{toTitleCase name}}</h4>
-                  <textarea rows="10" id="descriptionText" placeholder="Describe your daycare."></textarea>
-                  <button type="submit" form="description" value="Submit">Submit</button>
-                </form>
-              {{/each}}
-            {{/if}}
-          </div>
+      <div class="row">
+        <div class="small-10 columns panel">
+          {{#if isReady 'daycares'}} {{#each getDaycare}}
+          <form id='description'>
+            <h4>Describe {{toTitleCase name}}</h4>
+            <textarea rows="10" id="descriptionText" placeholder="Describe your daycare."></textarea>
+            <button type="submit" form="description" value="Submit">Submit</button>
+          </form>
+          {{/each}} {{/if}}
         </div>
       </div>
+    </div>
     <div class="small-12 columns" data-equalizer-watch>
       <div class="row">
-          <div class="small-10 columns panel">
-            {{#if isReady 'daycares'}}
-              {{#each getDaycare}}
-                <h4>Upload pictures</h4>
-                <input type="file" id="file" />
-              {{/each}}
-            {{/if}}
-          </div>
+        <div class="small-10 columns panel">
+          {{#if isReady 'daycares'}} {{#each getDaycare}}
+          <h4>Upload pictures</h4>
+          <input type="file" id="file" /> {{/each}} {{/if}}
         </div>
+      </div>
+      <div class="row">
+        <div class="small-block-grid-5">
+          <ul class="small-block-grid-3">
+            {{#if isReady 'pictures'}} {{#each getPictures}}
+            <li>
+              {{> pictureRow}}
+            </li>
+            {{/each}} {{/if}}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-
   <div class="row">
     <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Waitlist</h4>
-      {{#if isReady 'waitlists'}}
-        {{#each getWaitlist}}
-        {{/each}}
-      {{/if}}
+      <h4>Waitlist</h4> {{#if isReady 'waitlists'}} {{#each getWaitlist}} {{/each}} {{/if}}
     </div>
   </div>
-  
   <div class="row">
     <div class="small-12 columns panel">
-    <h4>Daycare Reviews</h4>
-      {{#if isReady 'reviews'}}
-        {{#with getReviews}}
-          {{> review}}
-        {{/with}}
-      {{/if}}
+      <h4>Daycare Reviews</h4> {{#if isReady 'reviews'}} {{#with getReviews}} {{> review}} {{/with}} {{/if}}
     </div>
   </div>
-
 </template>
