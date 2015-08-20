@@ -8,7 +8,8 @@ Template.auth_represent.events({
   "submit .form1": function(event) {
     event.preventDefault();
     var email = event.target.email.value;
-    if (validateEmail(email)) {
+    var officialEmail = daycares.find({}).fetch()[0].email;
+    if (validateEmail(email) && email === officialEmail) {
       Meteor.call("sendEmail", email, FlowRouter.getParam('daycareId'), function(err, results) {
         if (err) {
           toastr.warning("Failed to send!");
@@ -25,6 +26,7 @@ Template.auth_represent.events({
   "submit .form2": function(event) {
     event.preventDefault();
     var phone = event.target.phone.value;
+    var officialPhone = daycares.find({}).fetch()[0].phone;
     console.log("phone :", phone);
     Meteor.call("sendSMS", phone, function(err, results) {
       if (err) {
@@ -51,5 +53,12 @@ Template.auth_represent.helpers({
     thing.userId = user._id
     thing.daycareId = FlowRouter.getParam('daycareId');
     return thing;
+  },
+  isReady: function(sub) {
+    if(sub) {
+      return FlowRouter.subsReady(sub);
+    } else {
+      return FlowRouter.subsReady();
+    }
   }
 })
