@@ -28,6 +28,10 @@ Template.represent.helpers({
 })
 
 Template.represent.events({
+  'click .backToDaycare': function(e){
+    e.preventDefault();
+    FlowRouter.go('/' + FlowRouter.getParam('daycareId'));
+  },
   'change #file': function(e){
     //http://stackoverflow.com/questions/27934141/meteor-uploading-file-from-client-to-mongo-collection-vs-file-system-vs-gridfs
     e.preventDefault();
