@@ -1,5 +1,10 @@
 <template name="represent">
   <div class="row">
+    <div class="small-12 columns">
+      <button class="backToDaycare">Back to Daycare</button>
+    </div>
+  </div>
+  <div class="row">
     <div class="small-12 columns" data-equalizer-watch>
       <div class="row">
         <div class="small-10 columns panel">
@@ -23,7 +28,7 @@
       </div>
       <div class="row">
         <div class="small-10 columns panel">
-        <h4>Pictures</h4>
+          <h4>Pictures</h4>
           <div class="small-block-grid-5">
             <ul class="small-block-grid-3">
               {{#if isReady 'pictures'}} {{#each getPictures}}
