@@ -1,3 +1,8 @@
+Template.paymentModal.helpers({
+  getDaycareName: function() {
+    return this.name;
+  }
+})
 Template.paymentModal.events({
   "click #ccsubmit": function(e) {
     ccNum = $('[data-stripe="cardNumber"]').val();
