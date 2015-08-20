@@ -167,9 +167,8 @@ Meteor.methods({
       startDate: startDate,
       createdAt: new Date()
     });
-    var that = this;
-    console.log(that);
-    daycares.update({iD: daycareId}, {$push: {waitlist: that._id}});
+    console.log(this._id)
+    daycares.update({iD: daycareId}, {$push: {waitlist: this._id}});
   }
 
 })

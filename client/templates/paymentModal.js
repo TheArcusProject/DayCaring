@@ -35,6 +35,7 @@ Template.paymentModal.events({
           console.log("success");
         }
       })
+      console.log(this._id)
     });
   }
 })
