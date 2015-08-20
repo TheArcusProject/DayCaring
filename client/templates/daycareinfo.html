@@ -60,9 +60,13 @@
           </ul>
         </div>
       </div>
-      <div class="row">
+<!--       <div class="row">
+        <span>
         <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
-      </div>
+        <button id="violations" type="button" class="button tiny violations">Details</button>
+        </span>
+      </div> -->
+
       <div id="stats" class="row">
         {{#if isReady 'daycares'}} {{#each getDaycare}} {{> stats}} {{/each}} {{/if}}
       </div>
