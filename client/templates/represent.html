@@ -6,8 +6,11 @@
           <div class="small-10 columns panel">
             {{#if isReady 'daycares'}}
               {{#each getDaycare}}
-                <h4>Describe {{toTitleCase name}}</h4>
-                  <textarea rows="10" id="description" placeholder="Describe your daycare."></textarea>
+                <form id='description'>
+                  <h4>Describe {{toTitleCase name}}</h4>
+                  <textarea rows="10" id="descriptionText" placeholder="Describe your daycare."></textarea>
+                  <button type="submit" form="description" value="Submit">Submit</button>
+                </form>
               {{/each}}
             {{/if}}
           </div>
