@@ -11,10 +11,10 @@ Template.represent.helpers({
     return dc;
   },
   getReviews: function() {
-    var revObj
+    var revObj = {};
     revObj.reviews = reviews.find({},{sort:{createdAt:-1}}).fetch();
     revObj.isAdmin = true;
-    return rev; 
+    return revObj; 
   },
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
