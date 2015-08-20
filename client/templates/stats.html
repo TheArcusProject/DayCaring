@@ -50,11 +50,15 @@
       </div>
     </div>
   {{else}}
-    <div class="small-12 columns">
+    <div id="violationRows" class="small-12 columns">
+      <ul class="small-block-grid-3">
       {{#each getViolations}}
-      <h4>{{category}}</h4>
-      <p>risk : {{risk}} and {{desc}}</p>
+      <li>
+        <h4>{{category}}</h4>
+        <p>risk : {{risk}} and {{desc}}</p>
+      </li>
       {{/each}}
+    </ul>
     </div>
   {{/if}}
 </template>
