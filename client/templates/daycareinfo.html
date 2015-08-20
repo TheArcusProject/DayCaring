@@ -44,11 +44,15 @@
       </div>
       <div class="row">
         <div class="small-block-grid-5">
-          {{#if isReady 'pictures'}}
-            {{#each getPictures}}
-              {{> pictureRow}}
-            {{/each}}
-          {{/if}}
+          <ul class="small-block-grid-3">
+            {{#if isReady 'pictures'}}
+              {{#each getPictures}}
+                <li>
+                  {{> pictureRow}}
+                </li>
+              {{/each}}
+            {{/if}}
+          </ul>
         </div>
       </div>
       <div class="row">
