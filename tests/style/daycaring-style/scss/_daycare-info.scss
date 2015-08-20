@@ -5,6 +5,7 @@
 #daycareinfo {
   // max-width: 100px;
   border-bottom: 1px solid $white-smoke;
+  // min-height: 400px;
   .panel {
     background-color: #fff;
     border: none;
@@ -23,6 +24,10 @@
 
   .button {
     margin-top: 13px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -35,5 +40,6 @@
 #localmap {
   .map-container {
     height: 300px;
+    min-height: 300px;
   }
 }

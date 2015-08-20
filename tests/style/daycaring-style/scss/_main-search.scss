@@ -23,16 +23,16 @@
   h4 {
     text-align: center;
   }
-}
-
-input[type="text"] {
-  border: none;
-  box-shadow: 0 4px 2px #999999;
-  // border-bottom: 4px solid #999999;
-  :focus {
-    border-bottom: 4px solid $warning-color;
+  input[type="text"] {
+    border: none;
+    box-shadow: 0 4px 2px #999999;
+    // border-bottom: 4px solid #999999;
+    :focus {
+      border-bottom: 4px solid $warning-color;
+    }
   }
 }
+
 // .section1 {
 //   .map-container {
 //     height: 550px;
