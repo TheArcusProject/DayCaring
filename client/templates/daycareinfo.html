@@ -1,11 +1,11 @@
 <template name="daycareinfo">
   <div class="row">
     <div class="small-12 columns">
-      <div id="daycareinfo" class="row" data-equalizer>
-        <div id="localmap" class="small-12 medium-4 columns" data-equalizer-watch>
+      <div id="daycareinfo" class="row">
+        <div id="localmap" class="small-12 medium-4 columns">
           {{#if isReady 'daycares'}} {{#with getDaycare}} {{> gmap}} {{/with}} {{/if}}
         </div>
-        <div class="small-12 medium-8 columns panel" data-equalizer-watch>
+        <div class="small-12 medium-8 columns panel">
           {{#if isReady 'daycares'}} {{#each getDaycare}}
           <ul>
             <li>
@@ -36,7 +36,7 @@
               <button type="button" class="button small represent">Represent this Daycare</button>
               {{/if}}
               <button type="button" class="button small backToResults">Return to Search Results</button>
-              
+
             </div>
           </div>
           {{/each}} {{/if}}
