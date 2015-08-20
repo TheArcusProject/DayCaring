@@ -54,8 +54,11 @@
       <ul class="small-block-grid-3">
       {{#each getViolations}}
       <li>
-        <h4>{{category}}</h4>
-        <p>risk : {{risk}} and {{desc}}</p>
+        <span>
+          <h4>{{category}}</h4>
+          <p>Risk Level: {{risk}}</p>
+        </span>
+        <p>Description: {{desc}}</p>
       </li>
       {{/each}}
     </ul>
