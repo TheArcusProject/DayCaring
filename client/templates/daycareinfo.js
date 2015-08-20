@@ -82,7 +82,11 @@ Template.daycareinfo.events({
   'click .admin': function(e) {
     e.preventDefault();
     FlowRouter.go('/represent/'+ FlowRouter.getParam('daycareId'));
-  }
+  },
+  'click .waitlist': function(e) {
+    e.preventDefault();
+    $('#waitlistModal').foundation('reveal', 'open');
+  },
 });
 
 
