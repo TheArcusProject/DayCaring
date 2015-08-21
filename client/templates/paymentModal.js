@@ -33,9 +33,9 @@ Template.paymentModal.events({
           console.log(err);
         } else {
           console.log("success");
+          daycares.update({iD: daycare}, {$push: {waitlist: this._id}});
         }
       })
-      console.log(this._id)
     });
   }
 })
