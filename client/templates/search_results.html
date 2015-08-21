@@ -1,5 +1,14 @@
 <template name="search_results">
 
+
+  <div id="resultsToggle" class="row">
+    <div class="small-12 columns text-center">
+        <button id="toggleMap" type="button" class="button resultsToggleButton active text-center">Map</button>
+        <button id="toggleCards" type="button" class="button resultsToggleButton text-center">Cards</button>
+    </div>
+  </div>
+
+  {{#if showMapBool}}
   <div class="row">
     <div class="small-12 columns">
       {{#if isReady 'daycares'}}
@@ -9,7 +18,7 @@
       {{/if}}
     </div>
   </div>
-
+  {{else}}
   <div id="results" class="row">
     <div class="small-12 columns">
       <ul class="small-block-grid-3">
@@ -20,12 +29,13 @@
               <p> {{toTitleCase address}}, Texas
               <br>{{accepts}}
               <br>{{phone}}</p>
-              <a class="button small">more info</a>
+              <a class="button card small">more info</a>
             </li>
           {{/each}}
         {{/if}}
       </ul>
     </div>
   </div>
+  {{/if}}
 
 </template>

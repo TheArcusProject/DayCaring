@@ -21,6 +21,8 @@
 
 body {
   min-height: 400px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 #logo {
   height: 62px;

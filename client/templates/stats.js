@@ -56,7 +56,7 @@ Template.stats.helpers({
   getColor : function(num){
     var retStr = "progress ";
     if (this.widths[num] < 30) {
-      retSrt += "alert";
+      retStr += "alert";
     } else if (this.widths[num] < 60) {
       retStr += "secondary";
     } else if (this.widths[num] < 99) {

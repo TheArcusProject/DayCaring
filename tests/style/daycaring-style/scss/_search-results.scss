@@ -4,6 +4,33 @@
   background-color: $smoke;
 }
 
+#resultsToggle {
+  padding: 25px;
+  .resultsToggleButton {
+    background-color: $primary-color;
+    color: $white;
+    font-size: 1.2rem;
+    font-family: "Roboto";
+    display: inline-block;
+    box-shadow: 0 0px 0px #cccccc;
+    border: 4px solid $primary-color;
+    :hover {
+      box-shadow: 0 4px 3px #cccccc;
+      // background-color: $smoke;
+      color: $charcoal;
+    }
+  }
+  .active {
+    box-shadow: none;
+    background-color: $white;
+    color: $primary-color;
+    box-shadow: 0 4px 2px #cccccc;
+    border: 4px solid $primary-color;
+  }
+  :focus {
+    outline: none;
+  }
+}
 #results {
   min-height: 600px;
   li {
