@@ -52,7 +52,6 @@ Template.gmap.onCreated(function() {
     for (var i = 0; i < that.data.length; i++){
       //make a heart shaped marker bounce onto the map
       markers.push( new google.maps.Marker({
-        animation: google.maps.Animation.DROP,
         position: new google.maps.LatLng(parseFloat(that.data[i].lat), parseFloat(that.data[i].lng)),
         map: map.instance,
         icon: "/heart-light.svg"
