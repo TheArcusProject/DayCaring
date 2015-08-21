@@ -1,0 +1,7 @@
+<template name="user_dashboard">
+   <div class="row">
+    <div class="small-10 columns panel" data-equalizer-watch>
+      <h4>Waitlist</h4> {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
+    </div>
+  </div>
+</template>

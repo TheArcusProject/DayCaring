@@ -23,6 +23,23 @@ Meteor.startup(function() {
   //daycares.update({iD: daycareID}, { $push: { waitlist: waitlists._id }})
 });
 
+Template.main.helpers({
+  isUser: function(){
+    if (Meteor.user()) {
+      console.log('returning true in main isuser')
+      return true
+    }
+    return false
+  }
+});
+
+Template.main.events({
+  'click #dashboardAnchor': function(){
+    console.log('CLICK')
+    FlowRouter.go('/user_dashboard/'+Meteor.user()._id)
+  }
+})
+
 // example daycare
 // {
 //   "iD": "97147",

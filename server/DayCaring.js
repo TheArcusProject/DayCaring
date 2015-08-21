@@ -215,5 +215,15 @@ Meteor.publish("daycarePhotos", function(daycareId) {
 
 Meteor.publish("getWaitlist", function(daycareId) {
   return waitlists.find({daycareId: ""+daycareId+""}); 
-})
+});
 
+Meteor.publish("getUserWaitlist", function(userId) {
+  var waitlistsArr = waitlists.find().fetch();
+  var self = this;
+  for (var i = 0; i < waitlistsArr.length; i++){
+    if (waitlistsArr[i].user._id === userId) {
+      self.added('waitlists',i,waitlistsArr[i]);
+    }
+  }
+  self.ready();
+})
