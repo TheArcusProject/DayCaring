@@ -44,8 +44,21 @@ Template.waitlistModal.events({
       toastr.warning('Please enter a valid start date')
     }
     if (parentName && childName && address && age && city && state && zippycode && phoneNumber && startDate) {
+      Meteor.call('addToWaitList',
+                   this.iD,
+                   user._id,parentName,
+                   childName,
+                   age,
+                   address,
+                   city,
+                   zippycode,
+                   phoneNumber,
+                   startDate);
       event.target.parentName.value = event.target.firstChildName.value = event.target.address1.value = event.target.firstChildAge.value = event.target.city.value = event.target.state.value = event.target.zippycode.value = event.target.phoneNumber.value = event.target.startDate.value = ""
-      $('#paymentModal').foundation('reveal', 'open');
+      setTimeout(function() {
+      $('#submittedWaitlist').foundation('reveal', 'close');
+    }, 1500)
+      //$('#paymentModal').foundation('reveal', 'open');
     }
   }
 })
