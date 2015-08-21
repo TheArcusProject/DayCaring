@@ -1,43 +1,67 @@
 <template name="stats">
-  {{grossHack}}
-  <div class="row" data-equalizer>
-    <div class="small-3 columns" data-equalizer-watch>
-      <h4>Administration</h4>
-    </div>
-    <div class="small-9 columns" data-equalizer-watch>
-      <div class={{getColor 0}}>
-        <span class="meter" style={{getScore 0}}></span>
+
+  <!-- <div class="row"> -->
+  <span>
+  <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
+  <button type="button" class="button tiny violations">Details</button>
+  </span>
+  <!-- </div> -->
+
+  {{getRatings}}
+  {{#if getShowBars}}
+    <div class="row" data-equalizer>
+      <div class="small-3 columns" data-equalizer-watch>
+        <h4>Administration</h4>
+      </div>
+      <div class="small-9 columns" data-equalizer-watch>
+        <div class={{getColor 0}}>
+          <span class="meter" style={{getScore 0}}></span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <h4>Basic Care</h4>
-    </div>
-    <div class="small-9 columns">
-      <div class={{getColor 1}}>
-        <span data-tooltip aria-haspopup="true" title="Click the bar for more information" class="meter has-tip" style={{getScore 1}}></span>
+    <div class="row">
+      <div class="small-3 columns">
+        <h4>Basic Care</h4>
+      </div>
+      <div class="small-9 columns">
+        <div class={{getColor 1}}>
+          <span data-tooltip aria-haspopup="true" title="Click the bar for more information" class="meter has-tip" style={{getScore 1}}></span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <h4>Health &amp; Safety</h4>
-    </div>
-    <div class="small-9 columns">
-      <div class={{getColor 2}}>
-        <span class="meter" style={{getScore 2}}></span>
+    <div class="row">
+      <div class="small-3 columns">
+        <h4>Health &amp; Safety</h4>
+      </div>
+      <div class="small-9 columns">
+        <div class={{getColor 2}}>
+          <span class="meter" style={{getScore 2}}></span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <h4>Facilities</h4>
-    </div>
-    <div class="small-9 columns">
-      <div class={{getColor 3}}>
-        <span class="meter" style={{getScore 3}}></span>
+    <div class="row">
+      <div class="small-3 columns">
+        <h4>Facilities</h4>
+      </div>
+      <div class="small-9 columns">
+        <div class={{getColor 3}}>
+          <span class="meter" style={{getScore 3}}></span>
+        </div>
       </div>
     </div>
-  </div>
+  {{else}}
+    <div id="violationRows" class="small-12 columns">
+      <ul class="small-block-grid-3">
+      {{#each getViolations}}
+      <li>
+        <span>
+          <h4>{{category}}</h4>
+          <p>Risk Level: {{risk}}</p>
+        </span>
+        <p>Description: {{desc}}</p>
+      </li>
+      {{/each}}
+    </ul>
+    </div>
+  {{/if}}
 </template>

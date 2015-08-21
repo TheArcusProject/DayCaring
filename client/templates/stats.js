@@ -1,6 +1,40 @@
+var showBars = new ReactiveVar(true);
+
+getCategory = function(num) {
+  if (num >= 0 && num <= 1500){
+    return 0;
+  } else if (num > 1500 && num <= 3100){
+    return 1;
+  } else if (num > 3100 && num <= 4200){
+    return 2;
+  } else if (num > 4201 && num <= 5627){
+    return 3;
+  }
+};
 
 Template.stats.helpers({
-  grossHack : function(){
+  getShowBars : function() {
+    return showBars.get();
+  },
+
+  getViolations : function() {
+    var categories = {
+      0 : "Administration",
+      1 : "Basic Care",
+      2 : "Health & Safety",
+      3 : "Facilities",
+    }
+
+    this.violations.forEach(function(violation){
+      var num = parseInt(violation.violation.slice(4));
+      violation.category = categories[getCategory(num)];
+    });
+
+    return this.violations;
+  },
+
+
+  getRatings : function(){
     var violsArr = this.violations;
     this.widths = [100,100,100,100];
     risks = {
@@ -12,17 +46,9 @@ Template.stats.helpers({
     var that = this;
     violsArr.forEach(function(violation){
       var num = parseInt(violation.violation.slice(4));
-      console.log(num)
-      if (num >= 0 && num <= 1500){
-        that.widths[0] = that.widths[0]*risks[violation.risk];
-      } else if (num > 1500 && num <= 3100){
-        that.widths[1] = that.widths[1]*risks[violation.risk];
-      } else if (num > 3100 && num <= 4200){
-        that.widths[2] = that.widths[2]*risks[violation.risk];
-      } else if (num > 4201 && num <= 5627){
-        that.widths[3] = that.widths[3]*risks[violation.risk];
-      }
-    })
+      var cat = getCategory(num);
+      that.widths[cat] = that.widths[cat]*risks[violation.risk]
+    });
   },
   getScore : function(num){
     return "width: "+this.widths[num]+"%;";
@@ -32,13 +58,22 @@ Template.stats.helpers({
     if (this.widths[num] < 30) {
       retSrt += "alert";
     } else if (this.widths[num] < 60) {
-      retStr += "";
+      retStr += "secondary";
+    } else if (this.widths[num] < 99) {
+      retStr += ""
     } else  {
       retStr += "success";
     }
     return retStr;
-  }
+  },
 });
+
+Template.stats.events({
+  "click .violations": function() {
+    var current = showBars.get();
+    showBars.set(!current);
+  }
+})
 
 Template.stats.onCreated(function(){
 

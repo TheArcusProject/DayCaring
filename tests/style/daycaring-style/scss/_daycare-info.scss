@@ -31,9 +31,24 @@
   }
 }
 
+#violationRows {
+  h4 {
+    display: inline;
+  }
+}
+
 #stats {
-  padding: 10px;
+  // padding: 10px;
   border-bottom: 1px solid $white-smoke;
+  .violations {
+    background-color: $charcoal;
+    color: #fff;
+    float: right;
+    box-shadow: none;
+    :hover {
+      background-color: scale-color($charcoal, $lightness: 20%);
+    }
+  }
 
 }
 
