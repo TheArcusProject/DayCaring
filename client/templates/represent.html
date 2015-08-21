@@ -44,7 +44,7 @@
   </div>
   <div class="row">
     <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Waitlist</h4> {{#if isReady 'waitlists'}} {{#each getWaitlist}} {{/each}} {{/if}}
+      <h4>Waitlist</h4> {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
     </div>
   </div>
   <div class="row">

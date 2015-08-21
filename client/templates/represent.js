@@ -20,6 +20,14 @@ Template.represent.helpers({
     var picturesArr = pictures.find().fetch();
     return picturesArr;
   },
+  getWaitlistData: function() {
+    var waitListArr = waitlists.find().fetch();
+    var retObj = {
+      list: waitListArr,
+      isAdmin: true
+    }
+    return retObj;
+  },
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
