@@ -1,0 +1,57 @@
+<template name="waitlist">
+  {{grossHack}}
+  {{#each getArr}}
+    <div class="row">
+      <div class='small-8 columns'>
+        {{#each children}}
+          <p>
+            {{childName}}, age:{{age}}
+          </p>
+        {{/each}}
+      </div>
+      {{#if isAdmin}}
+        <div class='small-4 columns'>
+          {{#if accepted}}
+            <div class='small-6 columns'>
+              Accepted
+            </div>
+          {{else}}
+            <button id='acceptButton'>Accept</button>
+          {{/if}}
+          {{#if accepted}}
+            {{#if registrationFeePaid}}
+              <div class='small-6 columns'>
+                Registration Fee Paid
+              </div>
+            {{else}}
+              <div class='small-6 columns'>
+                Payment Pending
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+      {{else}}
+        <div class='small-4 columns'>
+          {{#if accepted}}
+            <div class='small-6 columns'>
+              Accepted
+            </div>
+          {{else}}
+            <div class='small-6 columns'>
+              Acceptence Pending
+            </div>
+          {{/if}}
+          {{#if accepted}}
+            {{#if registrationFeePaid}}
+              <div class='small-6 columns'>
+                Registration Fee Paid
+              </div>
+            {{else}}
+                <button id='payRegistrationFee'>Pay Registration Fee</button>
+            {{/if}}
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  {{/each}}
+</template>

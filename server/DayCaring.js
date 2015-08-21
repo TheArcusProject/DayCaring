@@ -175,7 +175,9 @@ Meteor.methods({
         $push: {waitlist: doc._id}
       })
     });
-
+  },
+  waitlistAccept: function(waitlistId) {
+    waitlists.update({_id:waitlistId},{$set:{accepted:true}});
   }
 })
 

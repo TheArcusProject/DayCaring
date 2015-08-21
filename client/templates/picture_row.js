@@ -12,7 +12,6 @@ Template.pictureRow.helpers({
  
   getData: function(){
     //this.file is uint8array
-    console.log('this.file.length is : ',this.file.length);
     var str64 = btoa(Uint8ToString(this.file));
 
     var theString = 'data:image/jpeg;base64,'+str64;
