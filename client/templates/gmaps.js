@@ -52,7 +52,6 @@ Template.gmap.onCreated(function() {
     for (var i = 0; i < that.data.length; i++){
       //make a heart shaped marker bounce onto the map
       markers.push( new google.maps.Marker({
-        animation: google.maps.Animation.DROP,
         position: new google.maps.LatLng(parseFloat(that.data[i].lat), parseFloat(that.data[i].lng)),
         map: map.instance,
         icon: "/heart-light.svg"
@@ -77,6 +76,39 @@ Template.gmap.onCreated(function() {
         this.setIcon("/heart-light.svg");
       })
     };
+    // map.instance.addListener('center_changed', function(){
+    //   mapCenter.lat = parseFloat(map.instance.getCenter().G)
+    //   mapCenter.lng = parseFloat(map.instance.getCenter().K)
+    //   for (var i = 0; i < that.data.length; i++){
+    //     //make a heart shaped marker bounce onto the map
+    //     markers.push( new google.maps.Marker({
+    //       animation: google.maps.Animation.DROP,
+    //       position: new google.maps.LatLng(parseFloat(that.data[i].lat), parseFloat(that.data[i].lng)),
+    //       map: map.instance,
+    //       icon: "/heart-light.svg"
+    //     }))
+    //     // to hold basic information about the schools
+    //     markers[i]['infoWin'] = new google.maps.InfoWindow({ maxWidth: 180 });
+    //     markers[i]['daycare'] = that.data[i];
+    //     // show infoWindow on mouseover
+
+    //     markers[i].addListener('mouseover', function() {
+    //       closeInfos();
+    //       this.infoWin.setContent("<h5>" + toTitleCase(this.daycare.name) + "</h5>" + "<h6>" + toTitleCase(this.daycare.address) +' TX' + "</h6>" +
+    //         "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
+    //         "\'/" + this.daycare.iD + "\')\">Information</button>");
+    //       this.infoWin.open(map.instance, this);
+          
+    //       this.setIcon("/heart-dark.svg");
+    //     })
+
+    //     markers[i].addListener('mouseout', function(){
+    //       //lighten heart on mouseoff
+    //       this.setIcon("/heart-light.svg");
+    //     })
+    //   };
+      
+    // })
 
     function closeInfos() {
        for (var i = 0; i < markers.length; i++){
