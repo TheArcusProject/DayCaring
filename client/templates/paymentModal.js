@@ -26,10 +26,15 @@ Template.paymentModal.events({
         }
       });
       //add user to collection
-      var daycare = this.iD;
+      var daycare = FlowRouter.getParam('daycareId');
       var currentUser = Meteor.user();
       Meteor.call('addToWaitlist', daycare, currentUser.profile.name, parentName, childName, age, address, city, zippycode, phoneNumber, startDate, function(err, results) {
-        if(err) console.log(err);
+        if(err) { 
+          console.log(err);
+        } else {
+          console.log("success");
+          daycares.update({iD: daycare}, {$push: {waitlist: this._id}});
+        }
       })
     });
   }
