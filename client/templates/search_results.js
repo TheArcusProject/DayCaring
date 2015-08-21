@@ -3,6 +3,7 @@
 // https://www.discovermeteor.com/blog/template-level-subscriptions/
 
  var showMap = new ReactiveVar(true);
+ //new reactive variable daycares array
 
 // Helper functions for the overarching search_results page
 
@@ -26,6 +27,7 @@ Template.search_results.helpers({
     }
   },
   getDaycares : function() {
+    //loop through daycares, add property active to each daycare.
     return daycares.find().fetch();
   },
   //for capitalization of names and addresses
