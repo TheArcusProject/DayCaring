@@ -3,7 +3,11 @@
   <!-- <div class="row"> -->
   <span>
   <small>* the following ratings were calculated based on data pulled from the Department of Family and Protective Services (DFPS)</small>
-  <button type="button" class="button tiny violations">Details</button>
+  {{#if getShowBars}}
+    <button type="button" class="button tiny violations">Details</button>
+  {{else}}
+    <button type="button" class="button tiny violations">Summary</button>
+  {{/if}}
   </span>
   <!-- </div> -->
 
