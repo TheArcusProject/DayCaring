@@ -15,7 +15,6 @@ Template.waitlist.events({
     Meteor.call('waitlistAccept',this._id);
   },
   'click #removeWaitlist': function(e){
-    console.log('in removeWaitlist click this is, ',this)
     Meteor.call('waitlistRemove',this._id);
   },
   'click #payRegistrationFee': function(e){
