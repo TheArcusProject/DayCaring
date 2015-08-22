@@ -73,15 +73,6 @@ Template.search_results.events({
 
 });
 
-// Template.search_results.onCreated(function() {
-//   var instance = this;
-//   instance.loaded = new ReactiveVar(0);
+Template.search_results.onCreated(function() {
 
-//   instance.autorun(function(){
-//     instance.subscribe('localDaycares', Session.get('lat'), Session.get('lng'));
-//   });
-
-//   instance.daycareArr = function(){
-//     return localDaycares.find({});
-//   }
-// });
+});
