@@ -178,6 +178,13 @@ Meteor.methods({
   },
   waitlistAccept: function(waitlistId) {
     waitlists.update({_id:waitlistId},{$set:{accepted:true}});
+  },
+  waitlistRemove: function(waitlistId) {
+    console.log('removing waitlist entry : ',waitlistId)
+    waitlists.remove({_id:waitlistId});
+  },
+  feePaid: function(waitlistId) {
+    waitlists.update({_id:waitlistId},{$set:{registrationFeePaid:true}})
   }
 })
 
@@ -222,7 +229,7 @@ Meteor.publish("getUserWaitlist", function(userId) {
   var self = this;
   for (var i = 0; i < waitlistsArr.length; i++){
     if (waitlistsArr[i].user._id === userId) {
-      self.added('waitlists',i,waitlistsArr[i]);
+      self.added('waitlists',waitlistsArr[i]._id,waitlistsArr[i]);
     }
   }
   self.ready();
