@@ -3,6 +3,9 @@
 // https://www.discovermeteor.com/blog/template-level-subscriptions/
 
  var showMap = new ReactiveVar(true);
+
+ var transportationBool = new ReactiveVar(false);
+
  //new reactive variable daycares array
 
 // Helper functions for the overarching search_results page
@@ -26,9 +29,20 @@ Template.search_results.helpers({
       return FlowRouter.subsReady();
     }
   },
-  getDaycares : function() {
+  getGmapDaycares : function() {
     //loop through daycares, add property active to each daycare.
     return daycares.find().fetch();
+  },
+  getCardDaycares: function(){
+    var status;
+    if (transportationBool.get() === true) {
+      status = "Y"
+    } else {
+      status = "N"
+    }
+    return daycares.find({
+      'transportation': status
+    }).fetch();
   },
   //for capitalization of names and addresses
   toTitleCase: function(str) {
@@ -40,7 +54,16 @@ Template.search_results.helpers({
 });
 
 Template.search_results.events({
-
+  "click #transportation": function(event){
+    console.log("it's firing")
+    var state = transportationBool.get()
+    console.log('this is the state', state)
+    if (!state) {
+      transportationBool.set(true)
+    } else {
+      transportationBool.set(false)
+    }
+  },
   "click .card" : function(event){
     event.preventDefault();
     FlowRouter.go('/'+ this.iD);

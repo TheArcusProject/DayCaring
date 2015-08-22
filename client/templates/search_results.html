@@ -51,7 +51,7 @@
   <div class="row fullWidth">
     <!-- <div class="small-12 columns"> -->
       {{#if isReady 'daycares'}}
-        {{#with getDaycares}}
+        {{#with getGmapDaycares}}
           {{> gmap}}
         {{/with}}
       {{/if}}
@@ -62,7 +62,7 @@
     <div class="small-12 columns">
       <ul class="small-block-grid-3">
         {{#if isReady 'daycares'}}
-          {{#each getDaycares}}
+          {{#each getCardDaycares}}
             <li>
               <h4>{{toTitleCase name}}</h4>
               <p> {{toTitleCase address}}, Texas
