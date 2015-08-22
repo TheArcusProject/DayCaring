@@ -1,4 +1,4 @@
-  
+
 Template.user_dashboard.helpers({
   isReady: function(sub) {
     if(sub) {
@@ -6,6 +6,13 @@ Template.user_dashboard.helpers({
     } else {
       return FlowRouter.subsReady();
     }
+  },
+  getReviews: function() {
+    var revObj = {};
+    revObj.reviews = reviews.find({},{sort:{createdAt:-1}}).fetch();
+    revObj.isAdmin = false;
+    revObj.isAuthor = true;
+    return revObj; 
   },
   getWaitlistData: function() {
     var waitListArr = waitlists.find().fetch();

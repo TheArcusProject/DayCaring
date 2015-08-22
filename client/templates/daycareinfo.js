@@ -31,6 +31,7 @@ Template.daycareinfo.helpers({
     var cursor = reviews.find({},{sort:{createdAt:-1}});
     revObj.reviews =  cursor.fetch();
     revObj.isAdmin = false;
+    revObj.isAuthor = false;
     return revObj;
   },
   getPictures: function() {

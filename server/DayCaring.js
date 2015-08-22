@@ -116,17 +116,14 @@ Meteor.methods({
     }
     return false;
   },
-  insertComments: function(comment, daycareId, userName) {
-    var currentUser = Meteor.user();
-
-    if(currentUser) {
-      reviews.insert({
-        comment: comment,
-        user: userName,
-        daycare: daycareId,
-        createdAt: new Date()
-      })
-    }
+  insertComments: function(comment, daycareId, userName, userId) {
+    reviews.insert({
+      comment: comment,
+      user: userName,
+      userId: userId,
+      daycare: daycareId,
+      createdAt: new Date()
+    })
   },
   chargeCard: function(stripeToken) {
     var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production
@@ -180,7 +177,6 @@ Meteor.methods({
     waitlists.update({_id:waitlistId},{$set:{accepted:true}});
   },
   waitlistRemove: function(waitlistId) {
-    console.log('removing waitlist entry : ',waitlistId)
     var waitlistEntry = waitlists.find({_id:waitlistId}).fetch()[0]
     var associatedDaycare = daycares.find({iD:waitlistEntry.daycareId}).fetch()[0]
     associatedDaycare.waitlist.splice(associatedDaycare.waitlist.indexOf(waitlistEntry._id),1);
@@ -237,4 +233,8 @@ Meteor.publish("getUserWaitlist", function(userId) {
     }
   }
   self.ready();
+});
+
+Meteor.publish("getUserReviews", function(userId){
+  return reviews.find({userId:userId});
 })

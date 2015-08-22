@@ -12,7 +12,7 @@ Template.reviewModal.events({
     var comment = $('textarea#review').val();
     var daycare = this.iD;
     var currentUser = Meteor.user()
-    Meteor.call("insertComments", comment, daycare, currentUser.profile.name, function(err, results) {
+    Meteor.call("insertComments", comment, daycare, currentUser.profile.name, currentUser._id, function(err, results) {
       if(err) console.log(err);
     })
     setTimeout(function() {

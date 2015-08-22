@@ -35,7 +35,6 @@ Template.main.helpers({
 
 Template.main.events({
   'click #dashboardAnchor': function(){
-    console.log('CLICK')
     FlowRouter.go('/user_dashboard/'+Meteor.user()._id)
   }
 })
