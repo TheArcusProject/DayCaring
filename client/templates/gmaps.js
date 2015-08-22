@@ -20,7 +20,8 @@ Template.gmap.helpers({
     if (GoogleMaps.loaded()) {
       return {
         center: new google.maps.LatLng(mapCenter.lat,mapCenter.lng),
-        zoom: 15
+        zoom: 15,
+        scrollwheel: false,
       };
       // Map initialization options
     }
@@ -28,11 +29,11 @@ Template.gmap.helpers({
 });
 
 Template.gmap.onCreated(function() {
-  
+
   // We can use the `ready` callback to interact with the map API once the map is ready.
   var that = this;
   var markers = [];
-  
+
 
   GoogleMaps.ready('gmap', function(map) {
     //creates the home marker
@@ -48,7 +49,7 @@ Template.gmap.onCreated(function() {
       mapCenter.lat = parseFloat(that[0].lat);
       mapCenter.lng = parseFloat(that[0].lng);
     }
-    
+
     for (var i = 0; i < that.data.length; i++){
       //make a heart shaped marker bounce onto the map
       markers.push( new google.maps.Marker({
@@ -67,7 +68,7 @@ Template.gmap.onCreated(function() {
           "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
           "\'/" + this.daycare.iD + "\')\">Information</button>");
         this.infoWin.open(map.instance, this);
-        
+
         this.setIcon("/heart-dark.svg");
       })
 

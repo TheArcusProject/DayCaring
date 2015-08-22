@@ -1,15 +1,63 @@
 <template name="search_results">
 
-  <div class="row">
-    <div class="small-12 columns">
+
+  <div id="resultsToggle" class="row fullWidth">
+    <div class="small-11 xlarge-8 small-centered columns">
+
+      <div class="small-4 xlarge-3 columns">
+          <button id="toggleMap" type="button" class="button resultsToggleButton active">Map</button>
+          <button id="toggleCards" type="button" class="button resultsToggleButton">Cards</button>
+      </div>
+
+      <form id="filters">
+        <div class="small-2 columns">
+          <label>Transportation</label>
+          <div class="switch radius">
+            <input id="transportation" type="checkbox" name="transportation">
+            <label for="transportation"></label>
+          </div>
+          <!-- <input id="trueTransportation" type="checkbox"><label for="trueTransportation">Yes</label> -->
+        </div>
+
+        <div class="small-2 columns">
+          <!-- <input id="partTimeCare" type="checkbox"><label for="partTimeCare">Yes</label> -->
+          <label>Parttime Care</label>
+          <div class="switch radius">
+            <input id="partTimeCare" type="checkbox" name="parttime">
+            <label for="partTimeCare"></label>
+          </div>
+        </div>
+
+        <div class="small-2 columns">
+          <label>Open Saturdays</label>
+          <div class="switch radius">
+            <input id="openSaturday" type="checkbox">
+            <label for="openSaturday"></label>
+          </div>
+          <!-- <input id="openSaturday" type="checkbox"><label for="openSaturday">Yes</label> -->
+        </div>
+
+        <div class="small-2 columns end">
+          <label>Distance (miles)</label>
+          <input type="radio" name="dist" value="5" id="fiveMile"><label for="fiveMile">5</label>
+          <input type="radio" name="dist" value="10" id="tenMile"><label for="tenMile">10</label>
+          <input type="radio" name="dist" value="15" id="fifteenMile"><label for="fifteenMile">15</label>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {{#if showMapBool}}
+  <div class="row fullWidth">
+    <!-- <div class="small-12 columns"> -->
       {{#if isReady 'daycares'}}
         {{#with getDaycares}}
           {{> gmap}}
         {{/with}}
       {{/if}}
-    </div>
+    <!-- </div> -->
   </div>
-
+  {{else}}
   <div id="results" class="row">
     <div class="small-12 columns">
       <ul class="small-block-grid-3">
@@ -20,12 +68,13 @@
               <p> {{toTitleCase address}}, Texas
               <br>{{accepts}}
               <br>{{phone}}</p>
-              <a class="button small">more info</a>
+              <a class="button card small">more info</a>
             </li>
           {{/each}}
         {{/if}}
       </ul>
     </div>
   </div>
+  {{/if}}
 
 </template>

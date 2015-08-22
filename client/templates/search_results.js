@@ -2,6 +2,8 @@
 
 // https://www.discovermeteor.com/blog/template-level-subscriptions/
 
+ var showMap = new ReactiveVar(true);
+ //new reactive variable daycares array
 
 // Helper functions for the overarching search_results page
 
@@ -13,6 +15,10 @@ Template.search_results.helpers({
   //   return Template.instance().daycareArr();
   // },
 
+  showMapBool : function() {
+    return showMap.get();
+  },
+
   isReady: function(sub) {
     if(sub) {
       return FlowRouter.subsReady(sub);
@@ -21,6 +27,7 @@ Template.search_results.helpers({
     }
   },
   getDaycares : function() {
+    //loop through daycares, add property active to each daycare.
     return daycares.find().fetch();
   },
   //for capitalization of names and addresses
@@ -34,21 +41,38 @@ Template.search_results.helpers({
 
 Template.search_results.events({
 
-  "click .button" : function(event){
+  "click .card" : function(event){
     event.preventDefault();
     FlowRouter.go('/'+ this.iD);
-  }
+  },
+
+  "click #toggleMap" : function(event) {
+    event.preventDefault();
+    var self = this;
+    var mapState = showMap.get();
+    if (!mapState) {
+      $('#toggleCards').removeClass("active");
+      $('#toggleMap').addClass("active");
+      showMap.set(true)
+    } else {
+      //do nothing
+    }
+  },
+  "click #toggleCards" : function(event) {
+    event.preventDefault();
+    var mapState = showMap.get();
+    if (mapState) {
+      $('#toggleMap').removeClass("active");
+      $('#toggleCards').addClass("active");
+      showMap.set(false);
+    } else {
+      //do nothing
+    }
+  },
+
+
 });
 
-// Template.search_results.onCreated(function() {
-//   var instance = this;
-//   instance.loaded = new ReactiveVar(0);
+Template.search_results.onCreated(function() {
 
-//   instance.autorun(function(){
-//     instance.subscribe('localDaycares', Session.get('lat'), Session.get('lng'));
-//   });
-
-//   instance.daycareArr = function(){
-//     return localDaycares.find({});
-//   }
-// });
+});
