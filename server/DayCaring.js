@@ -181,6 +181,10 @@ Meteor.methods({
   },
   waitlistRemove: function(waitlistId) {
     console.log('removing waitlist entry : ',waitlistId)
+    var waitlistEntry = waitlists.find({_id:waitlistId}).fetch()[0]
+    var associatedDaycare = daycares.find({iD:waitlistEntry.daycareId}).fetch()[0]
+    associatedDaycare.waitlist.splice(associatedDaycare.waitlist.indexOf(waitlistEntry._id),1);
+    daycares.update({iD:waitlistEntry.daycareId},{$set:{waitlist:associatedDaycare.waitlist}});
     waitlists.remove({_id:waitlistId});
   },
   feePaid: function(waitlistId) {
