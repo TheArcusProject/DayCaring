@@ -2,7 +2,7 @@
   {{grossHack}}
   {{#each getArr}}
     <div class="row">
-      <div class='small-8 columns'>
+      <div class='small-5 columns'>
         {{#each children}}
           <p>
             {{childName}}, age:{{age}}
@@ -10,46 +10,56 @@
         {{/each}}
       </div>
       {{#if isAdmin}}
-        <div class='small-4 columns'>
+        <div class='small-7 columns'>
           {{#if accepted}}
-            <div class='small-6 columns'>
+            <div class='small-5 columns'>
               Accepted
             </div>
           {{else}}
-            <button id='acceptButton'>Accept</button>
+            <div class='small-5 columns'>
+              <button id='acceptButton'>Accept</button>
+            </div>
           {{/if}}
           {{#if accepted}}
             {{#if registrationFeePaid}}
-              <div class='small-6 columns'>
+              <div class='small-5 columns'>
                 Registration Fee Paid
               </div>
             {{else}}
-              <div class='small-6 columns'>
+              <div class='small-5 columns'>
                 Payment Pending
               </div>
             {{/if}}
           {{/if}}
+          <div class='small-2 columns'>
+            <button id='removeWaitlist'>X</button>
+          </div>
         </div>
       {{else}}
-        <div class='small-4 columns'>
+        <div class='small-7 columns'>
           {{#if accepted}}
-            <div class='small-6 columns'>
+            <div class='small-5 columns'>
               Accepted
             </div>
           {{else}}
-            <div class='small-6 columns'>
+            <div class='small-5 columns'>
               Acceptence Pending
             </div>
           {{/if}}
           {{#if accepted}}
             {{#if registrationFeePaid}}
-              <div class='small-6 columns'>
+              <div class='small-5 columns'>
                 Registration Fee Paid
               </div>
             {{else}}
+              <div class='small-5 columns'>
                 <button id='payRegistrationFee'>Pay Registration Fee</button>
+              </div>
             {{/if}}
           {{/if}}
+          <div class='small-2 columns'>
+            <button id='removeWaitlist'>X</button>
+          </div>
         </div>
       {{/if}}
     </div>
