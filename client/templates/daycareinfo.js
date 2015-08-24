@@ -1,5 +1,6 @@
 //to include in html add {{> daycareinfo}}
 var isUserAdminReact = new ReactiveVar(false);
+var daycareHasAdminReact = new ReactiveVar(false);
 
 Template.daycareinfo.helpers({
   isLoggedIn : function () {
@@ -19,6 +20,12 @@ Template.daycareinfo.helpers({
   isUserAdmin: function() {
     Meteor.call('checkAdmin',FlowRouter.getParam('daycareId'),user._id, function(err,result){
       isUserAdminReact.set(result);
+    })
+    return isUserAdminReact.get();
+  },
+  hasAdmin: function() {
+    Meteor.call('hasAdmin',FlowRouter.getParam('daycareId'), function(err,result){
+      daycareHasAdminReact.set(result);
     })
     return isUserAdminReact.get();
   },
