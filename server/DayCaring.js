@@ -150,11 +150,12 @@ Meteor.methods({
       iD: daycareId
     }, { $set: {description:description}})
   },
-  addToWaitList: function(daycareId, user, parentName, childName, age, address, city, zippycode, phoneNumber, startDate) {
-    var currentUser = Meteor.user();
+  addToWaitList: function(daycareId, userId, userName, parentName, childName, age, address, city, zippycode, phoneNumber, startDate) {
+    // var currentUser = Meteor.user();
     waitlists.insert({
       daycareId: daycareId,
-      user: currentUser,
+      userId: userId,
+      user: userName,
       parent: parentName,
       children: [ 
         { childName: childName,
@@ -235,14 +236,15 @@ Meteor.publish("getWaitlist", function(daycareId) {
 });
 
 Meteor.publish("getUserWaitlist", function(userId) {
-  var waitlistsArr = waitlists.find().fetch();
-  var self = this;
-  for (var i = 0; i < waitlistsArr.length; i++){
-    if (waitlistsArr[i].user._id === userId) {
-      self.added('waitlists',waitlistsArr[i]._id,waitlistsArr[i]);
-    }
-  }
-  self.ready();
+  return waitlists.find({user: {_id: userId}});
+  // var waitlistsArr = waitlists.find().fetch();
+  // var self = this;
+  // for (var i = 0; i < waitlistsArr.length; i++){
+  //   if (waitlistsArr[i].user._id === userId) {
+  //     self.added('waitlists',waitlistsArr[i]._id,waitlistsArr[i]);
+  //   }
+  // }
+  // self.ready();
 });
 
 Meteor.publish("getUserReviews", function(userId){
