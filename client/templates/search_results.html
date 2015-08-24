@@ -16,11 +16,9 @@
             <input id="transportation" type="checkbox" name="transportation">
             <label for="transportation"></label>
           </div>
-          <!-- <input id="trueTransportation" type="checkbox"><label for="trueTransportation">Yes</label> -->
         </div>
 
         <div class="small-2 columns">
-          <!-- <input id="partTimeCare" type="checkbox"><label for="partTimeCare">Yes</label> -->
           <label>Parttime Care</label>
           <div class="switch radius">
             <input id="partTimeCare" type="checkbox" name="parttime">
@@ -34,12 +32,11 @@
             <input id="openSaturday" type="checkbox">
             <label for="openSaturday"></label>
           </div>
-          <!-- <input id="openSaturday" type="checkbox"><label for="openSaturday">Yes</label> -->
         </div>
 
         <div class="small-2 columns end">
           <label>Distance (miles)</label>
-          <input type="radio" name="dist" value="5" id="fiveMile"><label for="fiveMile">5</label>
+          <input type="radio" name="dist" value="5" id="fiveMile" CHECKED><label for="fiveMile">5</label>
           <input type="radio" name="dist" value="10" id="tenMile"><label for="tenMile">10</label>
           <input type="radio" name="dist" value="15" id="fifteenMile"><label for="fifteenMile">15</label>
         </div>
@@ -49,14 +46,13 @@
 
   {{#if showMapBool}}
   <div class="row fullWidth">
-    <!-- <div class="small-12 columns"> -->
-      {{#if isReady 'daycares'}}
-        {{#with getCardDaycares}}
-          {{> gmap}}
-        {{/with}}
-      {{/if}}
-    <!-- </div> -->
+    {{#if isReady 'daycares'}}
+      {{#with getCardDaycares}}
+        {{> gmap}}
+      {{/with}}
+    {{/if}}
   </div>
+
   {{else}}
   <div id="results" class="row">
     <div class="small-12 columns">

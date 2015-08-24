@@ -2,19 +2,15 @@
 
 // https://www.discovermeteor.com/blog/template-level-subscriptions/
 
- var showMap = new ReactiveVar(true);
+var showMap = new ReactiveVar(true);
 
- var transportationBool = new ReactiveVar(false);
- var partTimeBool = new ReactiveVar(false);
- var saturdayBool = new ReactiveVar(false);
- var distanceMiles = new ReactiveVar(5);
+var transportationBool = new ReactiveVar(false);
+var partTimeBool = new ReactiveVar(false);
+var saturdayBool = new ReactiveVar(false);
+var distanceMiles = new ReactiveVar(5);
 
- //new reactive variable daycares array
 
-// Helper functions for the overarching search_results page
-
-//Subscribe to the localSchools template on load
-
+//Once page is loaded, add correct states to buttons
 Template.search_results.rendered = function(){
   var showingMap = showMap.get();
   if (!showingMap) {
@@ -25,9 +21,6 @@ Template.search_results.rendered = function(){
 
 Template.search_results.helpers({
 
-  // daycaresArray : function() {
-  //   return Template.instance().daycareArr();
-  // },
 
   showMapBool : function() {
     return showMap.get();
@@ -45,12 +38,22 @@ Template.search_results.helpers({
     return daycares.find().fetch();
   },
   getCardDaycares: function(){
-    var transportationStatus, partTimeStatus, daysOfWeek;
+    var transportationStatus, partTimeStatus, daysOfWeek, distances;
+    var lat = FlowRouter.getParam('lat'), lng = FlowRouter.getParam('lng');
+    var range = distanceMiles.get();
+
+
+    function calcDist() {
+      var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
+        Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
+    }
+
     if (transportationBool.get() === true) {
       transportationStatus = "Y"
     } else {
       transportationStatus = {$ne: "asdf"}
     }
+
     if (partTimeBool.get() === true) {
       partTimeStatus = "Y"
     } else {
@@ -58,24 +61,30 @@ Template.search_results.helpers({
       //empty document {} currently breaks things.
        partTimeStatus = {$ne: "asdf"} //to handle cases where transportation isnt Y
     }
+
     if (saturdayBool.get() === true) {
       daysOfWeek = {$regex: ".*Sat.*"}
     } else {
       daysOfWeek = {$ne: "asdf"}
     }
+
     return daycares.find({
       "transportation": transportationStatus,
       "parttime": partTimeStatus,
-      'days': daysOfWeek
+      "days": daysOfWeek,
+      $where: function() {
+        return (Math.sqrt(Math.pow(((lat-this.lat)*69.2),2)+
+          Math.pow(((lng-this.lng)*69.2),2)) <= distanceMiles.get());
+      }
     }).fetch();
   },
+
   //for capitalization of names and addresses
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     })
   }
-
 });
 
 Template.search_results.events({
@@ -132,9 +141,32 @@ Template.search_results.events({
     } else {
       //do nothing
     }
-  }
+  },
+
+  "click #fiveMile" : function(event){
+    var currentDistance = distanceMiles.get();
+    if (currentDistance !== 5) {
+      distanceMiles.set(5);
+    } else {
+      //do nothing
+    }
+  },
+  "click #tenMile" : function(event){
+      var currentDistance = distanceMiles.get();
+      if (currentDistance !== 10) {
+        distanceMiles.set(10);
+      } else {
+        //do nothing
+      }
+  },
+  "click #fifteenMile" : function(event){
+    var currentDistance = distanceMiles.get();
+    if (currentDistance !== 15) {
+      distanceMiles.set(15);
+    } else {
+      //do nothing
+    }
+  },
+
 });
 
-Template.search_results.onCreated(function() {
-
-});
