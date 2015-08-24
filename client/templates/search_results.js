@@ -25,9 +25,6 @@ Template.search_results.rendered = function(){
 
 Template.search_results.helpers({
 
-  // daycaresArray : function() {
-  //   return Template.instance().daycareArr();
-  // },
 
   showMapBool : function() {
     return showMap.get();
@@ -45,16 +42,17 @@ Template.search_results.helpers({
     return daycares.find().fetch();
   },
   getCardDaycares: function(){
+    var transportationStatus, partTimeStatus, daysOfWeek, distances;
+    var lat = FlowRouter.getParam('lat'), lng = FlowRouter.getParam('lng');
     var range = distanceMiles.get();
-    var lat = FlowRouter.getParam('lat');
-    var lng = FlowRouter.getParam('lng');
+
 
     function calcDist() {
       var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
         Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
     }
 
-    var transportationStatus, partTimeStatus, daysOfWeek;
+
     if (transportationBool.get() === true) {
       transportationStatus = "Y"
     } else {
@@ -72,10 +70,15 @@ Template.search_results.helpers({
     } else {
       daysOfWeek = {$ne: "asdf"}
     }
+
     return daycares.find({
       "transportation": transportationStatus,
       "parttime": partTimeStatus,
-      'days': daysOfWeek
+      "days": daysOfWeek,
+      $where: function() {
+        return (Math.sqrt(Math.pow(((lat-this.lat)*69.2),2)+
+          Math.pow(((lng-this.lng)*69.2),2)) <= distanceMiles.get());
+      }
     }).fetch();
   },
   //for capitalization of names and addresses
@@ -141,7 +144,39 @@ Template.search_results.events({
     } else {
       //do nothing
     }
-  }
+  },
+
+  "click #fiveMile" : function(event){
+    // event.preventDefault();
+    var currentDistance = distanceMiles.get();
+    if (currentDistance !== 5) {
+      distanceMiles.set(5);
+      // var $el = $("#fiveMile");
+      // var checked = $el[0].checked;
+      // console.log(checked);
+    } else {
+      //do nothing
+    }
+  },
+  "click #tenMile" : function(event){
+      // event.preventDefault();
+      var currentDistance = distanceMiles.get();
+      if (currentDistance !== 10) {
+        distanceMiles.set(10);
+      } else {
+        //do nothing
+      }
+  },
+  "click #fifteenMile" : function(event){
+    // event.preventDefault();
+    var currentDistance = distanceMiles.get();
+    if (currentDistance !== 15) {
+      distanceMiles.set(15);
+    } else {
+      //do nothing
+    }
+  },
+
 });
 
 Template.search_results.onCreated(function() {
