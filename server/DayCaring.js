@@ -115,6 +115,11 @@ Meteor.methods({
     }
     return false;
   },
+  hasAdmin: function(daycareId){
+    var dcAdmins = daycareAdmins.find({daycareId:daycareId}).fetch()
+    if (dcAdmins.length > 0) return true;
+    return false;
+  },
   insertComments: function(comment, daycareId, userName, userId) {
     reviews.insert({
       comment: comment,
