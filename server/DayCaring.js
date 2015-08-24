@@ -1,6 +1,3 @@
-
-var code;
-
 var secret = Meteor.settings.private.stripe.testSecretKey;
 var Stripe = StripeAPI(secret);
 
@@ -192,7 +189,6 @@ Meteor.methods({
     waitlists.update({_id:waitlistId},{$set:{registrationFeePaid:true}})
   },
   addMessage: function(userId,daycareId,text){
-    console.log('adding message : user :', userId, ' daycare : ',daycareId, ' text : ',text)
     messages.insert({
       userId:userId,
       daycareId:daycareId,
