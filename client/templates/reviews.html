@@ -1,27 +1,27 @@
 <template name="review">
   {{saveAdmin}}
   {{saveAuthor}}
-    {{#each getReviews}}
-      <div class="row">
-        <div class="small-3 columns">
-          <h4>{{user}}</h4>
-          <p>Austin, Texas</p>
-        </div>
-        <div class="small-6 columns">
-          <h6>{{formattedDate createdAt}}</h6>
-          <p>{{comment}}</p>
-        </div>
-        {{#if getIsAuthor}}
-        <div class="small-3 columns">
-          <button id="deleteComment">X</button>
-        </div>
-        {{/if}}
-        {{#if getIsAdmin}}
-        <div class="small-3 columns">
-          <button id="respondToComment">Respond</button>
-        </div>
-        {{/if}}
-        <hr>
+  {{#each getReviews}}
+    <div class="row">
+      <div class="small-3 columns">
+        <h4>{{user}}</h4>
+        <p>Austin, Texas</p>
       </div>
-    {{/each}}
+      <div class="small-6 columns">
+        <h6>{{formattedDate createdAt}}</h6>
+        <p>{{comment}}</p>
+      </div>
+      {{#if getIsAuthor}}
+      <div class="small-3 columns">
+        <button id="deleteComment">X</button>
+      </div>
+      {{/if}}
+      {{#if getIsAdmin}}
+      <div class="small-3 columns">
+        <button id="respondToComment">Respond</button>
+      </div>
+      {{/if}}
+      <hr>
+    </div>
+  {{/each}}
 </template>

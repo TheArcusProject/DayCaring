@@ -34,6 +34,10 @@ Template.represent.helpers({
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     })
   },
+  getMessages: function() {
+    var msgs = messages.find().fetch();
+    return msgs;
+  }
 })
 
 Template.represent.events({
