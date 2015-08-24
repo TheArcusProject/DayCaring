@@ -128,6 +128,9 @@ Meteor.methods({
       createdAt: new Date()
     })
   },
+  deleteComment: function(commentId) {
+    reviews.remove({_id:commentId});
+  },
   chargeCard: function(stripeToken) {
     var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production
     Stripe.charges.create({
@@ -196,6 +199,18 @@ Meteor.methods({
       text:text
     });
   },
+  replyMessage: function(messageId, reply){
+    messages.update({
+      _id:messageId
+    }, {
+      $set: {
+        reply : reply
+      }
+    })
+  },
+  deleteMessage: function(messageId){
+    messages.remove({_id:messageId});
+  }
 })
 
 

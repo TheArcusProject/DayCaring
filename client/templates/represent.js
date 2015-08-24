@@ -36,7 +36,12 @@ Template.represent.helpers({
   },
   getMessages: function() {
     var msgs = messages.find().fetch();
-    return msgs;
+    console.log('id of first message is : ', msgs[0]._id)
+    retObj = {
+      isAdmin : true,
+      messages: msgs
+    }
+    return retObj;
   }
 })
 
