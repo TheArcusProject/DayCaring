@@ -4,38 +4,42 @@
       <h4>Waitlist</h4> {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
     </div>
   </div>
+
   <div class="row">
     <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Your Comments</h4>
+      <h4>Your Messages</h4>
     </div>
   </div>
-  <div class="row">
+
+  <!-- <div class="row">
     <div class="small-10 columns panel">
       <h4>Your Reviews</h4> {{#if isReady 'reviews'}} {{#with getReviews}} {{> review}} {{/with}} {{/if}}
     </div>
-  </div>
+  </div> -->
+
   <div class="row">
-    <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Messages</h4>
-  	<div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Comments</h4> 
-      	{{#if isReady 'reviews'}}
-      		{{#each userReviews}}
-				    <div class="row">
-				      <div class="small-3 columns">
-				        <h4>{{user}}</h4>
-				        <p>Austin, Texas</p>
-				      </div>
-				      <div class="small-9 columns">
-				        <h6>{{formattedDate createdAt}}</h6>
-				        <p>{{comment}}</p>
-				      </div>
-				      <hr>
-				    </div>
-				  {{/each}}
-				{{/if}}
-    </div>
+  	<div class="small-10 columns panel">
+  		<h4>Your Reviews</h4>
+			  {{#with getReviews}}
+			  	{{#each userReviews}}
+			      <div class="row">
+			        <div class="small-3 columns">
+			          <h5>{{daycareName}}</h5>
+			        </div>
+			        <div class="small-6 columns">
+			          <h6>{{formattedDate createdAt}}</h6>
+			          <p>{{comment}}</p>
+			        </div>
+			        <div class="small-3 columns">
+			          <button id="deleteComment">X</button>
+			        </div>
+			        <hr>
+			      </div>
+		    	{{/each}}
+		    {{/with}}
+  	</div>
   </div>
+
   <!--   <div id="paymentModal" class="reveal-modal" data-reveal aria-labelledby="anotherModalTitle" aria-hidden="true" role="dialog">
       {{#if isReady 'daycares'}} {{#each getDaycare}} {{> paymentModal}} {{/each}} {{/if}}
     </div> -->

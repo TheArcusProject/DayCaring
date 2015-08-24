@@ -9,8 +9,9 @@ Template.reviewModal.events({
     event.preventDefault();
     var comment = $('textarea#review').val();
     var daycare = this.iD;
+    var daycareName = this.name;
     var currentUser = Meteor.user()
-    Meteor.call("insertComments", comment, daycare, currentUser.profile.name, currentUser._id, function(err, results) {
+    Meteor.call("insertComments", comment, daycare, daycareName, currentUser.profile.name, currentUser._id, function(err, results) {
       if(err) console.log(err);
     })
     setTimeout(function() {

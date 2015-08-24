@@ -121,25 +121,15 @@ Meteor.methods({
     if (dcAdmins.length > 0) return true;
     return false;
   },
-  insertComments: function(comment, daycareId, userName, userId) {
+  insertComments: function(comment, daycareId, daycareName, userName, userId) {
     reviews.insert({
       comment: comment,
       user: userName,
       userId: userId,
       daycare: daycareId,
+      daycareName: daycareName,
       createdAt: new Date()
     })
-  insertComments: function(comment, daycareId, user) {
-    var currentUser = Meteor.user();
-
-    if(currentUser) {
-      reviews.insert({
-        comment: comment,
-        user: currentUser,
-        daycare: daycareId,
-        createdAt: new Date()
-      })
-    }
   },
   chargeCard: function(stripeToken) {
     var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production

@@ -22,9 +22,8 @@ Template.user_dashboard.helpers({
     }
     return retObj;
   },
-  userReviews: function(username) {
-    var reviewsList = reviews.find({ user: username}).fetch();
-    return reviewsList;
+  userReviews: function() {
+    return this.reviews;
   },
   formattedDate: function(date) {
     if(date) {
