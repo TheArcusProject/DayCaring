@@ -18,6 +18,15 @@
 
 //Subscribe to the localSchools template on load
 
+Template.search_results.rendered = function(){
+  var showingMap = showMap.get();
+  if (!showingMap) {
+    console.log("inside if :", showingMap);
+    $('#toggleMap').removeClass("active");
+    $('#toggleCards').addClass("active");
+  }
+}
+
 Template.search_results.helpers({
 
   // daycaresArray : function() {
@@ -49,7 +58,7 @@ Template.search_results.helpers({
     if (partTimeBool.get() === true) {
       partTimeStatus = "Y"
     } else {
-      partTimeStatus = {$or: [{'transportation': "N"}, {'transportation': 'N/A'}]} //to handle cases where transportation isnt Y
+      partTimeStatus = "N" || "N/A" || "null" //to handle cases where transportation isnt Y
     }
     if (saturdayBool.get() === true) {
       daysOfWeek = {$regex: ".*Sat.*"}
@@ -57,7 +66,7 @@ Template.search_results.helpers({
       daysOfWeek = {}
     }
     return daycares.find({
-      'transportation': transportationStatus
+      'transportation': transportationStatus,
       // 'parttime': partTimeStatus
       // 'days': daysOfWeek
     }).fetch();
@@ -91,6 +100,7 @@ Template.search_results.events({
   // },
   "click .card" : function(event){
     event.preventDefault();
+    transportationBool.set(false);
     FlowRouter.go('/'+ this.iD);
   },
 
