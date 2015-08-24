@@ -3,6 +3,7 @@
   {{#each getArr}}
     <div class="row">
       <div class='small-5 columns panel'>
+      <h5><strong>{{daycareName}}</strong></h5>
         {{#each children}}
           <p>
             {{childName}}, age:{{age}}
@@ -43,7 +44,7 @@
             </div>
           {{else}}
             <div class='small-5 columns'>
-              Acceptence Pending
+              Acceptance Pending
             </div>
           {{/if}}
           {{#if accepted}}

@@ -44,9 +44,13 @@ Template.waitlistModal.events({
       toastr.warning('Please enter a valid start date')
     }
     if (parentName && childName && address && age && city && state && zippycode && phoneNumber && startDate) {
+      var currentUser = Meteor.user()
       Meteor.call('addToWaitList',
                    this.iD,
-                   user._id,parentName,
+                   this.name,
+                   currentUser._id,
+                   currentUser.profile.name,
+                   parentName,
                    childName,
                    age,
                    address,
