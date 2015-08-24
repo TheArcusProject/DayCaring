@@ -22,4 +22,12 @@ Template.user_dashboard.helpers({
     }
     return retObj;
   },
+  userReviews: function() {
+    return this.reviews;
+  },
+  formattedDate: function(date) {
+    if(date) {
+      return moment(date).format("MMM Do YYYY");
+    }
+  }
 })

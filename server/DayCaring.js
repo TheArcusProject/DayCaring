@@ -121,12 +121,13 @@ Meteor.methods({
     if (dcAdmins.length > 0) return true;
     return false;
   },
-  insertComments: function(comment, daycareId, userName, userId) {
+  insertComments: function(comment, daycareId, daycareName, userName, userId) {
     reviews.insert({
       comment: comment,
       user: userName,
       userId: userId,
       daycare: daycareId,
+      daycareName: daycareName,
       createdAt: new Date()
     })
   },
@@ -259,3 +260,4 @@ Meteor.publish("getUserMessages", function(userId){
 Meteor.publish("getDaycareMessages", function(daycareId){
   return messages.find({daycareId:daycareId});
 });
+
