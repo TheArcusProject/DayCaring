@@ -17,6 +17,23 @@
   <div class="row">
     <div class="small-10 columns panel" data-equalizer-watch>
       <h4>Messages</h4>
+  	<div class="small-10 columns panel" data-equalizer-watch>
+      <h4>Comments</h4> 
+      	{{#if isReady 'reviews'}}
+      		{{#each userReviews}}
+				    <div class="row">
+				      <div class="small-3 columns">
+				        <h4>{{user}}</h4>
+				        <p>Austin, Texas</p>
+				      </div>
+				      <div class="small-9 columns">
+				        <h6>{{formattedDate createdAt}}</h6>
+				        <p>{{comment}}</p>
+				      </div>
+				      <hr>
+				    </div>
+				  {{/each}}
+				{{/if}}
     </div>
   </div>
   <!--   <div id="paymentModal" class="reveal-modal" data-reveal aria-labelledby="anotherModalTitle" aria-hidden="true" role="dialog">
