@@ -47,6 +47,7 @@ Template.waitlistModal.events({
       var currentUser = Meteor.user()
       Meteor.call('addToWaitList',
                    this.iD,
+                   this.name,
                    currentUser._id,
                    currentUser.profile.name,
                    parentName,

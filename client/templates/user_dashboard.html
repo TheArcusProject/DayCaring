@@ -1,7 +1,7 @@
 <template name="user_dashboard">
    <div class="row">
     <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Waitlist</h4> {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
+      <h4>Your Waitlists</h4> {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
     </div>
   </div>
 
@@ -24,7 +24,7 @@
 			  	{{#each userReviews}}
 			      <div class="row">
 			        <div class="small-3 columns">
-			          <h5>{{daycareName}}</h5>
+			          <h5><strong>{{daycareName}}</strong></h5>
 			        </div>
 			        <div class="small-6 columns">
 			          <h6>{{formattedDate createdAt}}</h6>

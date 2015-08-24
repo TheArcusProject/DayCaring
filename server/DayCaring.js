@@ -150,10 +150,11 @@ Meteor.methods({
       iD: daycareId
     }, { $set: {description:description}})
   },
-  addToWaitList: function(daycareId, userId, userName, parentName, childName, age, address, city, zippycode, phoneNumber, startDate) {
+  addToWaitList: function(daycareId, daycareName, userId, userName, parentName, childName, age, address, city, zippycode, phoneNumber, startDate) {
     // var currentUser = Meteor.user();
     waitlists.insert({
       daycareId: daycareId,
+      daycareName: daycareName,
       userId: userId,
       user: userName,
       parent: parentName,
@@ -172,7 +173,7 @@ Meteor.methods({
     }, function(err, doc){
       daycares.update({
         iD: daycareId  
-      },{
+      }, {
         $push: {waitlist: doc._id}
       })
     });
@@ -236,7 +237,7 @@ Meteor.publish("getWaitlist", function(daycareId) {
 });
 
 Meteor.publish("getUserWaitlist", function(userId) {
-  return waitlists.find({user: {_id: userId}});
+  return waitlists.find({userId: userId});
   // var waitlistsArr = waitlists.find().fetch();
   // var self = this;
   // for (var i = 0; i < waitlistsArr.length; i++){
