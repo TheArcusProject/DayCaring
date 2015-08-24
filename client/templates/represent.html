@@ -54,7 +54,7 @@
   </div>
   <div class="row">
     <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Messages</h4>
+      <h4>Messages</h4> {{#if isReady 'messages'}} {{#with getMessages}} {{> message}} {{/with}} {{/if}}
     </div>
   </div>
 </template>

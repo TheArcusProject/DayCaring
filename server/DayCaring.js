@@ -253,5 +253,5 @@ Meteor.publish("getUserMessages", function(userId){
 });
 
 Meteor.publish("getDaycareMessages", function(daycareId){
-  return messages.find({daycareId:daycareId});
+  return messages.find({daycareId:""+daycareId});
 });
