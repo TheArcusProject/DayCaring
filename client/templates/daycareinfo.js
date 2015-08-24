@@ -95,6 +95,10 @@ Template.daycareinfo.events({
     e.preventDefault();
     $('#waitlistModal').foundation('reveal', 'open');
   },
+  'click .messageAdmin':function(e){
+    e.preventDefault();
+    $('#PMModal').foundation('reveal', 'open');
+  },
 });
 
 

@@ -25,6 +25,7 @@ Meteor.startup(function() {
   reviews = new Mongo.Collection('reviews');
   waitlists = new Mongo.Collection('waitlists');
   pictures = new Mongo.Collection('pictures');
+  messages = new Mongo.Collection('messages');
 
   // daycareData["09701411"] = {"name":"Inaccessable Daycare","address":"The Only Shack On The Island","phone":"479-387-8940","email":"Redford.john.m@gmail.com","website":"http://xkcd.com","accepts":"4 To 12","hours":"N/A","days":"N/A","parttime":"N/A","transportation":"N/A","capacity":"27","lat":"-37.3","lng":"-12.67","violations":[]}
   // //
@@ -189,7 +190,14 @@ Meteor.methods({
   },
   feePaid: function(waitlistId) {
     waitlists.update({_id:waitlistId},{$set:{registrationFeePaid:true}})
-  }
+  },
+  addMessage: function(userId,daycareId,text){
+    messages.insert({
+      userId:userId,
+      daycareId:daycareId,
+      text:text
+    });
+  },
 })
 
 
@@ -241,4 +249,12 @@ Meteor.publish("getUserWaitlist", function(userId) {
 
 Meteor.publish("getUserReviews", function(userId){
   return reviews.find({userId:userId});
-})
+});
+
+Meteor.publish("getUserMessages", function(userId){
+  return messages.find({userId:userId});
+});
+
+Meteor.publish("getDaycareMessages", function(daycareId){
+  return messages.find({daycareId:daycareId});
+});

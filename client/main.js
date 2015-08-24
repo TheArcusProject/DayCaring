@@ -2,6 +2,7 @@ daycares = new Mongo.Collection('daycares');
 reviews = new Mongo.Collection('reviews');
 waitlists = new Mongo.Collection('waitlists');
 pictures = new Mongo.Collection('pictures');
+messages = new Mongo.Collection('messages');
 
 Deps.autorun(function() { //turns user into a reactive variable??
   user = Meteor.user();
