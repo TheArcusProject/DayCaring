@@ -27,7 +27,7 @@ Template.review.helpers({
 Template.review.events({
   "click #deleteComment": function(e){
     e.preventDefault();
-    Meteor.call('deleteComent',this._id);
+    Meteor.call('deleteComment',this._id);
   }
 })
 

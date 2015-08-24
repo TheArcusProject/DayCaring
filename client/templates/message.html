@@ -1,9 +1,27 @@
 <template name="message">
+  {{setAdmin}}
   {{#each getMessages}}
     <div class="row">
-      <div class="small-6 columns">
+      <div class="small-8 columns">
         <p>{{text}}</p>
+        {{#if response}}
+          <div class="row">
+            <div class="small-8 columns panel">
+              <h5>Response:</h5>
+              {{response}}
+            </div>
+          </div>
+        {{/if}}
       </div>
+      {{#if isAdmin}}
+        <div class="small-4 columns">
+          <button id="respondToMessage">Respond</button>
+        </div>
+      {{else}}
+        <div class="small-4 columns">
+          <button id="deleteMessage">X</button>
+        </div>
+      {{/if}}
     </div>
   {{/each}}
 </template>

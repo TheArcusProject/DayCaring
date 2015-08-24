@@ -29,5 +29,13 @@ Template.user_dashboard.helpers({
     if(date) {
       return moment(date).format("MMM Do YYYY");
     }
+  },
+  getMessages: function() {
+    var msgs = messages.find().fetch();
+    retObj = {
+      isAdmin : false,
+      messages: msgs
+    }
+    return retObj;
   }
 })

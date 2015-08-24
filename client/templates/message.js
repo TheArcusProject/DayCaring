@@ -1,12 +1,24 @@
+var isAdmin = new ReactiveVar(false);
+
 Template.message.helpers({
-  formattedDate: function(date) {
-    if(date) {
-      return moment(date).format("MMM Do YYYY");
-    }
+  setAdmin: function() {
+    isAdmin.set(this.isAdmin);
   },
-  
+  isAdmin: function() {
+    return isAdmin;
+  },
   getMessages: function() {
-    console.log('in message.js helpers this is : ',this)
-    return this;
+    return this.messages;
   },
+})
+
+Template.message.events({
+  "click #respondToMessage": function(e){
+    e.preventDefault();
+    $('#PMReplyModal').foundation('reveal','open');
+  },
+  "click #deleteMessage": function(e){
+    e.preventDefault();
+    Meteor.call('deleteMessage',this._id);
+  }
 })
