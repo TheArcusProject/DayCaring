@@ -5,12 +5,9 @@
  var showMap = new ReactiveVar(true);
 
  var transportationBool = new ReactiveVar(false);
-
  var partTimeBool = new ReactiveVar(false);
-
  var saturdayBool = new ReactiveVar(false);
-
- var distanceMiles = new ReactiveVar(5)
+ var distanceMiles = new ReactiveVar(5);
 
  //new reactive variable daycares array
 
@@ -21,7 +18,6 @@
 Template.search_results.rendered = function(){
   var showingMap = showMap.get();
   if (!showingMap) {
-    console.log("inside if :", showingMap);
     $('#toggleMap').removeClass("active");
     $('#toggleCards').addClass("active");
   }
@@ -53,22 +49,24 @@ Template.search_results.helpers({
     if (transportationBool.get() === true) {
       transportationStatus = "Y"
     } else {
-      transportationStatus = "N"
+      transportationStatus = {$ne: "asdf"}
     }
     if (partTimeBool.get() === true) {
       partTimeStatus = "Y"
     } else {
-      partTimeStatus = "N" || "N/A" || "null" //to handle cases where transportation isnt Y
+      //hacky way to select all other items... will be refactored.
+      //empty document {} currently breaks things.
+       partTimeStatus = {$ne: "asdf"} //to handle cases where transportation isnt Y
     }
     if (saturdayBool.get() === true) {
       daysOfWeek = {$regex: ".*Sat.*"}
     } else {
-      daysOfWeek = {}
+      daysOfWeek = {$ne: "asdf"}
     }
     return daycares.find({
-      'transportation': transportationStatus,
-      // 'parttime': partTimeStatus
-      // 'days': daysOfWeek
+      "transportation": transportationStatus,
+      "parttime": partTimeStatus,
+      'days': daysOfWeek
     }).fetch();
   },
   //for capitalization of names and addresses
@@ -89,18 +87,26 @@ Template.search_results.events({
       transportationBool.set(false)
     }
   },
-  // "click #partTimeCare": function(event){
-  //   console.log('its firing')
-  //   var partTimeState = partTimeBool.get()
-  //   if (!partTimeState) {
-  //     partTimeBool.set(true)
-  //   } else {
-  //     partTimeBool.set(false)
-  //   }
-  // },
+  "click #partTimeCare": function(event){
+    var partTimeState = partTimeBool.get()
+    if (!partTimeState) {
+      partTimeBool.set(true)
+    } else {
+      partTimeBool.set(false)
+    }
+  },
+  "click #openSaturday": function(event){
+    var saturdayState = saturdayBool.get()
+    if (!saturdayState) {
+      saturdayBool.set(true)
+    } else {
+      saturdayBool.set(false)
+    }
+  },
   "click .card" : function(event){
     event.preventDefault();
     transportationBool.set(false);
+    partTimeBool.set(false);
     FlowRouter.go('/'+ this.iD);
   },
 
@@ -126,9 +132,7 @@ Template.search_results.events({
     } else {
       //do nothing
     }
-  },
-
-
+  }
 });
 
 Template.search_results.onCreated(function() {
