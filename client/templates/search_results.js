@@ -2,19 +2,15 @@
 
 // https://www.discovermeteor.com/blog/template-level-subscriptions/
 
- var showMap = new ReactiveVar(true);
+var showMap = new ReactiveVar(true);
 
- var transportationBool = new ReactiveVar(false);
- var partTimeBool = new ReactiveVar(false);
- var saturdayBool = new ReactiveVar(false);
- var distanceMiles = new ReactiveVar(5);
+var transportationBool = new ReactiveVar(false);
+var partTimeBool = new ReactiveVar(false);
+var saturdayBool = new ReactiveVar(false);
+var distanceMiles = new ReactiveVar(5);
 
- //new reactive variable daycares array
 
-// Helper functions for the overarching search_results page
-
-//Subscribe to the localSchools template on load
-
+//Once page is loaded, add correct states to buttons
 Template.search_results.rendered = function(){
   var showingMap = showMap.get();
   if (!showingMap) {
@@ -52,12 +48,12 @@ Template.search_results.helpers({
         Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
     }
 
-
     if (transportationBool.get() === true) {
       transportationStatus = "Y"
     } else {
       transportationStatus = {$ne: "asdf"}
     }
+
     if (partTimeBool.get() === true) {
       partTimeStatus = "Y"
     } else {
@@ -65,6 +61,7 @@ Template.search_results.helpers({
       //empty document {} currently breaks things.
        partTimeStatus = {$ne: "asdf"} //to handle cases where transportation isnt Y
     }
+
     if (saturdayBool.get() === true) {
       daysOfWeek = {$regex: ".*Sat.*"}
     } else {
@@ -81,13 +78,13 @@ Template.search_results.helpers({
       }
     }).fetch();
   },
+
   //for capitalization of names and addresses
   toTitleCase: function(str) {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     })
   }
-
 });
 
 Template.search_results.events({
@@ -147,19 +144,14 @@ Template.search_results.events({
   },
 
   "click #fiveMile" : function(event){
-    // event.preventDefault();
     var currentDistance = distanceMiles.get();
     if (currentDistance !== 5) {
       distanceMiles.set(5);
-      // var $el = $("#fiveMile");
-      // var checked = $el[0].checked;
-      // console.log(checked);
     } else {
       //do nothing
     }
   },
   "click #tenMile" : function(event){
-      // event.preventDefault();
       var currentDistance = distanceMiles.get();
       if (currentDistance !== 10) {
         distanceMiles.set(10);
@@ -168,7 +160,6 @@ Template.search_results.events({
       }
   },
   "click #fifteenMile" : function(event){
-    // event.preventDefault();
     var currentDistance = distanceMiles.get();
     if (currentDistance !== 15) {
       distanceMiles.set(15);
@@ -179,6 +170,3 @@ Template.search_results.events({
 
 });
 
-Template.search_results.onCreated(function() {
-
-});
