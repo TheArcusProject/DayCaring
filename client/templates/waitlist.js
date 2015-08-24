@@ -1,3 +1,4 @@
+
 Template.waitlist.helpers({
   isAdmin : function(){
     return adminBool;

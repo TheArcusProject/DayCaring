@@ -14,6 +14,7 @@ Template.represent.helpers({
     var revObj = {};
     revObj.reviews = reviews.find({},{sort:{createdAt:-1}}).fetch();
     revObj.isAdmin = true;
+    revObj.isAuthor = false;
     return revObj; 
   },
   getPictures: function() {
