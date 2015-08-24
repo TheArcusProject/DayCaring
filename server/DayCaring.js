@@ -161,7 +161,7 @@ Meteor.methods({
       userId: userId,
       user: userName,
       parent: parentName,
-      children: [ 
+      children: [
         { childName: childName,
          age: age }
         ],
@@ -175,7 +175,7 @@ Meteor.methods({
       registrationFeePaid: false
     }, function(err, doc){
       daycares.update({
-        iD: daycareId  
+        iD: daycareId
       }, {
         $push: {waitlist: doc._id}
       })
@@ -232,7 +232,7 @@ Meteor.publish("localDaycares", function(lat, lng) {
   for (var i = 0; i < daycaresArr.length; i++){
     var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
       Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
-    if (dist < 5){
+    if (dist < 15){
       self.added('daycares',i,daycaresArr[i]);
     }
   }
@@ -248,7 +248,7 @@ Meteor.publish("daycarePhotos", function(daycareId) {
 });
 
 Meteor.publish("getWaitlist", function(daycareId) {
-  return waitlists.find({daycareId: ""+daycareId+""}); 
+  return waitlists.find({daycareId: ""+daycareId+""});
 });
 
 Meteor.publish("getUserWaitlist", function(userId) {

@@ -45,6 +45,15 @@ Template.search_results.helpers({
     return daycares.find().fetch();
   },
   getCardDaycares: function(){
+    var range = distanceMiles.get();
+    var lat = FlowRouter.getParam('lat');
+    var lng = FlowRouter.getParam('lng');
+
+    function calcDist() {
+      var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
+        Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
+    }
+
     var transportationStatus, partTimeStatus, daysOfWeek;
     if (transportationBool.get() === true) {
       transportationStatus = "Y"
