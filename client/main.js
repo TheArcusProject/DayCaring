@@ -26,7 +26,6 @@ Meteor.startup(function() {
 Template.main.helpers({
   isUser: function(){
     if (Meteor.user()) {
-      console.log('returning true in main isuser')
       return true
     }
     return false
