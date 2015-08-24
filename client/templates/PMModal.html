@@ -1,0 +1,16 @@
+<template name="PMModal">
+  <div class="row">
+    <div class="small-10 columns panel">
+      <h4>Send a message</h4>
+        <textarea rows="10" id="message" placeholder="Contact the daycare."></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <a class="button" data-reveal-id="submittedMessage">Send</a>
+    </div>
+  </div>
+  <div id="submittedMessage" class="reveal-modal small" align="center" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
+    <h2 id="secondModalTitle">Message sent.</h2>
+  </div>
+</template>

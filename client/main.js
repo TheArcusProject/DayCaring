@@ -1,8 +1,8 @@
 daycares = new Mongo.Collection('daycares');
-zipCodes = new Mongo.Collection('zipCodes');
 reviews = new Mongo.Collection('reviews');
 waitlists = new Mongo.Collection('waitlists');
 pictures = new Mongo.Collection('pictures');
+messages = new Mongo.Collection('messages');
 
 Deps.autorun(function() { //turns user into a reactive variable??
   user = Meteor.user();
@@ -26,7 +26,6 @@ Meteor.startup(function() {
 Template.main.helpers({
   isUser: function(){
     if (Meteor.user()) {
-      console.log('returning true in main isuser')
       return true
     }
     return false

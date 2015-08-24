@@ -1,5 +1,3 @@
-
-
 Template.reviewModal.helpers({
   getDaycareName: function() {
     return this.name;
