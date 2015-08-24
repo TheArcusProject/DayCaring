@@ -5,7 +5,7 @@ Template.message.helpers({
     isAdmin.set(this.isAdmin);
   },
   isAdmin: function() {
-    return isAdmin;
+    return isAdmin.get();
   },
   getMessages: function() {
     return this.messages;
