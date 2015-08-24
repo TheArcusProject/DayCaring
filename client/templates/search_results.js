@@ -6,11 +6,26 @@
 
  var transportationBool = new ReactiveVar(false);
 
+ var partTimeBool = new ReactiveVar(false);
+
+ var saturdayBool = new ReactiveVar(false);
+
+ var distanceMiles = new ReactiveVar(5)
+
  //new reactive variable daycares array
 
 // Helper functions for the overarching search_results page
 
 //Subscribe to the localSchools template on load
+
+Template.search_results.rendered = function(){
+  var showingMap = showMap.get();
+  if (!showingMap) {
+    console.log("inside if :", showingMap);
+    $('#toggleMap').removeClass("active");
+    $('#toggleCards').addClass("active");
+  }
+}
 
 Template.search_results.helpers({
 
@@ -34,14 +49,26 @@ Template.search_results.helpers({
     return daycares.find().fetch();
   },
   getCardDaycares: function(){
-    var status;
+    var transportationStatus, partTimeStatus, daysOfWeek;
     if (transportationBool.get() === true) {
-      status = "Y"
+      transportationStatus = "Y"
     } else {
-      status = "N"
+      transportationStatus = "N"
+    }
+    if (partTimeBool.get() === true) {
+      partTimeStatus = "Y"
+    } else {
+      partTimeStatus = "N" || "N/A" || "null" //to handle cases where transportation isnt Y
+    }
+    if (saturdayBool.get() === true) {
+      daysOfWeek = {$regex: ".*Sat.*"}
+    } else {
+      daysOfWeek = {}
     }
     return daycares.find({
-      'transportation': status
+      'transportation': transportationStatus,
+      // 'parttime': partTimeStatus
+      // 'days': daysOfWeek
     }).fetch();
   },
   //for capitalization of names and addresses
@@ -55,17 +82,25 @@ Template.search_results.helpers({
 
 Template.search_results.events({
   "click #transportation": function(event){
-    console.log("it's firing")
     var state = transportationBool.get()
-    console.log('this is the state', state)
     if (!state) {
       transportationBool.set(true)
     } else {
       transportationBool.set(false)
     }
   },
+  // "click #partTimeCare": function(event){
+  //   console.log('its firing')
+  //   var partTimeState = partTimeBool.get()
+  //   if (!partTimeState) {
+  //     partTimeBool.set(true)
+  //   } else {
+  //     partTimeBool.set(false)
+  //   }
+  // },
   "click .card" : function(event){
     event.preventDefault();
+    transportationBool.set(false);
     FlowRouter.go('/'+ this.iD);
   },
 

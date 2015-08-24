@@ -51,7 +51,7 @@
   <div class="row fullWidth">
     <!-- <div class="small-12 columns"> -->
       {{#if isReady 'daycares'}}
-        {{#with getGmapDaycares}}
+        {{#with getCardDaycares}}
           {{> gmap}}
         {{/with}}
       {{/if}}
@@ -76,5 +76,6 @@
     </div>
   </div>
   {{/if}}
+  {{checkButtons}}
 
 </template>
