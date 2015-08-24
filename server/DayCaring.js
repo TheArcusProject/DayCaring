@@ -129,6 +129,17 @@ Meteor.methods({
       daycare: daycareId,
       createdAt: new Date()
     })
+  insertComments: function(comment, daycareId, user) {
+    var currentUser = Meteor.user();
+
+    if(currentUser) {
+      reviews.insert({
+        comment: comment,
+        user: currentUser,
+        daycare: daycareId,
+        createdAt: new Date()
+      })
+    }
   },
   chargeCard: function(stripeToken) {
     var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production
@@ -259,3 +270,4 @@ Meteor.publish("getUserMessages", function(userId){
 Meteor.publish("getDaycareMessages", function(daycareId){
   return messages.find({daycareId:daycareId});
 });
+
