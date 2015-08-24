@@ -22,7 +22,6 @@ Meteor.startup(function() {
   //The client should NEVER subscribe to daycareAdmins
 
   daycares = new Mongo.Collection('daycares');
-  zipCodes = new Mongo.Collection('zipCodes');
   reviews = new Mongo.Collection('reviews');
   waitlists = new Mongo.Collection('waitlists');
   pictures = new Mongo.Collection('pictures');
@@ -114,6 +113,11 @@ Meteor.methods({
         return true;
       }
     }
+    return false;
+  },
+  hasAdmin: function(daycareId){
+    var dcAdmins = daycareAdmins.find({daycareId:daycareId}).fetch()
+    if (dcAdmins.length > 0) return true;
     return false;
   },
   insertComments: function(comment, daycareId, userName, userId) {
