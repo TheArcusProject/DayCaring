@@ -50,6 +50,9 @@ Template.gmap.onCreated(function() {
       mapCenter.lng = parseFloat(that[0].lng);
     }
 
+
+    //Markers.find().observe({}) with added and remove methods.
+
     for (var i = 0; i < that.data.length; i++){
       //make a heart shaped marker bounce onto the map
       markers.push( new google.maps.Marker({
@@ -99,7 +102,7 @@ Template.gmap.onCreated(function() {
     //         "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
     //         "\'/" + this.daycare.iD + "\')\">Information</button>");
     //       this.infoWin.open(map.instance, this);
-          
+
     //       this.setIcon("/heart-dark.svg");
     //     })
 
@@ -108,7 +111,7 @@ Template.gmap.onCreated(function() {
     //       this.setIcon("/heart-light.svg");
     //     })
     //   };
-      
+
     // })
 
     function closeInfos() {
