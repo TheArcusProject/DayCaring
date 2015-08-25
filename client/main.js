@@ -3,7 +3,6 @@ reviews = new Mongo.Collection('reviews');
 waitlists = new Mongo.Collection('waitlists');
 pictures = new Mongo.Collection('pictures');
 messages = new Mongo.Collection('messages');
-markers = new Mongo.Collection('markers');
 
 Deps.autorun(function() { //turns user into a reactive variable??
   user = Meteor.user();
