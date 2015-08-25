@@ -26,6 +26,7 @@
             <div class="content-box section-box">
               <div class="row">
                 <div class="small-10 columns panel">
+                    {{#if isReady 'reviews'}}
                     {{#with getReviews}}
                       {{#each userReviews}}
                         <div class="row">
@@ -43,6 +44,7 @@
                         </div>
                       {{/each}}
                     {{/with}}
+                    {{/if}}
                 </div>
               </div>
             </div>

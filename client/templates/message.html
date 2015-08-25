@@ -4,7 +4,7 @@
     <div class="row">
       <div class="small-8 columns">
         <p>{{text}}</p>
-        {{#if response}}
+        {{#if isResponse}}
           <div class="row">
             <div class="small-8 columns panel">
               <h5>Response:</h5>
@@ -14,9 +14,11 @@
         {{/if}}
       </div>
       {{#if isAdmin}}
-        <div class="small-4 columns">
-          <button id="respondToMessage">Respond</button>
-        </div>
+        {{#unless isResponse}}
+          <div class="small-4 columns">
+            <button id="respondToMessage">Respond</button>
+          </div>
+        {{/unless}}
       {{else}}
         <div class="small-4 columns">
           <button id="deleteMessage">X</button>

@@ -21,6 +21,10 @@ Template.review.helpers({
   },
   getIsAuthor: function(){
     return isAuthor;
+  },
+  isResponse: function() {
+    if (this.response) return true;
+    return false;
   }
 })
 

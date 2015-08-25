@@ -10,6 +10,10 @@ Template.message.helpers({
   getMessages: function() {
     return this.messages;
   },
+  isResponse: function() {
+    if (this.response) return true;
+    return false;
+  }
 })
 
 Template.message.events({
