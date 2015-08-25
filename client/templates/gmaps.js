@@ -34,8 +34,8 @@ Template.gmap.onCreated(function() {
   var that = this;
   var markers = [];
 
-
   GoogleMaps.ready('gmap', function(map) {
+
     //creates the home marker
     var mapCenter = {};
     try {
@@ -50,66 +50,50 @@ Template.gmap.onCreated(function() {
       mapCenter.lng = parseFloat(that[0].lng);
     }
 
-    for (var i = 0; i < that.data.length; i++){
-      //make a heart shaped marker bounce onto the map
-      markers.push( new google.maps.Marker({
-        position: new google.maps.LatLng(parseFloat(that.data[i].lat), parseFloat(that.data[i].lng)),
-        map: map.instance,
-        icon: "/heart-light.svg"
-      }))
-      // to hold basic information about the schools
-      markers[i]['infoWin'] = new google.maps.InfoWindow({ maxWidth: 180 });
-      markers[i]['daycare'] = that.data[i];
-      // show infoWindow on mouseover
 
-      markers[i].addListener('mouseover', function() {
-        closeInfos();
-        this.infoWin.setContent("<h5>" + toTitleCase(this.daycare.name) + "</h5>" + "<h6>" + toTitleCase(this.daycare.address) +' TX' + "</h6>" +
-          "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
-          "\'/" + this.daycare.iD + "\')\">Information</button>");
-        this.infoWin.open(map.instance, this);
+    function makeMarkers(markersArr) {
+      for (var i = 0; i < markersArr.length; i++){
 
-        this.setIcon("/heart-dark.svg");
-      })
+        //make a heart shaped marker bounce onto the map
+        markers.push( new google.maps.Marker({
+          position: new google.maps.LatLng(parseFloat(markersArr[i].lat), parseFloat(markersArr[i].lng)),
+          map: map.instance,
+          icon: "/heart-light.svg"
+        }))
+        // to hold basic information about the schools
+        markers[i]['infoWin'] = new google.maps.InfoWindow({ maxWidth: 180 });
+        markers[i]['daycare'] = markersArr[i];
+        // show infoWindow on mouseover
 
-      markers[i].addListener('mouseout', function(){
-        //lighten heart on mouseoff
-        this.setIcon("/heart-light.svg");
-      })
+        markers[i].addListener('mouseover', function() {
+          closeInfos();
+          this.infoWin.setContent("<h5>" + toTitleCase(this.daycare.name) + "</h5>" + "<h6>" + toTitleCase(this.daycare.address) +' TX' + "</h6>" +
+            "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
+            "\'/" + this.daycare.iD + "\')\">Information</button>");
+          this.infoWin.open(map.instance, this);
+
+          this.setIcon("/heart-dark.svg");
+        })
+
+        markers[i].addListener('mouseout', function(){
+          //lighten heart on mouseoff
+          this.setIcon("/heart-light.svg");
+        })
+      };
     };
-    // map.instance.addListener('center_changed', function(){
-    //   mapCenter.lat = parseFloat(map.instance.getCenter().G)
-    //   mapCenter.lng = parseFloat(map.instance.getCenter().K)
-    //   for (var i = 0; i < that.data.length; i++){
-    //     //make a heart shaped marker bounce onto the map
-    //     markers.push( new google.maps.Marker({
-    //       animation: google.maps.Animation.DROP,
-    //       position: new google.maps.LatLng(parseFloat(that.data[i].lat), parseFloat(that.data[i].lng)),
-    //       map: map.instance,
-    //       icon: "/heart-light.svg"
-    //     }))
-    //     // to hold basic information about the schools
-    //     markers[i]['infoWin'] = new google.maps.InfoWindow({ maxWidth: 180 });
-    //     markers[i]['daycare'] = that.data[i];
-    //     // show infoWindow on mouseover
 
-    //     markers[i].addListener('mouseover', function() {
-    //       closeInfos();
-    //       this.infoWin.setContent("<h5>" + toTitleCase(this.daycare.name) + "</h5>" + "<h6>" + toTitleCase(this.daycare.address) +' TX' + "</h6>" +
-    //         "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
-    //         "\'/" + this.daycare.iD + "\')\">Information</button>");
-    //       this.infoWin.open(map.instance, this);
-          
-    //       this.setIcon("/heart-dark.svg");
-    //     })
+    function clearMarkers() {
+      for (var i=0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+      markers.length = 0;
+    };
 
-    //     markers[i].addListener('mouseout', function(){
-    //       //lighten heart on mouseoff
-    //       this.setIcon("/heart-light.svg");
-    //     })
-    //   };
-      
-    // })
+    Tracker.autorun(function() {
+      var watch = Session.get("markers");
+      clearMarkers();
+      makeMarkers(watch);
+    });
 
     function closeInfos() {
        for (var i = 0; i < markers.length; i++){

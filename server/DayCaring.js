@@ -215,7 +215,7 @@ Meteor.methods({
   },
   deleteMessage: function(messageId){
     messages.remove({_id:messageId});
-  }
+  },
 })
 
 

@@ -68,7 +68,7 @@ Template.search_results.helpers({
       daysOfWeek = {$ne: "asdf"}
     }
 
-    return daycares.find({
+    var localDaycares2 = daycares.find({
       "transportation": transportationStatus,
       "parttime": partTimeStatus,
       "days": daysOfWeek,
@@ -77,6 +77,9 @@ Template.search_results.helpers({
           Math.pow(((lng-this.lng)*69.2),2)) <= distanceMiles.get());
       }
     }).fetch();
+
+    Session.set("markers", localDaycares2);
+    return localDaycares2;
   },
 
   //for capitalization of names and addresses
@@ -116,6 +119,8 @@ Template.search_results.events({
     event.preventDefault();
     transportationBool.set(false);
     partTimeBool.set(false);
+    saturdayBool.set(false);
+    distanceMiles.set(5);
     FlowRouter.go('/'+ this.iD);
   },
 
