@@ -52,7 +52,6 @@ Template.gmap.onCreated(function() {
 
 
     function makeMarkers(markersArr) {
-      console.log("looping through markers :", markers);
       for (var i = 0; i < markersArr.length; i++){
 
         //make a heart shaped marker bounce onto the map

@@ -119,6 +119,8 @@ Template.search_results.events({
     event.preventDefault();
     transportationBool.set(false);
     partTimeBool.set(false);
+    saturdayBool.set(false);
+    distanceMiles.set(5);
     FlowRouter.go('/'+ this.iD);
   },
 
