@@ -78,34 +78,7 @@ Template.search_results.helpers({
       }
     }).fetch();
 
-    //go through items in local daycares and add items to marker collection.
-    // markers.remove({});
-    // var storage = {};
-    Meteor.call("removeAllMarkers");
-    localDaycares2.forEach(function(dc) {
-      // dc._id = ''+ dc._id;
-      // if (!storage[dc._id]) {
-      //   storage[dc._id] = dc;
-      // } else {
-      //   delete storage[dc._id];
-      // }
-      Meteor.call("insertMarker", dc);
-    });
-
-    // var keys = Object.keys(storage);
-    // keys.forEach(function(key){
-    //   Meteor.call()
-    // })
-
-    // console.log("this is our storage", storage);
-
-    // for (var key in storage) {
-    //   console.log("storage of key :", storage[key]);
-    //   markers.insert(storage[key]);
-    // }
-
-    // console.log(markers.find().fetch());
-
+    Session.set("markers", localDaycares2);
     return localDaycares2;
   },
 
