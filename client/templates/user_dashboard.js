@@ -46,3 +46,9 @@ Template.user_dashboard.events({
     Meteor.call('deleteComment',this._id);
   }
 })
+Template.user_dashboard.events({
+  "click #deleteComment": function(e){
+    e.preventDefault();
+    Meteor.call('deleteComment',this._id);
+  }
+})

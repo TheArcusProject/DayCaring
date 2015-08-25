@@ -1,42 +1,65 @@
 <template name="user_dashboard">
-   <div class="row">
-    <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Your Waitlists</h4> {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
-    </div>
-  </div>
-
-  <!-- <div class="row">
-    <div class="small-10 columns panel">
-      <h4>Your Reviews</h4> {{#if isReady 'reviews'}} {{#with getReviews}} {{> review}} {{/with}} {{/if}}
-    </div>
-  </div> -->
 
   <div class="row">
+    <div class="small-12 columns">
 
-  	<div class="small-10 columns panel">
-  		<h4>Your Reviews</h4>
-			  {{#with getReviews}}
-			  	{{#each userReviews}}
-			      <div class="row">
-			        <div class="small-3 columns">
-			          <h5><strong>{{daycareName}}</strong></h5>
-			        </div>
-			        <div class="small-6 columns">
-			          <h6>{{formattedDate createdAt}}</h6>
-			          <p>{{comment}}</p>
-			        </div>
-			        <div class="small-3 columns">
-			          <button id="deleteComment">X</button>
-			        </div>
-			        <hr>
-			      </div>
-		    	{{/each}}
-		    {{/with}}
-  	</div>
-  </div>
-  <div class='row'>
-    <div class="small-10 columns panel" data-equalizer-watch>
-      <h4>Your Messages</h4> {{#if isReady 'messages'}} {{#with getMessages}} {{> message}} {{/with}} {{/if}}
+      <ul class="tabs show-for-medium-up" data-tab>
+        <li class="tab-title active"><a href="#waitlists">Waitlists</a></li>
+        <li class="tab-title"><a href="#reviews">Reviews</a></li>
+        <li class="tab-title"><a href="#messages">Messages</a></li>
+      </ul>
+
+      <dl class="accordion" data-accordion>
+        <dd class="accordion-navigation">
+
+          <a href="#waitlists" class="show-for-small-only">Waitlists</a>
+          <div id="waitlists" class="content active">
+            <div class="content-box section-box">
+              <div class="row">
+                {{#if isReady 'waitlists'}} {{#with getWaitlistData}} {{> waitlist}} {{/with}} {{/if}}
+              </div>
+            </div>
+          </div>
+
+          <a href="#reviews" class="show-for-small-only">Reviews</a>
+          <div id="reviews" class="content">
+            <div class="content-box section-box">
+              <div class="row">
+                <div class="small-10 columns panel">
+                    {{#with getReviews}}
+                      {{#each userReviews}}
+                        <div class="row">
+                          <div class="small-3 columns">
+                            <h5><strong>{{daycareName}}</strong></h5>
+                          </div>
+                          <div class="small-6 columns">
+                            <h6>{{formattedDate createdAt}}</h6>
+                            <p>{{comment}}</p>
+                          </div>
+                          <div class="small-3 columns">
+                            <button id="deleteComment">X</button>
+                          </div>
+                          <hr>
+                        </div>
+                      {{/each}}
+                    {{/with}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#messages" class="show-for-small-only">Messages</a>
+          <div id="messages" class="content">
+            <div class="content-box section-box">
+              <div class="row">
+                {{#if isReady 'messages'}} {{#with getMessages}} {{> message}} {{/with}} {{/if}}
+              </div>
+            </div>
+          </div>
+
+        </dd>
+      </dl>
+
     </div>
   </div>
 
