@@ -21,6 +21,11 @@
         <button id="respondToComment">Respond</button>
       </div>
       {{/if}}
+      {{#if isResponse}}
+        <div class="row">
+          <p>{{response}}</p>
+        </div>
+      {{/if}}
       <hr>
     </div>
   {{/each}}

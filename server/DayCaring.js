@@ -131,6 +131,9 @@ Meteor.methods({
   deleteComment: function(commentId) {
     reviews.remove({_id:commentId});
   },
+  replyComment: function(commentId, response) {
+    reviews.update({_id:commentId},{$set:{response:response}});
+  },
   chargeCard: function(stripeToken) {
     var Stripe = StripeAPI('sk_test_XaXw9eySvHXuJLvVDhIyMkk6');//move to live key once app is in production
     Stripe.charges.create({
@@ -206,7 +209,7 @@ Meteor.methods({
       _id:messageId
     }, {
       $set: {
-        reply : reply
+        response : reply
       }
     })
   },

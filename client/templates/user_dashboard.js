@@ -16,6 +16,7 @@ Template.user_dashboard.helpers({
   },
   getWaitlistData: function() {
     var waitListArr = waitlists.find().fetch();
+    console.log('there are ',waitListArr.length,' waitlist entries found')
     var retObj = {
       list: waitListArr,
       isAdmin: false
