@@ -39,3 +39,10 @@ Template.user_dashboard.helpers({
     return retObj;
   }
 })
+
+Template.user_dashboard.events({
+  "click #deleteComment": function(e){
+    e.preventDefault();
+    Meteor.call('deleteComment',this._id);
+  }
+})
