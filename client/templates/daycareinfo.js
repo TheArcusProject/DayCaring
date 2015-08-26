@@ -12,6 +12,9 @@ Template.daycareinfo.helpers({
   },
   isReady: function(sub) {
     if(sub) {
+      if (sub === 'daycares' && Session.get(FlowRouter.getParam('daycareId')+'')){
+        return true;
+      }
       return FlowRouter.subsReady(sub);
     } else {
       return FlowRouter.subsReady();
@@ -30,6 +33,9 @@ Template.daycareinfo.helpers({
     return isUserAdminReact.get();
   },
   getDaycare: function() {
+    if (Session.get(''+FlowRouter.getParam('daycareId'))){
+      return JSON.parse(Session.get(''+FlowRouter.getParam('daycareId')));
+    }
     var dc = daycares.find().fetch();
     return dc;
   },
