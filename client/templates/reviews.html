@@ -3,16 +3,22 @@
   {{saveAuthor}}
   {{#each getReviews}}
     <div class="row">
+    {{#if getIsAdmin}}
       <div class="small-3 columns">
         <h4>{{user}}</h4>
         <p>Austin, Texas</p>
       </div>
+    {{else}}
+      <div class="small-3 columns">
+        <h5><a href="/{{daycare}}"><strong>{{daycareName}}</strong></a></h5>
+      </div>
+    {{/if}}
       <div class="small-6 columns">
         <h6>{{formattedDate createdAt}}</h6>
         <p>{{comment}}</p>
       </div>
       {{#if getIsAuthor}}
-      <div class="small-3 columns">
+      <div class="small-3 columns" align="right">
         <button id="deleteComment">X</button>
       </div>
       {{/if}}
