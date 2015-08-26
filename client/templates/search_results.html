@@ -1,5 +1,5 @@
 <template name="search_results">
-
+  {{#if isReady 'daycares'}}{{putDaycaresInSession}}{{/if}}
 
   <div id="resultsToggle" class="row fullWidth">
     <div class="small-11 xlarge-8 small-centered columns">
