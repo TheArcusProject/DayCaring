@@ -29,7 +29,6 @@ Meteor.startup(function() {
   // console.log('removing daycares');
   // daycares.remove({});
   // for (key in daycareData){
-  //   daycareData[key].iD = key;
   //   if (daycareData.hasOwnProperty(key)){
   //     daycares.insert(daycareData[key])
   //   }
@@ -78,7 +77,7 @@ Meteor.methods({
     console.log(phoneNumber);
     var twilio = Twilio('AC528f5b6507742d3b1930a5ef129880d5', '8cb9b6181585aacbaf0e60c54fdef8f3');
     var num = Math.floor(Math.random() * 90000) + 10000;
-    daycares.update({iD:daycareId}, {$set: {authCode: ''+num}});
+    daycares.update({_id:daycareId}, {$set: {authCode: ''+num}});
     this.unblock();
     twilio.sendSms({
       to: phoneNumber, // any number Twilio can deliver to
@@ -93,7 +92,7 @@ Meteor.methods({
 
   //We still need to solve the problem that code will be redefined upon multiple simultaneous requests
   checkValidation: function(userCode, daycareId, userId){
-    var dc = daycares.find({iD:daycareId}).fetch()[0];
+    var dc = daycares.find({_id:daycareId}).fetch()[0];
 
     if (''+userCode === dc.authCode) {
       daycareAdmins.insert({daycareId:daycareId, userId:userId});
@@ -153,7 +152,7 @@ Meteor.methods({
   },
   addDescription: function(daycareId, description){
     daycares.update({
-      iD: daycareId
+      _id: daycareId
     }, { $set: {description:description}})
   },
   addToWaitList: function(daycareId, daycareName, userId, userName, parentName, childName, age, address, city, zippycode, phoneNumber, startDate) {
@@ -178,7 +177,7 @@ Meteor.methods({
       registrationFeePaid: false
     }, function(err, doc){
       daycares.update({
-        iD: daycareId
+        _id: daycareId
       }, {
         $push: {waitlist: doc._id}
       })
@@ -189,9 +188,9 @@ Meteor.methods({
   },
   waitlistRemove: function(waitlistId) {
     var waitlistEntry = waitlists.find({_id:waitlistId}).fetch()[0]
-    var associatedDaycare = daycares.find({iD:waitlistEntry.daycareId}).fetch()[0]
+    var associatedDaycare = daycares.find({_id:waitlistEntry.daycareId}).fetch()[0]
     associatedDaycare.waitlist.splice(associatedDaycare.waitlist.indexOf(waitlistEntry._id),1);
-    daycares.update({iD:waitlistEntry.daycareId},{$set:{waitlist:associatedDaycare.waitlist}});
+    daycares.update({_id:waitlistEntry.daycareId},{$set:{waitlist:associatedDaycare.waitlist}});
     waitlists.remove({_id:waitlistId});
   },
   feePaid: function(waitlistId) {
@@ -236,14 +235,14 @@ Meteor.publish("localDaycares", function(lat, lng) {
     var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
       Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
     if (dist < 15){
-      self.added('daycares',i,daycaresArr[i]);
+      self.added('daycares',daycaresArr[i]._id,daycaresArr[i]);
     }
   }
   self.ready();
 });
 
 Meteor.publish("aDaycare", function(daycareId) {
-  return daycares.find({iD:""+daycareId+""});
+  return daycares.find({_id:""+daycareId+""});
 });
 
 Meteor.publish("daycarePhotos", function(daycareId) {

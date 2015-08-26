@@ -8,7 +8,7 @@ Template.reviewModal.events({
   "click .button": function(event, template) {
     event.preventDefault();
     var comment = $('textarea#review').val();
-    var daycare = this.iD;
+    var daycare = this._id;
     var daycareName = this.name;
     var currentUser = Meteor.user()
     Meteor.call("insertComments", comment, daycare, daycareName, currentUser.profile.name, currentUser._id, function(err, results) {
