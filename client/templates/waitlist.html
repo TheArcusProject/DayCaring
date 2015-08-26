@@ -2,14 +2,25 @@
   {{grossHack}}
   {{#each getArr}}
     <div class="row">
-      <div class='small-5 columns'>
-      <h5><a href="/{{daycareId}}"><strong>{{daycareName}}</strong></a></h5>
-        {{#each children}}
-          <p>
-            {{childName}}, age: {{age}}
-          </p>
-        {{/each}}
-      </div>
+      {{#if isAdmin}}
+        <div class='small-5 columns'>
+        <h5><strong>{{user}}</strong></h5>
+          {{#each children}}
+            <p>
+              {{childName}}, age: {{age}}
+            </p>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class='small-5 columns'>
+        <h5><a href="/{{daycareId}}"><strong>{{daycareName}}</strong></a></h5>
+          {{#each children}}
+            <p>
+              {{childName}}, age: {{age}}
+            </p>
+          {{/each}}
+        </div>
+      {{/if}}
       {{#if isAdmin}}
         <div class='small-7 columns'>
           {{#if accepted}}
