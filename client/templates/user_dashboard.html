@@ -25,8 +25,7 @@
           <div id="reviews" class="content">
             <div class="content-box section-box">
               <div class="row">
-                <div class="small-10 columns panel">
-                    {{#if isReady 'reviews'}}
+                <div class="small-12 columns panel">
                     {{#with getReviews}}
                       {{#each userReviews}}
                         <div class="row">
@@ -37,14 +36,13 @@
                             <h6>{{formattedDate createdAt}}</h6>
                             <p>{{comment}}</p>
                           </div>
-                          <div class="small-3 columns">
+                          <div class="small-3 columns" align="right">
                             <button id="deleteComment">X</button>
                           </div>
                           <hr>
                         </div>
                       {{/each}}
                     {{/with}}
-                    {{/if}}
                 </div>
               </div>
             </div>
