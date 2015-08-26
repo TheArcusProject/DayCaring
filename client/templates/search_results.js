@@ -20,7 +20,9 @@ Template.search_results.rendered = function(){
 }
 
 Template.search_results.helpers({
-
+  putDaycaresInSession : function() {
+    Session.set('daycares',daycares.find().fetch());
+  },
 
   showMapBool : function() {
     return showMap.get();

@@ -12,6 +12,7 @@ Template.daycareinfo.helpers({
   },
   isReady: function(sub) {
     if(sub) {
+      if (sub === 'daycares' && Session.get('daycares')) return true;
       return FlowRouter.subsReady(sub);
     } else {
       return FlowRouter.subsReady();
@@ -30,6 +31,16 @@ Template.daycareinfo.helpers({
     return isUserAdminReact.get();
   },
   getDaycare: function() {
+    if (Session.get('daycares')) {
+      var retArray = [];
+      var dcArray = Session.get('daycares');
+      for (var i = 0; i < dcArray.length; i++){
+        if (dcArray[i]._id === FlowRouter.getParam('daycareId')){
+          retArray.push(dcArray[i])
+          return retArray;
+        }
+      }
+    }
     var dc = daycares.find().fetch();
     return dc;
   },
