@@ -68,8 +68,8 @@ Template.gmap.onCreated(function() {
         markers[i].addListener('mouseover', function() {
           closeInfos();
           this.infoWin.setContent("<h5>" + toTitleCase(this.daycare.name) + "</h5>" + "<h6>" + toTitleCase(this.daycare.address) +' TX' + "</h6>" +
-            '<button type="button" class="button daycareinfo tiny" onclick=\'Session.set('+this.daycare.iD+','+JSON.stringify(this.daycare)+"); FlowRouter.go(" +
-            '"/' + this.daycare.iD + '");\'>Information</button>');
+            "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
+            "\'/" + this.daycare.iD + "\')\">Information</button>");
           this.infoWin.open(map.instance, this);
 
           this.setIcon("/heart-dark.svg");
