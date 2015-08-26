@@ -67,9 +67,11 @@ Template.gmap.onCreated(function() {
 
         markers[i].addListener('mouseover', function() {
           closeInfos();
+          console.log('when making marker, this is : ',this)
+          console.log('making marker with id : ',this.daycare._id)
           this.infoWin.setContent("<h5>" + toTitleCase(this.daycare.name) + "</h5>" + "<h6>" + toTitleCase(this.daycare.address) +' TX' + "</h6>" +
             "<button type='button' class='button daycareinfo tiny' onclick=\"FlowRouter.go(" +
-            "\'/" + this.daycare.iD + "\')\">Information</button>");
+            "\'/" + this.daycare._id + "\')\">Information</button>");
           this.infoWin.open(map.instance, this);
 
           this.setIcon("/heart-dark.svg");

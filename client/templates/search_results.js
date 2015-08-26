@@ -121,7 +121,7 @@ Template.search_results.events({
     partTimeBool.set(false);
     saturdayBool.set(false);
     distanceMiles.set(5);
-    FlowRouter.go('/'+ this.iD);
+    FlowRouter.go('/'+ this._id);
   },
 
   "click #toggleMap" : function(event) {

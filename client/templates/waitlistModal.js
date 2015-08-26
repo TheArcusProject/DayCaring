@@ -46,7 +46,7 @@ Template.waitlistModal.events({
     if (parentName && childName && address && age && city && state && zippycode && phoneNumber && startDate) {
       var currentUser = Meteor.user()
       Meteor.call('addToWaitList',
-                   this.iD,
+                   this._id,
                    this.name,
                    currentUser._id,
                    currentUser.profile.name,
