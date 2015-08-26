@@ -26,23 +26,7 @@
             <div class="content-box section-box">
               <div class="row">
                 <div class="small-12 columns panel">
-                    {{#with getReviews}}
-                      {{#each userReviews}}
-                        <div class="row">
-                          <div class="small-3 columns">
-                            <h5><a href="/{{daycare}}"><strong>{{daycareName}}</strong></a></h5>
-                          </div>
-                          <div class="small-6 columns">
-                            <h6>{{formattedDate createdAt}}</h6>
-                            <p>{{comment}}</p>
-                          </div>
-                          <div class="small-3 columns" align="right">
-                            <button id="deleteComment">X</button>
-                          </div>
-                          <hr>
-                        </div>
-                      {{/each}}
-                    {{/with}}
+                  {{#if isReady 'reviews'}} {{#with getReviews}} {{> review}} {{/with}} {{/if}}
                 </div>
               </div>
             </div>

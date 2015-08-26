@@ -23,14 +23,6 @@ Template.user_dashboard.helpers({
     }
     return retObj;
   },
-  userReviews: function() {
-    return this.reviews;
-  },
-  formattedDate: function(date) {
-    if(date) {
-      return moment(date).format("MMM Do YYYY");
-    }
-  },
   getMessages: function() {
     var msgs = messages.find().fetch();
     retObj = {
@@ -41,12 +33,6 @@ Template.user_dashboard.helpers({
   }
 })
 
-Template.user_dashboard.events({
-  "click #deleteComment": function(e){
-    e.preventDefault();
-    Meteor.call('deleteComment',this._id);
-  }
-})
 Template.user_dashboard.events({
   "click #deleteComment": function(e){
     e.preventDefault();
