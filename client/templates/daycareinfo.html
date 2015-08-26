@@ -1,12 +1,13 @@
 <template name="daycareinfo">
+  {{#if isReady}}
   <div class="row">
     <div class="small-12 columns">
       <div id="daycareinfo" class="row">
         <div id="localmap" class="small-12 medium-4 columns">
-          {{#if isReady 'daycares'}} {{#with getDaycare}} {{> gmap}} {{/with}} {{/if}}
+          {{#with getDaycare}} {{> gmap}} {{/with}}
         </div>
         <div class="small-12 medium-8 columns panel">
-          {{#if isReady 'daycares'}} {{#each getDaycare}}
+          {{#each getDaycare}}
           <ul>
             <li>
               <h3>{{name}}</h3>
@@ -46,19 +47,19 @@
               {{description}}
             </div>
           </div>
-          {{/each}} {{/if}}
+          {{/each}}
         </div>
       </div>
       <div class="row">
         <div class="small-block-grid-5">
           <ul class="small-block-grid-3">
-            {{#if isReady 'pictures'}}
+            
               {{#each getPictures}}
                 <li>
                   {{> pictureRow}}
                 </li>
               {{/each}}
-            {{/if}}
+            
           </ul>
         </div>
       </div>
@@ -70,24 +71,28 @@
       </div> -->
 
       <div id="stats" class="row">
-        {{#if isReady 'daycares'}} {{#each getDaycare}} {{> stats}} {{/each}} {{/if}}
+        {{#each getDaycare}} {{> stats}} {{/each}}
       </div>
       <div id="reviews" class="row">
         <h4>Daycare Reviews</h4>
         <div class="small-12 columns">
-          {{#if isReady 'reviews'}} {{#with getReviews}} {{#if hasReviews}} {{#with getReviews}} {{> review}} {{/with}} {{else}}
-          <h5>No reviews yet, login to write one!</h5> {{/if}} {{/with}} {{/if}}
+          {{#with getReviews}} {{#if hasReviews}} {{#with getReviews}} {{> review}} {{/with}} {{else}}
+          <h5>No reviews yet, login to write one!</h5> {{/if}} {{/with}}
         </div>
       </div>
       <div id="reviewModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-        {{#if isReady 'daycares'}} {{#each getDaycare}} {{> reviewModal}} {{/each}} {{/if}}
+        {{#each getDaycare}} {{> reviewModal}} {{/each}}
       </div>
       <div id="waitlistModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
-        {{#if isReady 'daycares'}} {{#each getDaycare}} {{> waitlistModal}} {{/each}} {{/if}}
+        {{#each getDaycare}} {{> waitlistModal}} {{/each}}
       </div>
       <div id="PMModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role='dialog'>
-        {{#if isReady 'daycares'}} {{#each getDaycare}} {{> PMModal}} {{/each}} {{/if}}
+        {{#each getDaycare}} {{> PMModal}} {{/each}}
       </div>
     </div>
   </div>
+  {{else}}
+  <div style="background: url('http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif') no-repeat center center;">
+  </div>
+  {{/if}}
 </template>
