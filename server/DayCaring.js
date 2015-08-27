@@ -216,6 +216,15 @@ Meteor.methods({
   deleteMessage: function(messageId){
     messages.remove({_id:messageId});
   },
+  addResponse: function(reviewId, response) {
+    reviews.update({
+      _id: reviewId
+    }, {
+      $set: {
+        response: response
+      }
+    })
+  }
 })
 
 

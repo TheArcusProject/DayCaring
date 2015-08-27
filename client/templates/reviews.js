@@ -32,6 +32,10 @@ Template.review.events({
   "click #deleteComment": function(e){
     e.preventDefault();
     Meteor.call('deleteComment',this._id);
+  },
+  "click #respondToComment": function(e){
+    e.preventDefault();
+    Meteor.call('addResponse', this._id, response);
   }
 })
 
