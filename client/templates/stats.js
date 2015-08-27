@@ -1,13 +1,13 @@
 var showBars = new ReactiveVar(true);
 
 getCategory = function(num) {
-  if (num >= 0 && num <= 1500){
+  if ( 0 <= num && 1500 <= num ){
     return 0;
-  } else if (num > 1500 && num <= 3100){
+  } else if ( 1500 < num && 3100 >= num ){
     return 1;
-  } else if (num > 3100 && num <= 4200){
+  } else if ( 3100 < num && 4200 >= num ){
     return 2;
-  } else if (num > 4201 && num <= 5627){
+  } else if ( 4201 < num && 5627 >= num ){
     return 3;
   }
 };
@@ -55,11 +55,11 @@ Template.stats.helpers({
   },
   getColor : function(num){
     var retStr = "progress ";
-    if (this.widths[num] < 30) {
+    if ( 30 > this.widths[num] ) {
       retStr += "alert";
-    } else if (this.widths[num] < 60) {
+    } else if ( 60 > this.widths[num] ) {
       retStr += "secondary";
-    } else if (this.widths[num] < 99) {
+    } else if ( 99 > this.widths[num] ) {
       retStr += ""
     } else  {
       retStr += "success";
@@ -74,8 +74,3 @@ Template.stats.events({
     showBars.set(!current);
   }
 })
-
-Template.stats.onCreated(function(){
-
-
-});

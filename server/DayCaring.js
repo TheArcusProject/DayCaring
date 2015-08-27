@@ -234,7 +234,7 @@ Meteor.publish("localDaycares", function(lat, lng) {
   for (var i = 0; i < daycaresArr.length; i++){
     var dist = Math.sqrt(Math.pow(((lat-daycaresArr[i].lat)*69.2),2)+
       Math.pow(((lng-daycaresArr[i].lng)*69.2),2));
-    if (dist < 15){
+    if ( 15 > dist ){
       self.added('daycares',daycaresArr[i]._id,daycaresArr[i]);
     }
   }
