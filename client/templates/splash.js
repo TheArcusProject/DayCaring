@@ -30,6 +30,9 @@ Template.splash.events({
 
 Template.splash.onRendered(function() {
 
+  //fixes the top bar on search results page.
+  $(".map-canvas").addClass("mapMove");
+
   this.autorun(function () {
     if (GoogleMaps.loaded()) {
       $("input").geocomplete()
