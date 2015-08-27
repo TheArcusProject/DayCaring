@@ -23,6 +23,10 @@ body {
   min-height: 400px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // background-color: $smoke;
+}
+
+.wrapper {
   background-color: $smoke;
 }
 #logo {

@@ -6,8 +6,10 @@
     <div class="small-11 xlarge-8 small-centered columns">
 
       <div class="small-4 xlarge-3 columns">
-          <button id="toggleMap" type="button" class="button resultsToggleButton active">Map</button>
-          <button id="toggleCards" type="button" class="button resultsToggleButton">Cards</button>
+        <ul class="stack-for-small button-group">
+          <li><button id="toggleMap" type="button" class="button resultsToggleButton active">Map</button></li>
+          <li><button id="toggleCards" type="button" class="button resultsToggleButton">Cards</button></li>
+        </ul>
       </div>
 
       <form id="filters">
@@ -45,33 +47,36 @@
     </div>
   </div>
 
-  {{#if showMapBool}}
-  <div class="row fullWidth">
-      {{#with getCardDaycares}}
-        {{> gmap}}
-      {{/with}}
-  </div>
+  <div class="wrapper">
 
-  {{else}}
-  <div id="results" class="row">
-    <div class="small-12 columns">
-      <ul class="small-block-grid-3">
-          {{#each getCardDaycares}}
-            <li>
-              <h4>{{toTitleCase name}}</h4>
-              <p> {{toTitleCase address}}, Texas
-              <br>{{accepts}}
-              <br>{{phone}}
-              <br>{{days}}
-              <br>{{transportation}}
-              <br>{{parttime}}</p>
-              <a class="button card small">more info</a>
-            </li>
-          {{/each}}
-      </ul>
+    {{#if showMapBool}}
+    <div class="row fullWidth">
+        {{#with getCardDaycares}}
+          {{> gmap}}
+        {{/with}}
     </div>
+
+    {{else}}
+    <div id="results" class="row">
+      <div class="small-12 columns">
+        <ul class="small-block-grid-3">
+            {{#each getCardDaycares}}
+              <li>
+                <h4>{{toTitleCase name}}</h4>
+                <p> {{toTitleCase address}}, Texas
+                <br>{{accepts}}
+                <br>{{phone}}
+                <br>{{days}}
+                <br>{{transportation}}
+                <br>{{parttime}}</p>
+                <a class="button card small">more info</a>
+              </li>
+            {{/each}}
+        </ul>
+      </div>
+    </div>
+    {{/if}}
   </div>
   {{/if}}
-  {{checkButtons}}
-  {{/if}}
+
 </template>
