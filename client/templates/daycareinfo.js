@@ -12,7 +12,7 @@ Template.daycareinfo.helpers({
   },
   isReady: function(sub) {
     if(sub) {
-      if (sub === 'daycares' && Session.get('daycares')) return true;
+      if ( 'daycares' === sub && Session.get('daycares')) return true;
       return FlowRouter.subsReady(sub);
     } else {
       return FlowRouter.subsReady();
@@ -67,9 +67,9 @@ Template.daycareinfo.helpers({
   },
 
   convertBoolean: function(str) {
-    if(str === "N") {
+    if("N" === str) {
       return "No";
-    } else if(str === "Y") {
+    } else if("Y" === str) {
       return "Yes";
     } else {
       return "N/A"
@@ -77,7 +77,7 @@ Template.daycareinfo.helpers({
   },
 
   checkBool: function(str){
-    if(str === "Y") {
+    if("Y" === str) {
       return true;
     } else {
       return false

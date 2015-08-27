@@ -56,7 +56,7 @@ Template.search_results.helpers({
       transportationStatus = {$ne: "asdf"}
     }
 
-    if (partTimeBool.get() === true) {
+    if ( true === partTimeBool.get() ) {
       partTimeStatus = "Y"
     } else {
       //hacky way to select all other items... will be refactored.
@@ -64,7 +64,7 @@ Template.search_results.helpers({
        partTimeStatus = {$ne: "asdf"} //to handle cases where transportation isnt Y
     }
 
-    if (saturdayBool.get() === true) {
+    if ( true === saturdayBool.get() ) {
       daysOfWeek = {$regex: ".*Sat.*"}
     } else {
       daysOfWeek = {$ne: "asdf"}
@@ -152,7 +152,7 @@ Template.search_results.events({
 
   "click #fiveMile" : function(event){
     var currentDistance = distanceMiles.get();
-    if (currentDistance !== 5) {
+    if ( 5 !== currentDistance ) {
       distanceMiles.set(5);
     } else {
       //do nothing
@@ -160,7 +160,7 @@ Template.search_results.events({
   },
   "click #tenMile" : function(event){
       var currentDistance = distanceMiles.get();
-      if (currentDistance !== 10) {
+      if ( 10 !== currentDistance ) {
         distanceMiles.set(10);
       } else {
         //do nothing
@@ -168,7 +168,7 @@ Template.search_results.events({
   },
   "click #fifteenMile" : function(event){
     var currentDistance = distanceMiles.get();
-    if (currentDistance !== 15) {
+    if ( 15 !== currentDistance ) {
       distanceMiles.set(15);
     } else {
       //do nothing
