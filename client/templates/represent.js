@@ -42,6 +42,13 @@ Template.represent.helpers({
       messages: msgs
     }
     return retObj;
+  },
+  checkDescription: function(description) {
+    if(description) {
+      return true;
+    } else {
+      return false;
+    }
   }
 })
 
