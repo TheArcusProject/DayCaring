@@ -17,11 +17,11 @@
             <li><i class="fa fa-clock-o fa-fw"></i>&nbsp; Hours of Operation: {{hours}}</li>
             <li><i class="fa fa-laptop fa-fw"></i>&nbsp; Website or Email: <a target="_blank" href="{{website}}">{{website}}</a></li>
             <li><i class="fa fa-child fa-fw"></i>&nbsp; Ages Served: {{accepts}}</li>
-            {{#if checkBool}}
+            {{#if checkBool parttime}}
             <li><i class="fa fa-check fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
             {{else}}
             <li><i class="fa fa-times fa-fw"></i>&nbsp; Part-time Care: {{convertBoolean parttime}}</li>
-            {{/if}} {{#if checkBool}}
+            {{/if}} {{#if checkBool transportation}}
             <li><i class="fa fa-check fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
             {{else}}
             <li><i class="fa fa-times fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
