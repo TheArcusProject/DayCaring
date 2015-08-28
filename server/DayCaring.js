@@ -180,7 +180,7 @@ Meteor.methods({
       daycares.update({
         _id: daycareId
       }, {
-        $push: {waitlist: doc._id}
+        $push: {waitlist: doc}
       })
     });
   },
