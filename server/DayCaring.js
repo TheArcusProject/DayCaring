@@ -180,7 +180,7 @@ Meteor.methods({
       daycares.update({
         _id: daycareId
       }, {
-        $push: {waitlist: doc._id}
+        $push: {waitlist: doc}
       })
     });
   },
@@ -216,6 +216,15 @@ Meteor.methods({
   deleteMessage: function(messageId){
     messages.remove({_id:messageId});
   },
+  addResponse: function(reviewId, response) {
+    reviews.update({
+      _id: reviewId
+    }, {
+      $set: {
+        response: response
+      }
+    })
+  }
 })
 
 
