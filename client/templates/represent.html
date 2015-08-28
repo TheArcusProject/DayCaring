@@ -13,6 +13,10 @@
             {{#if checkDescription description}}
             <h4>{{toTitleCase name}} Description</h4>
               {{description}}
+            <br>
+            <br>
+            <textarea rows="10" id="descriptionText" placeholder="Update your description."></textarea>
+            <button type="submit" form="description" value="Submit">Update Your Description</button>
             {{else}}
             <h4>Describe {{toTitleCase name}}</h4>
             <textarea rows="10" id="descriptionText" placeholder="Describe your daycare."></textarea>
