@@ -17,16 +17,27 @@
       </div>
       {{/if}}
       {{#if getIsAdmin}}
+      <textarea rows="10" id="responseText" placeholder="Respond to this comment."></textarea>
       <div class="small-3 columns">
         <button id="respondToComment">Respond</button>
       </div>
       {{/if}}
       {{#if isResponse}}
         <div class="row">
-          <p>{{response}}</p>
+        <div class="small-10 small-offset-3 columns">
+          <h5>{{daycareRep}} - {{daycareName}}</h5>
+          <h6>{{formattedDate responseDate}}</h6>
+        </div>
+        </div>
+        <div class="row">
+          <div class="small-10 small-offset-3 columns">
+            <p>{{response}}</p>
+          </div>
         </div>
       {{/if}}
       <hr>
     </div>
   {{/each}}
 </template>
+
+
