@@ -27,6 +27,12 @@
             <li><i class="fa fa-times fa-fw"></i>&nbsp; Transportation Provided: {{convertBoolean transportation}}</li>
             {{/if}}
           </ul>
+          <br>
+          <div class="row">
+            <div id="" class="small-12 columns">
+              {{description}}
+            </div>
+          </div>
           <div class="row">
             <div id="" class="small-12 columns">
               <!-- <h2>{{name}}</h2> -->
@@ -40,11 +46,6 @@
               {{#if hasAdmin}}
                 <button tupe="button" class='button small messageAdmin'>Contact this Daycare</button>
               {{/if}}
-            </div>
-          </div>
-          <div class="row">
-            <div id="" class="small-12 columns">
-              {{description}}
             </div>
           </div>
           {{/each}}

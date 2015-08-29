@@ -35,7 +35,10 @@ Template.review.events({
   },
   "click #respondToComment": function(e){
     e.preventDefault();
-    Meteor.call('addResponse', this._id, response);
+    var response = $('textarea#responseText').val();
+    var date = new Date ();
+    var daycareRep = Meteor.user();
+    Meteor.call('addResponse', this._id, response, daycareRep.profile.name, date);
   }
 })
 
