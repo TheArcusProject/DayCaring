@@ -1,6 +1,6 @@
 
-//zipCodeParse.js
-// Assets.getText('zips.txt',function(err, data){
+// //zipCodeParse.js
+// Assets.getText('/private/zips.txt',function(err, data){
   
 //   var zipCodesArr = JSON.parse(data);
   

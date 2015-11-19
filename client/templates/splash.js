@@ -37,8 +37,8 @@ Template.splash.onRendered(function() {
     if (GoogleMaps.loaded()) {
       $("input").geocomplete()
       .bind("geocode:result", function(event, result){
-        var lat = result.geometry.location.G;
-        var lng = result.geometry.location.K;
+        var lat = result.geometry.location.lat();
+        var lng = result.geometry.location.lng();
         FlowRouter.go('/searchresults/'+ lat +'/' + lng);
       });
     }
